@@ -1,0 +1,1567 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Semio.ClientService.Provide</name>
+    </assembly>
+    <members>
+        <member name="M:Semio.ClientService.Provide.IEntityService.UpdateTrialCandidateStatuses(System.Int32,Semio.ClientService.Entity.ObjectModel.CandidateStatus,System.String)">
+            <summary>
+            Updates the status of other candidates within the same trial according to a candidate's new status
+            </summary>
+            <param name="candidateId">ID of the candidate which has had its status changed</param>
+            <param name="candidateStatus">The new status of the candidate which has been updated</param>
+            <param name="statusChangedRationale">Rationale for changing the status to be used in Findings</param>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IEntityService.PublishCandidateMilestones(System.Int32,System.String)">
+            <summary>
+            Publishes the candidate milestones.
+            </summary>
+            <param name="candidateId">The candidate id.</param>
+            <param name="enrollmentName">Name of the enrollment.</param>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IEntityService.IsSubjectImportPending(System.Int32)">
+            <summary>
+            Gets a value indicating if the subject has a pending solr import in Provide.Queue
+            </summary>
+            <param name="subjectId"></param>
+            <returns>True if there is a pending import</returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IEntityService.GetAdditionalFacilities(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="subjectId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IEntityService.GetDataMineSubmitQueueItems">
+            <summary>
+            Gets all of the DataMineSubmit queue entries
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IEntityService.SaveQueueItem(Semio.ClientService.Data.Queue.QueueItem)">
+            <summary>
+            Saves a new or existing queue item to the database
+            </summary>
+            <param name="queueItem"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IEntityService.DeleteQueueItem(Semio.ClientService.Data.Queue.QueueItem)">
+            <summary>
+            Deletes a queue item from the database
+            </summary>
+            <param name="queueItem"></param>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IEntityService.ArchiveQueueItem(Semio.ClientService.Data.Queue.QueueItem)">
+            <summary>
+            Archives a queue item
+            </summary>
+            <param name="queueItem">Item to move the QueueArchive table</param>
+            <returns>Archived item</returns>
+        </member>
+        <member name="T:Semio.ClientService.Provide.IFeedService">
+            <summary>
+            Enrollment
+            </summary>
+            <summary>
+            Facet feed service interface
+            </summary>
+            <summary>
+            Country feed service interface
+            </summary>
+            <summary>
+            Investigator/Facility feed service interface
+            </summary>
+            <summary>
+            Predictive Analytics feed service interface
+            </summary>
+            <summary>
+            Patient feed service interface
+            </summary>
+            <summary>
+            Standard of care service interfaces
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetSchemaArtifactImage(System.String)">
+             <summary>
+            Get Artifact Image from Database 
+             </summary>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetCtGovDataSolrFacets(Semio.ClientService.Data.Facets.FacetCollection)">
+            <summary>
+            Gets all of the Facets (with counts) for CT Gov, using the Solr index.
+            </summary>
+            <param name="criteria">The criteria.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetCtGovDataSolrFacetsWithDefault(Semio.ClientService.Data.Facets.FacetCollection,System.String)">
+            <summary>
+            Gets all of the Facets (with counts) for CT Gov, using the Solr index and a default facet filter
+            </summary>
+            <param name="criteria">The criteria.</param>
+            <param name="defaults">The facet filter defaults</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetCtGovDataSolr(Semio.ClientService.Data.Facets.FacetCollection)">
+            <summary>
+            Gets CT Gov results data from Solr based on facet criteria passed in
+            </summary>
+            <param name="criteria">The criteria.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetCtGovDataSolrWithDefault(Semio.ClientService.Data.Facets.FacetCollection,System.String)">
+            <summary>
+            Gets CT Gov results data from Solr based on facet criteria and filter defaults passed in
+            </summary>
+            <param name="criteria">The criteria.</param>
+            <param name="defaults">The facet filter defaults</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetCtGovDataSolrFacetsForHttpRequests(Semio.ClientService.Data.Facets.FacetCollection)">
+            <summary>
+            Gets all of the Facets (with counts) for CT Gov, using the Solr index.
+            </summary>
+            <param name="criteria">The criteria.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetCtGovDataSolrFacetsWithDefaultForHttpRequests(Semio.ClientService.Data.Facets.FacetCollection,System.String)">
+            <summary>
+            Gets all of the Facets (with counts) for CT Gov, using the Solr index and a default facet filter
+            </summary>
+            <param name="criteria">The criteria.</param>
+            <param name="defaults">The facet filter defaults</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetCtGovDataSolrForHttpRequests(Semio.ClientService.Data.Facets.FacetCollection)">
+            <summary>
+            Gets CT Gov results data from Solr based on facet criteria passed in
+            </summary>
+            <param name="criteria">The criteria.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetCtGovDataSolrWithDefaultForHttpRequests(Semio.ClientService.Data.Facets.FacetCollection,System.String)">
+            <summary>
+            Gets CT Gov results data from Solr based on facet criteria and filter defaults passed in
+            </summary>
+            <param name="criteria">The criteria.</param>
+            <param name="defaults">The facet filter defaults</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetAllDataMiningModels">
+            <summary>
+            Get all datamining models saved in semio db
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetDataMineCanvasNameList">
+            <summary>
+            Get DataMine canvas name list in clinweb as whole
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.SelectNewDataMiningModel(System.String,System.String)">
+            <summary>
+             Get DataMining model
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.CreateDataMiningModel(System.String,Semio.ClientService.Data.Intelligence.Canvas.DataMiningCanvasModelData)">
+            <summary>
+             create DataMining model
+            </summary>
+            <param name="canvasid"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.SelectdataMiningModel(System.String)">
+            <summary>
+             Get patient model 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.DeleteDataMiningModel(System.String)">
+            <summary>
+             delete patient model
+            </summary>
+            <param name="modelguid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.CopyDataMiningModelAs(System.String,System.String,System.String)">
+            <summary>
+             Copy a model
+            </summary>
+            <param name="modelGuid"></param>
+            <param name="title"> </param>
+            <param name="description"> </param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.UpdatedataMiningModel(Semio.ClientService.Data.Intelligence.Canvas.DataMiningCanvasModelData)">
+            <summary>
+             updated patient model
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetDrugDataSolrFacets(Semio.ClientService.Data.Facets.FacetCollection)">
+            <summary>
+            Gets all of the Facets (with counts) for Drug, using the Solr index.
+            </summary>
+            <param name="criteria">The criteria.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetDrugDataSolrFacetsWithDefault(Semio.ClientService.Data.Facets.FacetCollection,System.String)">
+            <summary>
+            Gets all of the Facets (with counts) for Drug, using the Solr index and a default facet filter
+            </summary>
+            <param name="criteria">The criteria.</param>
+            <param name="defaults">The facet filter defaults</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetDrugDataSolr(Semio.ClientService.Data.Facets.FacetCollection)">
+            <summary>
+            Gets Drug results data from Solr based on facet criteria passed in
+            </summary>
+            <param name="criteria">The criteria.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetDrugDataSolrWithDefault(Semio.ClientService.Data.Facets.FacetCollection,System.String)">
+            <summary>
+            Gets Drug results data from Solr based on facet criteria and filter defaults passed in
+            </summary>
+            <param name="criteria">The criteria.</param>
+            <param name="defaults">The facet filter defaults</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetDrugDataSolrFacetsForHttpRequests(Semio.ClientService.Data.Facets.FacetCollection)">
+            <summary>
+            Gets all of the Facets (with counts) for Drug, using the Solr index.
+            </summary>
+            <param name="criteria">The criteria.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetDrugDataSolrFacetsWithDefaultForHttpRequests(Semio.ClientService.Data.Facets.FacetCollection,System.String)">
+            <summary>
+            Gets all of the Facets (with counts) for Drug, using the Solr index and a default facet filter
+            </summary>
+            <param name="criteria">The criteria.</param>
+            <param name="defaults">The facet filter defaults</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetDrugDataSolrForHttpRequests(Semio.ClientService.Data.Facets.FacetCollection)">
+            <summary>
+            Gets Drug results data from Solr based on facet criteria passed in
+            </summary>
+            <param name="criteria">The criteria.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetDrugDataSolrWithDefaultForHttpRequests(Semio.ClientService.Data.Facets.FacetCollection,System.String)">
+            <summary>
+            Gets Drug results data from Solr based on facet criteria and filter defaults passed in
+            </summary>
+            <param name="criteria">The criteria.</param>
+            <param name="defaults">The facet filter defaults</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetCandidateFeed(System.String)">
+            <summary>
+            Returns an Atom feed of trial candidates for a particular molecule
+            </summary>
+            <returns>Atom feed in response to a HTTP GET request at URLs conforming to the URI template of the WebGetAttribute.</returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetTrialSetFeed(System.String)">
+            <summary>
+            Returns an Atom feed of trial sets for a particular molecule
+            </summary>
+            <param name="moleculeId"></param>
+            <returns>Atom feed in response to a HTTP GET request at URLs conforming to the URI template of the WebGetAttribute.</returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetTrialSetCandidatesFeed(System.String)">
+            <summary>
+            Returns an Atom feed of trial candidates for a particular trial set
+            </summary>
+            <param name="trialSetId"> </param>
+            <returns>Atom feed in response to a HTTP GET request at URLs conforming to the URI template of the WebGetAttribute.</returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetClinicalPlanCandidatesFeed(System.String)">
+            <summary>
+            Returns an Atom feed of clinical plan candidates for a particular molecule
+            </summary>
+            <param name="moleculeId"> </param>
+            <returns>Atom feed in response to a HTTP GET request at URLs conforming to the URI template of the WebGetAttribute.</returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetTargetProductProfileCandidatesFeed(System.String)">
+            <summary>
+            Returns an Atom feed of Target Product Profile candidates for a particular molecule
+            </summary>
+            <param name="moleculeId"> </param>
+            <returns>Atom feed in response to a HTTP GET request at URLs conforming to the URI template of the WebGetAttribute.</returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetCandidatesKeywords(System.String)">
+            <summary>
+            Returns an Atom feed of trial candidates keywords for a particular molecule
+            </summary>
+            <param name="moleculeId"> </param>
+            <returns>Atom feed in response to a HTTP GET request at URLs conforming to the URI template of the WebGetAttribute.</returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetTrialSetsKeywords(System.String)">
+            <summary>
+            Returns an Atom feed of trial sets keywords for a particular molecule
+            </summary>
+            <param name="moleculeId"></param>
+            <returns>Atom feed in response to a HTTP GET request at URLs conforming to the URI template of the WebGetAttribute.</returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetEntitySetFeed(System.String,System.String)">
+            <summary>
+             Get feed for catalog Entity Sets
+            </summary>
+            <param name="moleculeId">0</param>
+            <param name="entitySetId">ID of the Entity Set to get the feed for</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetEntitySetsKeywords(System.String,System.String)">
+            <summary>
+            Returns an Atom feed of entity sets keywords
+            </summary>
+            <param name="moleculeId"></param>
+            <param name="entitySetId"></param>
+            <returns>Atom feed in response to a HTTP GET request at URLs conforming to the URI template of the WebGetAttribute.</returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetTrialSetCandidatesKeywords(System.String)">
+            <summary>
+            Returns an Atom feed of trial candidates keywords for a particular trial set
+            </summary>
+            <param name="trialsetId"> </param>
+            <returns>Atom feed in response to a HTTP GET request at URLs conforming to the URI template of the WebGetAttribute.</returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetClinicalPlanCandidatesKeywords(System.String)">
+            <summary>
+            Returns an Atom feed of clinical plan candidates keywords for a particular molecule
+            </summary>
+            <param name="moleculeId"> </param>
+            <returns>Atom feed in response to a HTTP GET request at URLs conforming to the URI template of the WebGetAttribute.</returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetTargetProductProfileKeywords(System.String)">
+            <summary>
+            Returns an Atom feed of Target Product Profile candidates keywords for a particular molecule
+            </summary>
+            <param name="moleculeId"> </param>
+            <returns>Atom feed in response to a HTTP GET request at URLs conforming to the URI template of the WebGetAttribute.</returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetFindingFeed(System.String)">
+            <summary>
+            Returns an Atom feed of design findings
+            </summary>
+            <param name="moleculeId"></param>
+            <returns>Atom feed in response to a HTTP GET request at URLs conforming to the URI template of the WebGetAttribute.</returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetFindingKeywords(System.String)">
+            <summary>
+            Returns an Atom feed of findings keywords for a particular molecule
+            </summary>
+            <param name="moleculeId"> </param>
+            <returns>Atom feed in response to a HTTP GET request at URLs conforming to the URI template of the WebGetAttribute.</returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetOdmFormFeed(System.String,System.Boolean,System.Int32,System.Boolean)">
+            <summary>
+            Returns an Atom feed of ODM forms
+            </summary>
+            <param name="searchText">The text to use in the search for forms.  Any wildcard
+            characters specified in the text are stripped out by the stored procedure.</param>
+            <param name="titlesOnly">If true only the form name field is searched</param>
+            <param name="searchOptions">The search options.</param>
+            <param name="caseSensitive">If true a case-sensitive search will be performed.</param>
+            <returns>
+            Atom feed in response to a HTTP GET request at URLs conforming to the URI
+            template of the WebGetAttribute.
+            </returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetMoleculeFeed">
+            <summary>
+            Returns an Atom feed of molecules
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetMoleculesKeywords">
+            <summary>
+            Returns an Atom feed of molecule keywords
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetDrugInformationFeed">
+            <summary>
+            Returns an Atom feed of Drug Information
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetDrugInformationKeywords">
+            <summary>
+            Returns an Atom feed of Drug Information keywords
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetCtGovFeed(System.String,System.String)">
+            <summary>
+            Returns an Atom feed.
+            </summary>
+            <param name="queryString"></param>
+            <param name="filterText"></param>
+            <returns>Atom feed in response to a HTTP GET request at URLs conforming to the URI template of the WebGetAttribute.</returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetCtGovFeedWithFilter(System.String,System.String)">
+            <summary>
+            Returns an Atom feed.
+            </summary>
+            <param name="queryString"></param>
+            <param name="filterText"></param>
+            <returns>Atom feed in response to a HTTP GET request at URLs conforming to the URI template of the WebGetAttribute.</returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetCtGovTrial(System.String)">
+            <summary>
+             Gets a single CT Gov trial by TrialDetailID
+            </summary>
+            <param name="trialDetailId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetKeywords(System.String)">
+            <summary>
+            </summary>
+            <param name="qstring"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetCtGovFacets(System.String)">
+            <summary>
+            </summary>
+            <param name="qstring"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.BeginCtGovFeedCompression(System.String,System.String)">
+            <summary>
+            Starts the feed compression if it has not started and returns the
+            status of the compression Task.
+            </summary>
+            <returns>Status of the compression Task</returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetCtGovFeedCompressed(System.String,System.String)">
+            <summary>
+            Gets the compressed feed if it is completed, otherwise returns the
+            status of the feed generation
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.ResetCtGovFeedCompressed(System.String,System.String)">
+            <summary>
+            Resets the CT Gov compressed feed generator
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.ResetAllCtGovFeedCompressed">
+            <summary>
+            Resets the CT Gov compressed feed generator
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetProjectsFeed">
+            <summary>
+            Returns an Atom feed of Projects
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetDefaultEnrolledCountriesValues(System.String,System.String,System.String,System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+            Get default enrolled countries values.
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetInvestigatorTooltipData(System.String,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Get prior data for particular investigator site name.
+            </summary>
+            <param name="CountryId"></param>
+            <param name="siteId"></param>
+            <param name="ecmdCountryId"></param>
+            <param name="ecmdInvestigatorId"></param>
+            <param name="parentCanvasId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetCandidateIdfromCandidateName(System.String)">
+            <summary>
+            Used only for Unit testing purpose.
+            </summary>
+            <param name="trialalias"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetActualsforEnrollment(Semio.ClientService.Data.Tctm.TctmFeedParameter)">
+            <summary>
+            </summary>
+            <param name="tctmFeedParameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetTherapeuticArea(System.String)">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetTctmSiteMetrics(Semio.ClientService.Data.Tctm.TctmFeedParameter)">
+            <summary>
+            </summary>
+            <param name="tctmFeedParameter"></param>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.PublishEnrollmentMetrics(System.String,System.String,System.DateTime)">
+             <summary>
+            
+             </summary>
+             <param name="ecmdGuid"></param>
+             <param name="valueCategoryEnum"></param>
+             <param name="publishDate"></param>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetEnrollmentMetrics(System.String,System.String)">
+             <summary>
+            
+             </summary>
+             <param name="ecmdGuid"></param>
+             <param name="lineSeriesItemType"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetEnrollmentMetricsByCandidate(System.String,System.String)">
+             <summary>
+            
+             </summary>
+             <param name="candidateId">The enrollment canvas model data guid.</param>
+             <param name="lineSeriesItemType"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetPrimaryEnrollmentExportByCandidate(System.String,System.String)">
+            <summary>
+            get export data
+            </summary>
+            <param name="candidateId"></param>
+            <param name="lineSeriesItemType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetEnrollmentExportByEnrollmentCanvas(System.String,System.String)">
+            <summary>
+            get export data
+            </summary>
+            <param name="enrollmentCanvasId"></param>
+            <param name="lineSeriesItemType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetEnrollmentExportByCountryModel(System.String)">
+            <summary>
+            get export data for a country model
+            </summary>
+            <param name="countryModelId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetEnrollmentExportByInvestigatorModel(System.String)">
+            <summary>
+            get export data for an investigator model
+            </summary>
+            <param name="investigatorModelId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetEnrollmentExportByFacilitiesModel(System.String)">
+            <summary>
+            get export data for an investigator model
+            </summary>
+            <param name="investigatorModelId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.SelectNewEnrollmentModel(System.String,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+             Get enrollmentmodel model based on requested parameters
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.SelectEnrollmentModel(System.String)">
+            <summary>
+             Get enrollmentmodel model based on requested parameters
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.CreateEnrollmentModel(System.String,Semio.ClientService.Data.Intelligence.Canvas.EnrollmentCanvasModelData)">
+            <summary>
+             create enrollmentmodel model
+            </summary>
+            <param name="canvasid"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.UpdateEnrollmentModel(Semio.ClientService.Data.Intelligence.Canvas.EnrollmentCanvasModelData)">
+            <summary>
+             updated enrollmentmodel model
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.DeleteEnrollmentModel(System.String)">
+            <summary>
+             delete cost model
+            </summary>
+            <param name="modelguid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.ChangeEnrollmentModelRank(System.String,System.String)">
+            <summary>
+             change enrollmentmodel rank
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.CopyEnrollment(System.String)">
+            <summary>
+             Copy a model
+            </summary>
+            <param name="modelGuid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.CopyEnrollmentAs(System.String,System.String,System.String)">
+            <summary>
+             Copy a model
+            </summary>
+            <param name="modelGuid"></param>
+            <param name="title"> </param>
+            <param name="description"> </param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetClinicalPlanEnrollmentMetrics(System.Int32,System.Int32,System.Collections.ObjectModel.Collection{Semio.ClientService.Data.Intelligence.Enrollment.ClinicalPlanTrialEnrollment})">
+            <summary>
+            Takes a collection of CP trial enrollments where their properties
+            specifiy the parameters to generate enrollment metrics for each.
+            </summary>
+            <returns>A collection of <see cref="T:Semio.ClientService.Data.Intelligence.Enrollment.ClinicalPlanTrialEnrollment"/> with calculated enrollment site metrics.</returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.CreateClinicalPlanEnrollmentMetrics(System.Int32,System.Int32,System.Collections.ObjectModel.Collection{Semio.ClientService.Data.Intelligence.Enrollment.ClinicalPlanTrialEnrollment})">
+            <summary>
+            Takes a collection of CP trial enrollments where their properties
+            specifiy the parameters to generate enrollment metrics for each.
+            </summary>
+            <returns>A collection of <see cref="T:Semio.ClientService.Data.Intelligence.Enrollment.ClinicalPlanTrialEnrollment"/> with calculated enrollment site metrics.</returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetClinicalPlanSitesWithSaturation(System.Int32,System.Int32,System.Collections.ObjectModel.Collection{Semio.ClientService.Data.Intelligence.Enrollment.ClinicalPlanTrialEnrollment})">
+            <summary>
+            Takes a collection of CP Trial data, extracts the existing CP Enrollments based on subjectID and ClinicalPlanID
+            </summary>
+            <returns>Returns the Investigators with Ranks and Saturation(Unassigned, Acceptable or Unacceptable Overlap). This data is used in the Investigator Sharing tab.</returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetInvestigatorDetailsBySubject(System.String,System.String)">
+            <summary>
+            Returns the Investigator details for a Subject and Country.
+            </summary>
+            <returns>Returns the Investigators. This data is used in the Country Pop-Up in the ESP Enrollment Model tab.</returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetProjectSiteDetailsByProjectProtocol(System.Int32)">
+            <summary>
+            Returns metrics grouped at Project Level for a Subject.
+            </summary>
+            <returns>Returns metrics grouped at Project Level for a Subject. This data is used in the Country Trial Summary tab next to the ESP Enrollment Model tab.</returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetTotalCost(Semio.ClientService.Data.Intelligence.Cost.TotalCostRequest)">
+            <summary>
+             Get Total cost based on requested parameters
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetTotalCostDebug(Semio.ClientService.Data.Intelligence.Cost.TotalCostRequest)">
+            <summary>
+             Get Total cost based on requested parameters
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetVisitCost(Semio.ClientService.Data.Intelligence.Cost.VisitCostRequest)">
+            <summary>
+             Get visit cost based on requested parameters
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetTtcDetailCost(Semio.ClientService.Data.Intelligence.TtcCost.TtcDetailCostRequest)">
+            <summary>
+             Get visit cost based on requested parameters
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetHighLevelCost(Semio.ClientService.Data.Intelligence.Cost.HighLevelCostRequest)">
+            <summary>
+             Get visit cost based on requested parameters
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetQLabDetails(Semio.ClientService.Data.Intelligence.Cost.QlabDetailRequest)">
+            <summary>
+             Get visit cost based on requested parameters
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetCostData(System.String,System.String)">
+            <summary>
+            Gets the cost data.
+            </summary>
+            <param name="category">The category.</param>
+            <param name="action">The action.</param>
+            <returns></returns>
+            <example>                                {category} {action} queryString
+            http://localhost.:8001/Service.svc/cost/indications/getlist/?core=185
+            </example>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.SelectNewCostModel(System.String,Semio.ClientService.Data.Intelligence.Cost.VisitCostRequest)">
+            <summary>
+             Get cost model based on requested parameters
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.SelectCostModel(System.String)">
+            <summary>
+             Get cost model based on requested parameters
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.CreateCostModel(System.String,Semio.ClientService.Data.Intelligence.Canvas.CostCanvasModelData)">
+            <summary>
+             create cost model
+            </summary>
+            <param name="canvasid"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.UpdateCostModel(System.Boolean,Semio.ClientService.Data.Intelligence.Canvas.CostCanvasModelData)">
+            <summary>
+             updated cost model
+            </summary>
+            <param name="withrefresh"></param>
+            <param name="data"></param>	    
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.DeleteCostModel(System.String)">
+            <summary>
+             delete cost model
+            </summary>
+            <param name="modelguid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.CopyCostModel(System.String)">
+            <summary>
+             Copy a model
+            </summary>
+            <param name="modelGuid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.CopyCostModelAs(System.String,System.String,System.String)">
+            <summary>
+             Copy a model
+            </summary>
+            <param name="modelGuid"></param>
+            <param name="title"> </param>
+            <param name="description">URL encoded description field</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetFacetQuery(System.String)">
+            <summary>
+             Gets a facet query
+            </summary>
+            <param name="id">ID of the facet query to get</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.InsertFacetQuery(Semio.ClientService.Data.Facets.FacetQuery)">
+            <summary>
+             Inserts a facet query
+            </summary>
+            <param name="facetQuery">Facet query to save</param>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.UpdateFacetQuery(Semio.ClientService.Data.Facets.FacetQuery)">
+            <summary>
+             Updates a facet query
+            </summary>
+            <param name="facetQuery">Facet query to update</param>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.DeleteFacetQuery(System.String)">
+            <summary>
+             Deletes a facet query
+            </summary>
+            <param name="id">Unique id of the facet query to delete</param>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetFacetQueryCollection(System.String)">
+            <summary>
+             Gets a facet query collection
+            </summary>
+            <param name="id">ID of the facet query collection to get</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.InsertFacetQueryCollection(Semio.ClientService.Data.Facets.FacetQueryCollection)">
+            <summary>
+             Inserts a facet query collection
+            </summary>
+            <param name="facetQueryCollection">Facet query collection to save</param>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.UpdateFacetQueryCollection(Semio.ClientService.Data.Facets.FacetQueryCollection)">
+            <summary>
+             Updates a facet query collection
+            </summary>
+            <param name="facetQueryCollection">Facet query collection to update</param>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.DeleteFacetQueryCollection(System.String)">
+            <summary>
+             Deletes a facet query collection
+            </summary>
+            <param name="id">Unique id of the facet query collection to delete</param>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetFacetQueryCollections(System.String)">
+            <summary>
+             Gets a collection of FacetQueryCollections with the population source
+            </summary>
+            <param name="populationSource"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.ExecuteQuery(Semio.ClientService.Data.Facets.FacetQuery)">
+            <summary>
+             Executes a facet query
+            </summary>
+            <param name="facetQuery">Facet query to execute</param>
+            <returns>Results from executing the facet query</returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.ExecuteQueries(Semio.ClientService.Data.Facets.FacetQuery[])">
+            <summary>
+            Executes a collection of facet queries and returns the joined results
+            </summary>
+            <param name="queries">Collection of queries to execute</param>
+            <returns>Results from all the queries joined</returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.ExecuteQueryForCounts(Semio.ClientService.Data.Facets.FacetQuery)">
+            <summary>
+             Fills the counts for a facet query
+            </summary>
+            <param name="facetQuery">The facet query to get the counts for</param>
+            <returns>The facet query with the counts filled</returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetFacetQueryNodeFacet(Semio.ClientService.Data.Facets.FacetQuery)">
+            <summary>
+             Gets a facet for the facet query node
+            </summary>
+            <param name="facetQuery"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetFacets(System.String)">
+            <summary>
+            Gets the collection of facets for a core
+            </summary>
+            <param name="coreName">Name of the solr core to get facets for</param>
+            <returns>Collection of facets for the core</returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.FacetQueryTestCleanup">
+            <summary>
+             Cleans up the test FacetQuery from the ClinWeb tests
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetCountriesbyIrbType(System.String)">
+            <summary>
+            Gets the countries performance data without color coding.
+            </summary>
+            <param name="subjectId">The Subject ID.</param>        
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetCountryAvailableFacets(System.String)">
+            <summary>
+            Gets the collection of available facet choices for a given subject.
+            </summary>
+            <param name="subjectId">The Subject ID.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetCountryFacets(System.String,System.String,System.String)">
+            <summary>
+            Gets the country facets.
+            </summary>
+            <param name="subjectId">The Subject ID.</param>
+            <param name="excludedCountries">The comma separated list of country ISO codes to exclude.</param>
+            <param name="includedFacets">The comma separated list of facet IDs to include.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetCountries(System.String,System.String)">
+            <summary>
+            Gets the countries performance data without color coding.
+            </summary>
+            <param name="subjectId">The Subject ID.</param>
+            <param name="countryGuid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.SelectNewCountryModel(System.String,System.String)">
+            <summary>
+             Get country model
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.SelectCountryModel(System.String)">
+            <summary>
+             Get country model 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.CreateCountryModel(System.String,Semio.ClientService.Data.Intelligence.Canvas.CountryCanvasModelData)">
+            <summary>
+             create country model
+            </summary>
+            <param name="canvasid"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.UpdateCountryModel(Semio.ClientService.Data.Intelligence.Canvas.CountryCanvasModelData)">
+            <summary>
+             updated country model
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.DeleteCountryModel(System.String)">
+            <summary>
+             delete country model
+            </summary>
+            <param name="modelguid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.CopyCountryModel(System.String)">
+            <summary>
+             Copy a model
+            </summary>
+            <param name="modelGuid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.CopyCountryModelAs(System.String,System.String,System.String)">
+            <summary>
+             Copy a model
+            </summary>
+            <param name="modelGuid"></param>
+            <param name="title"> </param>
+            <param name="description"> </param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.ChangeCountryModelRank(System.String,System.String)">
+            <summary>
+             change enrollmentmodel rank
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetCountryFeed(System.String)">
+            <summary>
+             Get a Models Country details
+            </summary>
+            <param name="modelGuid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetCountryFeedByIso(System.String,System.String)">
+            <summary>
+             Get a Models Country details by country
+            </summary>
+            <param name="modelGuid"></param>
+            <param name="countryIso"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetFacPerfWithCriteriaByLatLong(System.String,System.String,System.Xml.Linq.XElement,System.String)">
+            <summary>
+            Gets the Facility Performance with Criteria by lat long.
+            used queryparams here because of conversion issues with uri template processing in WCF.
+            </summary>
+            <param name="latitude">The latitude.</param>
+            <param name="longitude">The longitude.</param>
+            <param name="criteria">The criteria.</param>
+            <param name="subjectId">The Subject ID.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetFacilityAvailableFacets(System.String)">
+            <summary>
+            Gets the collection of available facet choices for a given subject.
+            </summary>
+            <param name="subjectId">The Subject ID.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetFacilityFacets(System.String,System.String,System.String,System.String)">
+            <summary>
+            Gets the facility performance facets.
+            </summary>
+            <param name="subjectId">The Subject ID.</param>
+            <param name="datasources">The comma separated list of datasources to include.</param>
+            <param name="excludedFacilities">The comma separated list of facilities to exclude.</param>
+            <param name="includedFacets">The comma separated list of facet IDs to include.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetFacilityFacetsWithCriteria(System.String,System.Xml.Linq.XElement,System.String)">
+            <summary>
+            Gets the facility facets with criteria.
+            </summary>
+            <param name="facetvalue">The facetvalue.</param>
+            <param name="criteria">The criteria.</param>
+            <param name="subjectId">The Subject ID.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetInvPerfWithCriteriaByLatLong(System.String,System.String,System.Xml.Linq.XElement,System.String)">
+            <summary>
+            Gets the inv perf with criteria by lat long.
+            used queryparams here because of conversion issues with uri template processing in WCF.
+            </summary>
+            <param name="latitude">The latitude.</param>
+            <param name="longitude">The longitude.</param>
+            <param name="criteria">The criteria.</param>
+            <param name="subjectId">The subjectid.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetInvestigatorAvailableFacets(System.String)">
+            <summary>
+            Gets the collection of available facet choices for a given subject.
+            </summary>
+            <param name="subjectId">The Subject ID.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetResearchFacilityFacetsForCountry(Semio.ClientService.Data.Facets.FacetsCriteria,System.String)">
+            <summary>
+            Gets the investigator performance facets for Country
+            </summary>
+            <param name="facetsCriteriaInclude">The Subject ID.</param>
+            <param name="includedFacets">The comma separated list of facet IDs to include.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetInvestigatorFacets(System.String,System.String,System.String)">
+            <summary>
+            Gets the investigator performance facets.
+            </summary>
+            <param name="subjectId">The Subject ID.</param>
+            <param name="datasources">The comma separated list of datasources to include.</param>
+            <param name="includedFacets">The comma separated list of facet IDs to include.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetInvestigatorFacetsWithCriteria(System.String,System.Xml.Linq.XElement,System.String)">
+            <summary>
+            Gets the investigator facets with criteria.
+            </summary>
+            <param name="facetValue">The facetvalue.</param>
+            <param name="criteria">The criteria.</param>
+            <param name="subjectId">The subjectid.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.SelectNewInvestigatorModel(System.String,System.String)">
+            <summary>
+             Get inv model
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.SelectInvestigatorModel(System.String)">
+            <summary>
+             Get investigator model 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.CreateInvestigatorModel(System.String,Semio.ClientService.Data.Intelligence.Canvas.InvestigatorCanvasModelData)">
+            <summary>
+             create investigator model
+            </summary>
+            <param name="canvasid"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.UpdateInvestigatorModel(Semio.ClientService.Data.Intelligence.Canvas.InvestigatorCanvasModelData)">
+            <summary>
+             updated investigator model
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.DeleteInvestigatorModel(System.String)">
+            <summary>
+             delete investigator model
+            </summary>
+            <param name="modelguid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.CopyInvestigatorModel(System.String)">
+            <summary>
+             Copy a model
+            </summary>
+            <param name="modelGuid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.CopyInvestigatorModelAs(System.String,System.String,System.String)">
+            <summary>
+             Copy a model
+            </summary>
+            <param name="modelGuid"></param>
+            <param name="title"> </param>
+            <param name="description"> </param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.ChangeInvestigatorModelRank(System.String,System.String)">
+            <summary>
+             change investigatormodel rank
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetInvestigatorDetails(System.String,System.String)">
+            <summary>
+             Get a Models investigator details by site id
+            </summary>
+            <param name="modelGuid"></param>
+            <param name="investigatorId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetOpportunityData(System.String)">
+            <summary>
+            Returns MDMProjectList class containing
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetCanvasTemplateFeed">
+            <summary>
+            Returns a list of canvas templates
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetCanvasByCanvasId(System.String)">
+            <summary>
+             Get cost model based on requested parameters
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetCanvasByCandidateId(System.String)">
+            <summary>
+             Get cost model based on requested parameters
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.HasCanvas(System.String)">
+            <summary>
+             Get cost model based on requested parameters
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.SelectCanvas(System.String)">
+            <summary>
+             Get cost model based on requested parameters
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.CopyCanvas(System.String,System.String,System.String)">
+            <summary>
+             Copy Canvas to a given candidate id or from one standalone to another
+             if candidate already has canvas this will inactivate the canvas and relink to new copy
+             Candidate id of empy is the switch.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.CopyCanvasForCandidateCopy(System.String,System.String)">
+            <summary>
+             Copy a canvas from one candidate to another
+            </summary>
+            <param name="fromCandidateId"></param>
+            <param name="toCandidateId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.SelectNewCanvas">
+            <summary>
+             Get canvas
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.CreateCanvasForCandidate(System.String,Semio.ClientService.Data.Intelligence.Canvas.CanvasCanvasModelData)">
+            <summary>
+             create canvas with with candidate
+            </summary>
+            <param name="candidateId"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.DeleteCanvas(System.String)">
+            <summary>
+            create canvas with with candidate
+            </summary>
+            <param name="canvasGuid">The canvas GUID.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.CreateCanvasNoCandidate(Semio.ClientService.Data.Intelligence.Canvas.CanvasCanvasModelData)">
+            <summary>
+             create canvas without candidate
+            </summary>        
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.UpdateCanvas(Semio.ClientService.Data.Intelligence.Canvas.CanvasCanvasModelData)">
+            <summary>
+            update canvas
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.RenameCanvas(Semio.ClientService.Data.Intelligence.Canvas.CanvasCanvasModelData)">
+            <summary>
+             rename canvas
+            </summary>        
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.IsCanvasModelLocked(System.String)">
+            <summary>
+             check locked status of Pa Canvas model
+            </summary>                
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.ImportCanvas(Semio.ClientService.Data.Intelligence.Canvas.CanvasCanvasModelData)">
+            <summary>
+             import a canvas from xml
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.ExportCanvas(System.String)">
+            <summary>
+             export a canvas from xml
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.UpdateCountryModelLegacyColorScores(System.String,System.String)">
+            <summary>
+            legacy color update for country model
+            </summary>        
+            <param name="mode"></param>        
+            <param name="canvasId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.UpdateCountryModelSavedColorCounts(System.String,System.String)">
+            <summary>
+            saved color score update for country model
+            </summary>        
+            <param name="mode"></param>        
+            <param name="canvasId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.UpdateInvestigatorModelLegacyColorScores(System.String,System.String)">
+            <summary>
+            legacy color update for inv model
+            </summary>        
+            <param name="mode"></param>        
+            <param name="canvasId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetPatientDataFromFactory(System.String,System.String)">
+            <summary>
+            Gets the Investigator data from factory.
+            </summary>
+            <param name="category">The category.</param>
+            <param name="action">The action.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetFacet(System.String,System.String)">
+            <summary>
+            Gets the facet.
+            </summary>
+            <param name="facetvalue">The facetvalue.</param>
+            <param name="subjectid">The subjectid.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.SelectNewpatientModel(System.String,System.String)">
+            <summary>
+             Get patient model
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.SelectpatientModel(System.String)">
+            <summary>
+             Get patient model 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.CreatepatientModel(System.String,Semio.ClientService.Data.Intelligence.Canvas.PatientCanvasModelData)">
+            <summary>
+             create patient model
+            </summary>
+            <param name="canvasid"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.UpdatepatientModel(Semio.ClientService.Data.Intelligence.Canvas.PatientCanvasModelData)">
+            <summary>
+             updated patient model
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.DeletepatientModel(System.String)">
+            <summary>
+             delete patient model
+            </summary>
+            <param name="modelguid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.CopyPatientModel(System.String)">
+            <summary>
+             Copy a model
+            </summary>
+            <param name="modelGuid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.CopyPatientModelAs(System.String,System.String,System.String)">
+            <summary>
+             Copy a model
+            </summary>
+            <param name="modelGuid"></param>
+            <param name="title"> </param>
+            <param name="description"> </param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetPatientConfigCrossRef">
+            <summary>
+             Config Check
+            </summary>        
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.QualityLightWait(System.Int32)">
+            <summary>
+            Minimum overhead service, with artificial delay.
+            </summary>
+            <param name="delay">Milliseconds to sleep</param>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.QualityGetTestPayload(System.Int32)">
+            <summary>
+            Generate random output.
+            </summary>
+            <param name="size">Size of requested buffer</param>
+            <returns>Stream of "size" random bytes</returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.QualityPostTestPayload(System.IO.Stream)">
+            <summary>
+            Accept input.
+            </summary>
+            <param name="stream">Stream to read</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.QualityReadRecord(System.Boolean,System.Int32,System.Boolean)">
+            <summary>
+            Read a record
+            </summary>
+            <param name="random">Read a random record?</param>
+            <param name="times">How many times?</param>
+            <param name="onecmd">Use only one cmd? (true=reuse, false=create new procedure each time</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetPatientFacet(System.Xml.Linq.XElement,System.String)">
+            <summary>
+            Gets the patient facet.
+            </summary>
+            <param name="criteria">The criteria.</param>
+            <param name="subjectid">The subjectid.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetPatientPathData(Semio.ClientService.Data.Intelligence.StandardOfCare.SoCContextedFacetCollection,System.String)">
+            <summary>
+            Gets the patient path data.
+            </summary>
+            <param name="contextedCriteria">The contexted criteria.</param>
+            <param name="subjectid">The subjectid.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetSoCFacetsSubjectId(System.String)">
+            <summary>
+            Gets the SoC facets with subject id.
+            </summary>
+            <param name="subjectid">The subjectid.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.GetStandardOfCareFromCriteria(System.Xml.Linq.XElement,System.String)">
+            <summary>
+            Gets the patient temporal data.
+            </summary>
+            <param name="criteria">The criteria.</param>
+            <param name="subjectid">The subjectid.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.SelectNewsocmodel(System.String,System.String)">
+            <summary>
+             Get SoC model
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.Selectsocmodel(System.String)">
+            <summary>
+             Get SoC model 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.Createsocmodel(System.String,Semio.ClientService.Data.Intelligence.Canvas.SoCCanvasModelData)">
+            <summary>
+             create SoC model
+            </summary>
+            <param name="canvasid"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.Updatesocmodel(Semio.ClientService.Data.Intelligence.Canvas.SoCCanvasModelData)">
+            <summary>
+             updated SoC model
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.Deletesocmodel(System.String)">
+            <summary>
+             delete SoC model
+            </summary>
+            <param name="modelguid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.CopySocModel(System.String)">
+            <summary>
+             Copy a model
+            </summary>
+            <param name="modelGuid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.IFeedService.CopySocModelAs(System.String,System.String,System.String)">
+            <summary>
+             Copy a model
+            </summary>
+            <param name="modelGuid"></param>
+            <param name="title"> </param>
+            <param name="description"> </param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.ISubjectService.GetTrialSaturationData(System.Collections.Generic.List{System.String},System.Int32,System.Int32)">
+            <summary>
+            Get GetTrialSaturationData.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.ISubjectService.GetTrialSaturationDataFromCtGov(System.Collections.Generic.List{System.String})">
+            <summary>
+            Get GetTrialSaturationData.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.ISubjectService.GetInitialSubjectNameList">
+            <summary>
+            Get List of Subject Names present in Data Steward.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.ISubjectService.CreateSubject(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Creates a new subject in data steward and returns the new subject's ID
+            </summary>
+            <param name="name"></param>
+            <param name="description"></param>
+            <param name="team"></param>
+            <param name="auditId"></param>
+            <returns>New subject's ID if it was created, otherwise 0</returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.ISubjectService.SaveSubject(System.Int32,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Saves an existing subject in data steward
+            </summary>
+            <param name="subjectId"></param>
+            <param name="name"></param>
+            <param name="description"></param>
+            <param name="team"></param>
+            <param name="auditId"></param>
+            <returns>True if the save succeeded, otherwise false</returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.ISubjectService.SaveSelectedTrials(System.Int32,Semio.ClientService.Data.Intelligence.Tctm.Subject.SelectedTrial[],System.Int32)">
+            <summary>
+            Saves a collection of trials to the subject (replacing the current list)
+            </summary>
+            <param name="subjectId">ID of the Subject to save the trials to</param>
+            <param name="trials">Trials to save</param>
+            <param name="auditId"></param>
+            <returns>True if the save was successful</returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.ISubjectService.Submit(System.Int32,System.Int32)">
+            <summary>
+            Submit a subject to deploy Country and Investigator
+            </summary>
+            <param name="subjectId"></param>
+            <param name="auditId"></param>
+            <returns>True if the deploy was started successfully, otherwise false</returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.ISubjectService.PublishCustomCountryData(System.Int32,System.Int32,System.Collections.Generic.List{Semio.ClientService.Data.Intelligence.Tctm.CustomCountryData})">
+            <summary>
+            Deletes all custom attribute values for a country
+            </summary>
+            <param name="subjectId"></param>
+            <param name="personId"></param>
+            <param name="customCountryData"></param>
+        </member>
+        <member name="T:Semio.ClientService.Provide.InvestigatorPerformanceLevels">
+            <summary>
+            Investigator Performance Levels
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Provide.InvestigatorPerformanceLevels.World">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Provide.InvestigatorPerformanceLevels.region">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Provide.InvestigatorPerformanceLevels.country">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Provide.InvestigatorPerformanceLevels.state">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Provide.InvestigatorPerformanceLevels.city">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Provide.InvestigatorPerformanceLevels.investigator">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Provide.ISolrService.GetPatientSolrImportData(System.String)">
+            <summary>
+            Gets the ct gov solr import data (called by Solr data import handler).
+            </summary>
+            <param name="criteria">The criteria.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.ISolrService.GetStandardOfCareSolrImportData(System.String)">
+            <summary>
+            Gets the standard of care solr import data.
+            </summary>
+            <param name="criteria">The criteria.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.ISolrService.SolrIoPost(System.Xml.Linq.XElement,System.String)">
+            <summary>
+            Solr input/output feed - factory based on {action}
+            </summary>
+            <param name="criteria">The criteria.</param>
+            <param name="action">The action.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.ISolrService.SolrIoGet(System.String,System.String)">
+            <summary>
+             Solr input/output feed - factory based on 
+             {action}, {criteria} and QueryString
+            </summary>
+             <example>                                     {action}{criteria}queryString
+             http://localhost.:8001/Service.svc/Solr/SolrIO/Import/Patient?core=38
+             </example>
+            <param name="criteria"></param>
+            <param name="action"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.ISolrService.AutoComplete(System.String,System.String,System.String)">
+            <summary>
+            Patient Auto-complete service for solr.
+            </summary>
+            <param name="core">The core.</param>
+            <param name="searchText">The search text.</param>
+            <param name="solrCommandType">The field to search.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Provide.ISolrService.GetCtGovSolrImportData(System.String)">
+            <summary>
+            Gets the ct gov solr import data (called by Solr data import handler).
+            </summary>
+            <param name="criteria">The criteria.</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

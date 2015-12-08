@@ -1,0 +1,430 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Semio.ClientService.Interfaces</name>
+    </assembly>
+    <members>
+        <member name="T:Semio.ClientService.Interfaces.FallbackConcreteTypeAttribute">
+            <summary>
+            Used to specify a default concrete implementation type of an interface
+            which can be used to create a default instance for the interface in the
+            absence of other configuration.
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Interfaces.FallbackConcreteTypeAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Semio.ClientService.Interfaces.FallbackConcreteTypeAttribute"/> class.
+            </summary>
+            <param name="type">The concrete type which implements the interface.</param>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.FallbackConcreteTypeAttribute.Assembly">
+            <summary>
+            Gets or sets the assembly which contains the concrete type.
+            </summary>
+            <value>The assembly.</value>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.FallbackConcreteTypeAttribute.Type">
+            <summary>
+            Gets the concrete type which implements the interface.
+            </summary>
+            <value>The type.</value>
+        </member>
+        <member name="T:Semio.ClientService.Interfaces.IBlockAssignmentLevel">
+            <summary>
+            Lookup object representing a block assignment level
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Interfaces.ILookupData">
+            <summary>
+            Base interface for all lookup data objects
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.ILookupData.Code">
+            <summary>
+            Gets or sets the identifier code.
+            </summary>
+            <value>The code.</value>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.IBlockAssignmentLevel.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="T:Semio.ClientService.Interfaces.ICategorizedDataItem">
+            <summary>
+            Represents lookup data that can be grouped into categories
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.ICategorizedDataItem.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.ICategorizedDataItem.Description">
+            <summary>
+            Gets or sets the description.
+            </summary>
+            <value>The description.</value>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.ICategorizedDataItem.Category">
+            <summary>
+            Gets or sets the category.
+            </summary>
+            <value>The category.</value>
+        </member>
+        <member name="T:Semio.ClientService.Interfaces.ICountry">
+            <summary>
+            Lookup object representing a country
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.ICountry.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.ICountry.Abbreviation">
+            <summary>
+            Gets or sets the abbreviation.
+            </summary>
+            <value>The abbreviation.</value>
+        </member>
+        <member name="T:Semio.ClientService.Interfaces.IEntityLookup">
+            <summary>
+            Lookup object representing an entity
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.IEntityLookup.Name">
+            <summary>
+            Gets or sets the name of the entity
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.IEntityLookup.EntityType">
+            <summary>
+            Gets or sets the name of the entity type
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Interfaces.ILiveUpdateSubscriber">
+            <summary>
+            Specifies the interface for an object that can subscribe to data updates
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Interfaces.ILiveUpdateSubscriber.UpdateData(System.String)">
+            <summary>
+            Updates the data that relies on data provided by the specified data key.
+            </summary>
+            <param name="key">The data key.</param>
+        </member>
+        <member name="T:Semio.ClientService.Interfaces.IMeasurement">
+            <summary>
+            Lookup object representing a measurement
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.IMeasurement.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.IMeasurement.Description">
+            <summary>
+            Gets or sets the description.
+            </summary>
+            <value>The description.</value>
+        </member>
+        <member name="T:Semio.ClientService.Interfaces.IMeasurementUnit">
+            <summary>
+            Lookup object representing a measurement unit
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.IMeasurementUnit.Unit">
+            <summary>
+            Gets or sets the unit.
+            </summary>
+            <value>The unit.</value>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.IMeasurementUnit.Description">
+            <summary>
+            Gets or sets the description.
+            </summary>
+            <value>The description.</value>
+        </member>
+        <member name="T:Semio.ClientService.Interfaces.IMilestone">
+            <summary>
+            Lookup object representing a milestone
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.IMilestone.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="T:Semio.ClientService.Interfaces.IQIndication">
+            <summary>
+            Lookup object representing a therapeutic area
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.IQIndication.Code">
+            <summary>
+            Gets or sets the code (nullable)
+            <value>The code (nullable)</value>
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.IQIndication.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.IQIndication.Description">
+            <summary>
+            Gets or sets the description.
+            </summary>
+            <value>The description.</value>
+        </member>
+        <member name="T:Semio.ClientService.Interfaces.IQipTherapeuticArea">
+            <summary>
+            Lookup object representing a therapeutic area
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.IQipTherapeuticArea.Code">
+            <summary>
+            Gets or sets the code (nullable)
+            <value>The code (nullable)</value>
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.IQipTherapeuticArea.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.IQipTherapeuticArea.Description">
+            <summary>
+            Gets or sets the description.
+            </summary>
+            <value>The description.</value>
+        </member>
+        <member name="T:Semio.ClientService.Interfaces.IQTherapeuticArea">
+            <summary>
+            Lookup object representing a therapeutic area
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.IQTherapeuticArea.Code">
+            <summary>
+            Gets or sets the code (nullable)
+            <value>The code (nullable)</value>
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.IQTherapeuticArea.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.IQTherapeuticArea.Description">
+            <summary>
+            Gets or sets the description.
+            </summary>
+            <value>The description.</value>
+        </member>
+        <member name="T:Semio.ClientService.Interfaces.IQTherapeuticAreaQIndication">
+            <summary>
+            Lookup object representing a therapeutic area
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.IQTherapeuticAreaQIndication.Code">
+            <summary>
+            Gets or sets the code (nullable)
+            <value>The code (nullable)</value>
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.IQTherapeuticAreaQIndication.QTherapeuticAreaCode">
+            <summary>
+            Gets or sets the code (nullable)
+            <value>The code (nullable)</value>
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.IQTherapeuticAreaQIndication.QIndicationCode">
+            <summary>
+            Gets or sets the code (nullable)
+            <value>The code (nullable)</value>
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Interfaces.IReferenceItem">
+            <summary>
+            Represents reference data that includes an id code.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.IReferenceItem.Code">
+            <summary>
+            Gets the code.
+            </summary>
+            <value>The code.</value>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.IReferenceItem.Name">
+            <summary>
+            Gets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.IReferenceItem.Description">
+            <summary>
+            Gets the description.
+            </summary>
+            <value>The description.</value>
+        </member>
+        <member name="T:Semio.ClientService.Interfaces.ISelectedIdContainer">
+            <summary>
+            Represents a container for a set of selected reference Ids.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.ISelectedIdContainer.SelectedIds">
+            <summary>
+            Gets the selected ids.
+            </summary>
+            <value>The selected ids.</value>
+        </member>
+        <member name="T:Semio.ClientService.Interfaces.ISharePointUri">
+            <summary>
+            Lookup object representing a SharePoint location
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.ISharePointUri.IsStudyWorksheetLibrary">
+            <summary>
+            True if this item is a Study Worksheet document library.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.ISharePointUri.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.ISharePointUri.DocumentUri">
+            <summary>
+            Gets or sets the Document URI.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.ISharePointUri.TemplateUri">
+            <summary>
+            Gets or sets the Template URI.
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Interfaces.IStudyPeriodType">
+            <summary>
+            Lookup object representing a study period type
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.IStudyPeriodType.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.IStudyPeriodType.Description">
+            <summary>
+            Gets or sets the description.
+            </summary>
+            <value>The description.</value>
+        </member>
+        <member name="T:Semio.ClientService.Interfaces.ISystemOrganClass">
+            <summary>
+            Lookup object representing a therapeutic area
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.ISystemOrganClass.Code">
+            <summary>
+            Gets or sets the code (nullable)
+            <value>The code (nullable)</value>
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.ISystemOrganClass.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.ISystemOrganClass.Description">
+            <summary>
+            Gets or sets the description.
+            </summary>
+            <value>The description.</value>
+        </member>
+        <member name="T:Semio.ClientService.Interfaces.ITreatmentForm">
+            <summary>
+            Lookup object representing a treatment form
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.ITreatmentForm.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.ITreatmentForm.Description">
+            <summary>
+            Gets or sets the description.
+            </summary>
+            <value>The description.</value>
+        </member>
+        <member name="T:Semio.ClientService.Interfaces.ITreatmentFrequency">
+            <summary>
+            Lookup object representing a treatment frequency
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.ITreatmentFrequency.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.ITreatmentFrequency.Description">
+            <summary>
+            Gets or sets the description.
+            </summary>
+            <value>The description.</value>
+        </member>
+        <member name="T:Semio.ClientService.Interfaces.ITreatmentRoute">
+            <summary>
+            Lookup object representing a treatment route
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.ITreatmentRoute.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.ITreatmentRoute.Description">
+            <summary>
+            Gets or sets the description.
+            </summary>
+            <value>The description.</value>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.ITreatmentRoute.IsInjectable">
+            <summary>
+            Gets or sets IsInjectable flag
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Interfaces.ITreatmentType">
+            <summary>
+            Lookup object representing a treatment type
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Interfaces.IVisitIntervalType">
+            <summary>
+            Lookup object representing a visit interval type
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Interfaces.IVisitIntervalType.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+    </members>
+</doc>

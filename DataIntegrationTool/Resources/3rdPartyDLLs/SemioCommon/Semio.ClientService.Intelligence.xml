@@ -1,0 +1,1222 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Semio.ClientService.Intelligence</name>
+    </assembly>
+    <members>
+        <member name="M:Semio.ClientService.Intelligence.BusinessLogic.IntelligenceBllCommon.TrimTransientData(Semio.ClientService.Data.Intelligence.Canvas.EnrollmentCanvasModelData,System.Boolean)">
+            <summary>
+            tear down logic before saving
+            </summary>
+            <param name="data"></param>
+            <param name="isEsp"></param>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.BusinessLogic.IntelligenceBllCommon.ReCalculateSemioModel(Semio.ClientService.Data.Intelligence.Canvas.EnrollmentCanvasModelData,Semio.ClientService.Data.Intelligence.Canvas.CostCanvasModelData,System.Collections.Generic.IEnumerable{Semio.ClientService.Entity.ObjectModel.v_TtcCountryEquiv})">
+            <summary>
+            Calculate all the key sitemetric, countrytotalmetrics, and Cost values for a semio model
+            </summary>
+            <param name="enrollmentModel"></param>
+            <param name="costModel"></param>
+            <param name="countryMap"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.BusinessLogic.IntelligenceBllCommon.ReCalculatePlanModel(Semio.ClientService.Data.Intelligence.Canvas.EnrollmentCanvasModelData,Semio.ClientService.Data.Intelligence.Canvas.CostCanvasModelData,System.Collections.Generic.IEnumerable{Semio.ClientService.Entity.ObjectModel.v_TtcCountryEquiv})">
+            <summary>
+            Calculate all the key sitemetric, countrytotalmetrics, and Cost values for a Plan model
+            </summary>
+            <param name="enrollmentModel"></param>
+            <param name="costModel"></param>
+            <param name="countryMap"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.BusinessLogic.IntelligenceBllCommon.ReCalculateEspModel(Semio.ClientService.Data.Intelligence.Canvas.EnrollmentCanvasModelData)">
+            <summary>
+            calculate esp predictions
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.BusinessLogic.IntelligenceBllCommon.ReCalculateEspModel(Semio.ClientService.Data.Intelligence.Enrollment.EnrollmentCollection)">
+            <summary>
+            calculate esp predictions
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.BusinessLogic.IntelligenceBllCommon.ReCalculate(Semio.ClientService.Data.Intelligence.Canvas.EnrollmentCanvasModelData,Semio.ClientService.Data.Intelligence.Canvas.CostCanvasModelData,System.Collections.Generic.IEnumerable{Semio.ClientService.Entity.ObjectModel.v_TtcCountryEquiv})">
+            <summary>
+            Recalculate and update ecmd object using only the base objects.
+            </summary>
+            <param name="enrollmentModel"></param>
+            <param name="costModel"></param>
+            <param name="countryMap"></param>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.BusinessLogic.IntelligenceBllCommon.ApplyCostDetailsCore(Semio.ClientService.Data.Intelligence.Canvas.CostCanvasModelData,System.Collections.Generic.List{Semio.ClientService.Intelligence.SiteMetricTotals},System.Collections.Generic.IEnumerable{Semio.ClientService.Entity.ObjectModel.v_TtcCountryEquiv},System.Action{Semio.ClientService.Intelligence.SiteMetricTotals,System.String,System.Double})">
+             <summary>
+             bring together enrollment model country metrics, cost model data and country mapping data into one composite class
+            
+             </summary>
+             <param name="costModel"></param>
+             <param name="countryMetricTotals"></param>
+             <param name="countryMap"></param>
+             <param name="onCost"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.BusinessLogic.IntelligenceBllCommon.ApplyCostDetails(Semio.ClientService.Data.Intelligence.Canvas.CostCanvasModelData,System.Collections.Generic.List{Semio.ClientService.Intelligence.SiteMetricTotals},System.Collections.Generic.IEnumerable{Semio.ClientService.Entity.ObjectModel.v_TtcCountryEquiv})">
+             <summary>
+             bring together enrollment model country metrics, cost model data and country mapping data into one composite class
+            
+             </summary>
+             <param name="costModel"></param>
+             <param name="countryMetricTotals"></param>
+             <param name="countryMap"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.BusinessLogic.IntelligenceBllCommon.MergeCostDetails(Semio.ClientService.Data.Intelligence.Canvas.CostCanvasModelData,System.Collections.Generic.List{Semio.ClientService.Intelligence.SiteMetricTotals},System.Collections.Generic.IEnumerable{Semio.ClientService.Entity.ObjectModel.v_TtcCountryEquiv})">
+             <summary>
+             bring together enrollment model country metrics, cost model data and country mapping data into one composite class
+            
+             </summary>
+             <param name="costModel"></param>
+             <param name="countryMetricTotals"></param>
+             <param name="countryMap"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.BusinessLogic.IntelligenceBllCommon.ApplyTtcCountryEquivalentToVisitCost(System.Collections.Generic.IEnumerable{Semio.ClientService.Entity.ObjectModel.v_TtcCountryEquiv},System.Collections.Generic.IEnumerable{Semio.ClientService.Entity.ObjectModel.Country},Semio.ClientService.Data.Intelligence.Cost.VisitCost)">
+            <summary>
+            duplicate highlevel visit cost values for country equivs
+            </summary>
+            <param name="countryMap"></param>
+            <param name="countryList"></param>
+            <param name="visitCost"></param>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.BusinessLogic.IntelligenceBllCommon.GetCountryStopMonthWithRules(Semio.ClientService.Data.Intelligence.Enrollment.EnrollmentCollection,Semio.ClientService.Data.Intelligence.Enrollment.CountryEnrollment,System.Collections.Generic.IEnumerable{Semio.ClientService.Data.Intelligence.Enrollment.SiteMetric})">
+            <summary>
+            use country rules to determine the correct lpr for a country
+            </summary>
+            <param name="enrollmentCollection"></param>
+            <param name="country"></param>
+            <param name="siteMetrics"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Semio.ClientService.Intelligence.EnrollmentCalculationResults">
+            <summary>
+            encapsulates the core calcs results from the patient modeler
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.EnrollmentCalculationResults.SiteMetricsByScenarioType">
+            <summary>
+            best, median, worst core site metrics 
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.EnrollmentCalculationResults.MetricTotalsByScenarioType">
+            <summary>
+            best, median, worst metric totals grouped by country
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Intelligence.Exposure.EnrollmentGroup">
+            <summary>
+            Represents a group of patients, enrolled at a 
+            specific month, which will be used to model
+            how a group is affected as it travels through
+            a treatement schema.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.Exposure.EnrollmentGroup.Site">
+            <summary>
+            The specific site for the group.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.Exposure.EnrollmentGroup.Month">
+            <summary>
+            The month that the group enrolled in.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.Exposure.EnrollmentGroup.Patients">
+            <summary>
+            The total number of patients that enrolled.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.Exposure.EnrollmentGroup.PreviousTreatment">
+            <summary>
+            The previous treatment as it passes from one
+            segment to the next.
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Intelligence.Exposure.ExposureMetric">
+            <summary>
+            The exposure metric class encapsulates the data
+            that happens at each signifcant milestone that 
+            happens during a treatment.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.Exposure.ExposureMetric.Type">
+            <summary>
+            The type of milestone that the metric represents.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.Exposure.ExposureMetric.Candidate">
+            <summary>
+            The candidate name of the schema.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.Exposure.ExposureMetric.Interventions">
+            <summary>
+            The list of interventions applied during the
+            treatment segment.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.Exposure.ExposureMetric.Description">
+            <summary>
+            Ancillary descriptive information about the 
+            metric.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.Exposure.ExposureMetric.Month">
+            <summary>
+            The month during the treatment when this occured.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.Exposure.ExposureMetric.TreatmentDuration">
+            <summary>
+            Returns the duration of treatment if the metric
+            represents an intervention milestone.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.Exposure.ExposureMetric.TreatedGroup">
+            <summary>
+            The number of patients that were treated.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.Exposure.ExposureMetric.DropoutGroup">
+            <summary>
+            The number of patients that were dropped out.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.Exposure.ExposureMetric.EventedGroup">
+            <summary>
+            The number of patients that evented out.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.Exposure.ExposureMetric.PreviousTreatment">
+            <summary>
+            The previous treatment applied before this metric. 
+            This is crucial for determining the combined
+            total amount of treatment across segments.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.Exposure.ExposureMetric.MonthsOfContinuousTreatment">
+            <summary>
+            Returns the combined total months of treatment
+            for an intervention. 
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Intelligence.Exposure.TreatmentMilestone">
+            <summary>
+            Things to conisder:
+            1. Milestones can happen at a daily, weekly, monthly time interval. This
+                must be in relation to the workflow step 
+            2. A rate can be applied, or there is just a significant mark (dosage)
+            
+            HOW DO YOU MEASURE THE MILESTONE'S TIME IN RELATION TO THE PARENT SEGMENT?
+            WE NEED THIS IN ORDER TO PUT THE RIGHT TIME THAT THE MILESTONE.
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.Exposure.TreatmentMilestone.Apply(Semio.ClientService.Intelligence.Exposure.EnrollmentGroup)">
+            <summary>
+            Generates a metric based on the milestone details.
+            </summary>
+            <param name="enrollmentGroup"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.Exposure.TreatmentMilestone.Interventions">
+            <summary>
+            The interventions that are applied
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.Exposure.TreatmentMilestone.Type">
+            <summary>
+            The type of milestone. 
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.Exposure.TreatmentMilestone.Description">
+            <summary>
+            Descriptive info on the milestone. Eg. if the milestone
+            represents an event, we label what type of event.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.Exposure.TreatmentMilestone.Rate">
+            <summary>
+            If dropout or event milestone, the rate to 
+            be applied to the treated group.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.Exposure.TreatmentMilestone.TimeOfOccurance">
+            <summary>
+            The time in months at which the milestone occurs.
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Intelligence.Exposure.TreatmentSegment">
+            <summary>
+            A treatment segment represents a treatment arm (StudyCell in Schema)
+            which occurs within a period (Epoch in Schema). The treatment
+            segment encapsulates milestones in treatment (intervention changes), dropouts,
+            and events.
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.Exposure.TreatmentSegment.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.Exposure.TreatmentSegment.Process(Semio.ClientService.Intelligence.Exposure.EnrollmentGroup)">
+            <summary>
+            Performs the process of running through the chain
+            of segments, producing metrics for each significant
+            milestone that occurs.
+            
+            REMEMBER!!!! THE ORDER OF PROCESSING THE MILESTONES MUST BE IN 
+            PROPER SEQUENTIAL ORDER! IF NOT, THE PROCESSING OF THE PATIENT
+            COUNTS WILL BE MESSED UP! 
+            </summary>r
+            <param name="enrollmentGroup"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.Exposure.TreatmentSegment.Candidate">
+            <summary>
+            The name of the parent candidate for the schema which
+            the segment rests.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.Exposure.TreatmentSegment.Duration">
+            <summary>
+            The total duration of the segment. Should coincide
+            with the same time as the period/epoch.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.Exposure.TreatmentSegment.Milestones">
+            <summary>
+            A collection of milestones that occur during the 
+            duration of the segment.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.Exposure.TreatmentSegment.Paths">
+            <summary>
+            The set of next treatment segments this segment
+            distributes patients to. The key is the next segment
+            while the value is the randomization ratio.
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Intelligence.PatientTreatmentModeler">
+            <summary>
+            Encapsulates the business logic of patient enrollments based on
+            provided country and investigator information. This class produces
+            a set of metrics that reflect the patient enrollment factors with
+            with respect to both country and individual site information.
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.PatientTreatmentModeler.GetLeveledPatientMetrics(Semio.ClientService.Intelligence.PatientTreatmentModelerArgs)">
+            <summary>
+            Returns a dictionary of <see cref="T:Semio.ClientService.Data.Intelligence.Enrollment.SiteMetric"/> objects 
+            keyed by the set of valid <see cref="T:Semio.ClientService.Data.Intelligence.Enrollment.LineSeriesItemType"/> values. Each 
+            metric represents an enrollment for a particular site and country and 
+            a specific point in time which is by month.
+            </summary>
+            <param name="args">The <see cref="T:Semio.ClientService.Intelligence.PatientTreatmentModelerArgs"/> to generate the metrics off of.</param>
+            <returns>The dictionary of processed metrics keyed by accuracy type.</returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.PatientTreatmentModeler.GetLeveledPatientMetrics(System.Collections.Generic.IEnumerable{Semio.ClientService.Data.Intelligence.Enrollment.InvestigatorEnrollmentFlat},System.Double,System.Double,System.Double)">
+            <summary>
+            Returns a dictionary of <see cref="T:Semio.ClientService.Data.Intelligence.Enrollment.SiteMetric"/> objects 
+            keyed by the set of valid <see cref="T:Semio.ClientService.Data.Intelligence.Enrollment.LineSeriesItemType"/> values. Each 
+            metric represents an enrollment for a particular site and country and 
+            a specific point in time which is by month.
+            </summary>
+            <param name="flatSites">The set of <see cref="T:Semio.ClientService.Data.Intelligence.Enrollment.InvestigatorEnrollmentFlat"/> that contain all site and country information.</param>
+            <param name="maxMonths">The maximum number of months to generate enrollment values for.</param>
+            <param name="totalPatientsDesired">The desired patient count for all sites and countries combined.</param>
+            <param name="maxSites"></param>
+            <returns>The dictionary of processed metrics keyed by accuracy type.</returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.PatientTreatmentModeler.GetLeveledPatientMetrics(System.Collections.Generic.IEnumerable{Semio.ClientService.Data.Intelligence.Enrollment.InvestigatorEnrollmentFlat},Semio.ClientService.Data.Intelligence.Enrollment.LineSeriesItemType,System.Double,System.Double)">
+            <summary>
+            Returns a list of <see cref="T:Semio.ClientService.Data.Intelligence.Enrollment.SiteMetric"/> objects. Each metric represents an 
+            enrollment for a particular site and country and a specific point in time 
+            which is by month.
+            </summary>
+            <param name="flatSites">The set of <see cref="T:Semio.ClientService.Data.Intelligence.Enrollment.InvestigatorEnrollmentFlat"/> that contain all site and country information.</param>
+            <param name="type">The specified <see cref="T:Semio.ClientService.Data.Intelligence.Enrollment.LineSeriesItemType"/> that the points correspond to.</param>
+            <param name="maxMonths">The maximum number of months to generate enrollment values for.</param>
+            <param name="totalPatientsDesired">The desired patient count for all sites and countries combined.</param>
+            <returns>The list of processed metrics by accuracy type.</returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.PatientTreatmentModeler.GetTimeToEventMetrics(System.Collections.Generic.IEnumerable{Semio.ClientService.Data.Intelligence.Enrollment.InvestigatorEnrollmentFlat},Semio.ClientService.Data.Intelligence.Enrollment.LineSeriesItemType,System.Double,System.Double,System.Double)">
+            <summary>
+            Returns a list of site metrics that reflect the time-to-event for a
+            particular enrollment scenario.
+            </summary>
+            <param name="flatSites"></param>
+            <param name="type"></param>
+            <param name="maxMonths"></param>
+            <param name="totalPatientsDesired"></param>
+            <param name="treatmentPeriod"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.PatientTreatmentModeler.GetTimeToEventMetrics(System.Collections.Generic.IEnumerable{Semio.ClientService.Data.Intelligence.Enrollment.SiteMetric},System.Collections.Generic.IEnumerable{Semio.ClientService.Data.Intelligence.Enrollment.InvestigatorEnrollmentFlat},System.Double,System.Double,System.Double)">
+            <summary>
+            Returns a list of site metrics that reflect the time-to-event for a
+            particular enrollment scenario.
+            </summary>        
+            <param name="metricsForType"></param>
+            <param name="flatSites"></param>
+            <param name="maxMonths"></param>
+            <param name="totalPatientsDesired"></param>
+            <param name="treatmentPeriod"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.PatientTreatmentModeler.GetEnrollmentTotalsByIntervalAndEventRate(System.Collections.Generic.IEnumerable{Semio.ClientService.Data.Intelligence.Enrollment.SiteMetric},System.Collections.Generic.IEnumerable{Semio.ClientService.Data.Intelligence.Enrollment.InvestigatorEnrollmentFlat},System.Double,System.Double,System.Double)">
+            <summary>
+             Event rate totals
+            </summary>
+            <param name="metricsForType"></param>
+            <param name="flatSites"></param>        
+            <param name="desiredPatients"></param>
+            <param name="userMaxMonths"></param>
+            <param name="treatmentPeriod"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.PatientTreatmentModeler.GetCountryMetricTotals(Semio.ClientService.Data.Intelligence.Canvas.EnrollmentCanvasModelData,Semio.ClientService.Data.Intelligence.Enrollment.LineSeriesItemType)">
+            <summary>
+            overload for passing in ecmd
+            </summary>
+            <param name="data"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.PatientTreatmentModeler.GetCountryMetricsTotals(System.Collections.Generic.IEnumerable{Semio.ClientService.Data.Intelligence.Enrollment.InvestigatorEnrollmentFlat},Semio.ClientService.Data.Intelligence.Enrollment.LineSeriesItemType,System.Double,System.Double)">
+            <summary>
+            Returns a list of <see cref="T:Semio.ClientService.Data.Intelligence.Enrollment.SiteMetric"/> objects that represent the patient 
+            enrollment totals rolled up by country.
+            </summary>
+            <param name="flatSites">The set of <see cref="T:Semio.ClientService.Data.Intelligence.Enrollment.InvestigatorEnrollmentFlat"/> that contain all site and country information.</param>
+            <param name="type">The specified <see cref="T:Semio.ClientService.Data.Intelligence.Enrollment.LineSeriesItemType"/> that the points correspond to.</param>
+            <param name="maxMonths">The maximum number of months to generate enrollment values for.</param>
+            <param name="totalPatientsDesired">The desired patient count for all sites and countries combined.</param>
+            <returns>An enumerable of <see cref="T:Semio.ClientService.Intelligence.SiteMetricTotals"/> that rollup the enrollment metrics.</returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.PatientTreatmentModeler.GetCountryMetricsTotals(System.Collections.Generic.IEnumerable{Semio.ClientService.Data.Intelligence.Enrollment.InvestigatorEnrollmentFlat},System.Collections.Generic.IEnumerable{Semio.ClientService.Data.Intelligence.Enrollment.SiteMetric},Semio.ClientService.Data.Intelligence.Enrollment.LineSeriesItemType)">
+            <summary>
+            
+            </summary>
+            <param name="flatSites"></param>
+            <param name="siteMetrics"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.PatientTreatmentModeler.GetEnrollmentSiteTotals(Semio.ClientService.Data.Intelligence.Enrollment.EnrollmentCollection,System.String,Semio.ClientService.Data.Intelligence.Enrollment.LineSeriesItemType,Semio.ClientService.Data.Intelligence.Enrollment.TimeScale)">
+            <summary>
+             for an individual site enrollment totals we dont use the interval and just get 3 points.
+            </summary>
+            <param name="enrollmentCollection"></param>
+            <param name="siteName"></param>
+            <param name="type"></param>
+            <param name="timeScale"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.PatientTreatmentModeler.GetEnrollmentSiteTotals(System.Collections.Generic.List{Semio.ClientService.Data.Intelligence.Enrollment.SiteMetric},System.String,Semio.ClientService.Data.Intelligence.Enrollment.TimeScale)">
+            <summary>
+            </summary>
+            <param name="metrics"></param>
+            <param name="siteName"></param>
+            <param name="timeScale"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.PatientTreatmentModeler.GetEnrollmentTotalsByInterval(System.Collections.Generic.IEnumerable{Semio.ClientService.Data.Intelligence.Enrollment.InvestigatorEnrollmentFlat},Semio.ClientService.Data.Intelligence.Enrollment.LineSeriesItemType,System.Double,System.Double,System.Boolean)">
+            <summary>
+             creates graph points for patient enrollment over a standard interval of months
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.PatientTreatmentModeler.GetSsuTotalsByInterval(System.Collections.Generic.IEnumerable{Semio.ClientService.Data.Intelligence.Enrollment.InvestigatorEnrollmentFlat},Semio.ClientService.Data.Intelligence.Enrollment.LineSeriesItemType,System.Double,System.Double,System.Boolean)">
+            <summary>
+             creates graph points for site startup over a standard interval
+            </summary>
+            <param name="flatSites"></param>
+            <param name="type"></param>
+            <param name="desiredPatients"></param>
+            <param name="userMaxMonths"></param>
+            <param name="croSelected"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.PatientTreatmentModeler.GetSitesAtTimePointForSite(Semio.ClientService.Data.Intelligence.Enrollment.EnrollmentCollection,System.Double,Semio.ClientService.Data.Intelligence.Enrollment.LineSeriesItemType)">
+            <summary>
+             active enrollers
+             get sites who have enrolled at least 1 patient at this timepoint
+            </summary>
+            <param name="enrollmentCollection"></param>
+            <param name="timePoint">time point in months</param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.PatientTreatmentModeler.GetSitesAtTimePointForSite(System.Collections.Generic.IEnumerable{Semio.ClientService.Data.Intelligence.Enrollment.SiteMetric},System.Double)">
+            <summary>
+             active enrollers
+             get sites who have enrolled at least 1 patient at this timepoint
+            </summary>
+            <param name="metricsForType"></param>
+            <param name="timePoint">time point in months</param>        
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.PatientTreatmentModeler.GetSitesAtTimePointForPatient(Semio.ClientService.Data.Intelligence.Enrollment.EnrollmentCollection,System.Double,Semio.ClientService.Data.Intelligence.Enrollment.LineSeriesItemType)">
+            <summary>
+             active enrollers
+             get sites who have enrolled at least 1 patient at this timepoint
+            </summary>
+            <param name="enrollmentCollection"></param>
+            <param name="timePoint">time point in months</param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.PatientTreatmentModeler.GetSitesAtTimePointForPatient(System.Collections.Generic.IEnumerable{Semio.ClientService.Data.Intelligence.Enrollment.SiteMetric},System.Double)">
+            <summary>
+             active enrollers
+             get sites who have enrolled at least 1 patient at this timepoint
+            </summary>
+            <param name="metricsForType"></param>
+            <param name="timePoint">time point in months</param>        
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.PatientTreatmentModeler.CreateCountryMetricTotalsByAccuracy(System.Collections.Generic.Dictionary{Semio.ClientService.Data.Intelligence.Enrollment.LineSeriesItemType,System.Collections.Generic.List{Semio.ClientService.Data.Intelligence.Enrollment.SiteMetric}},System.Collections.Generic.IEnumerable{Semio.ClientService.Data.Intelligence.Enrollment.InvestigatorEnrollmentFlat})">
+            <summary>
+             take the precalculated by accuracy metrics and summarize by country
+            </summary>
+            <param name="metricsTable">base metric data</param>
+            <param name="flattenedSites">used to some special looksups of data not in metrics table</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.PatientTreatmentModeler.GetTreatedPatients(System.Collections.Generic.IEnumerable{Semio.ClientService.Intelligence.RandomizedArm},System.Collections.Generic.IEnumerable{Semio.ClientService.Data.Intelligence.Enrollment.SiteMetric},System.Double,Semio.ClientService.Data.Intelligence.Enrollment.VariableRateCollection)">
+            <summary>
+            Returns a list of <see cref="T:Semio.ClientService.Data.Intelligence.Enrollment.SiteMetric"/> objects that represent the patients 
+            exposed based on the enrollment metrics and a set of <see cref="T:Semio.ClientService.Intelligence.RandomizedArm"/>
+            that represent the treatment arms of a specific candidate.
+            </summary>
+            <param name="arms">The a set of <see cref="T:Semio.ClientService.Intelligence.RandomizedArm"/> objects.</param>
+            <param name="selectedSiteMetrics">The a set of enrollment <see cref="T:Semio.ClientService.Data.Intelligence.Enrollment.SiteMetric"/> objects.</param>
+            <param name="requestedMonthsOfExposure">The expected months of exposure.</param>
+            <param name="rates">The variable rates to use when factoring events.</param>
+            <returns>The list of processed metrics.</returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.PatientTreatmentModeler.GetRandomizedArmMetrics(System.Collections.Generic.IEnumerable{Semio.ClientService.Intelligence.RandomizedArm},System.Collections.Generic.IEnumerable{Semio.ClientService.Data.Intelligence.Enrollment.SiteMetric})">
+            <summary>
+            Creates a new set of site metrics which are mapped from a set of leveled
+            patient metrics and represent how each patient enrollment would by randomized
+            between a set of arms for a candidate.
+            </summary>
+            <param name="arms">The a set of <see cref="T:Semio.ClientService.Intelligence.RandomizedArm"/> objects.</param>
+            <param name="selectedSiteMetrics">The a set of enrollment <see cref="T:Semio.ClientService.Data.Intelligence.Enrollment.SiteMetric"/> objects.</param>
+            <returns>The list of processed metrics.</returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.PatientTreatmentModeler.BuildPatientMetrics(Semio.ClientService.Intelligence.PatientTreatmentModelerArgs)">
+            <summary>
+            The main workhorse method of the modeler class which actually processes
+            and calculates the patient enrollments and turns them into a set of 
+            usable site metrics.
+            </summary>
+            <param name="args">The args to be used to generate metrics off of.</param>
+            <returns>The dictionary of processed metrics keyed by accuracy type.</returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.PatientTreatmentModeler.BuildPatientMonteCarloMetrics(Semio.ClientService.Data.Intelligence.Enrollment.EnrollmentCollection,System.Int32[],System.Int32[])">
+            <summary>
+            Builds a dictionary keyed on percentiles with a list of metrics for the percentile
+            </summary>
+            <param name="enrollmentCollection">Parameters for the model</param>
+            <param name="enrollmentPercentiles">Percentiles to include metrics for</param>
+            <param name="ssuPercentiles">The ssu percentiles.</param>
+            <returns>Dictionary&lt;System.Int32, List&lt;SiteMetric&gt;&gt;.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            enrollmentCollection
+            or
+            percentiles
+            </exception>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.PatientTreatmentModeler.GetAllSiteMetrics(System.Collections.Generic.IEnumerable{Semio.ClientService.Data.Intelligence.Enrollment.InvestigatorEnrollmentFlat},System.Double,Semio.ClientService.Data.Intelligence.Enrollment.LineSeriesItemType)">
+            <summary>
+            Loads and creates all of the available metrics for each of the usable sites.
+            </summary>
+            <param name="usableSites"></param>
+            <param name="maxMonths"></param>
+            <param name="lineSeriesItemType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.PatientTreatmentModeler.GetTreatedSiteMetric(Semio.ClientService.Intelligence.RandomizedArm,Semio.ClientService.Data.Intelligence.Enrollment.SiteMetric,System.Double,Semio.ClientService.Data.Intelligence.Enrollment.VariableRateCollection)">
+            <summary>
+            this method rolls enrolled patients up at the month level, time shifts based on treatment, adjusts the patient count using dropout rates, 
+            rollover rates and extension trial details.  It performs rounding at the monthly rolled up level to minimize rounding errors
+            </summary>
+            <param name="arm"></param>
+            <param name="monthMetric"></param>
+            <param name="requestedMonthsOfExposure"></param>
+            <param name="rates"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.PatientTreatmentModeler.GetRequiredCountries(System.Collections.Generic.IEnumerable{Semio.ClientService.Data.Intelligence.Enrollment.InvestigatorEnrollmentFlat})">
+            <summary>
+            get list of countries that have required minimums, sorted by user defined priority type
+            </summary>
+            <param name="usableSites"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Semio.ClientService.Intelligence.PatientTreatmentModelerArgs">
+            <summary>
+            Represents the set of arguments for the <see cref="T:Semio.ClientService.Intelligence.PatientTreatmentModeler"/>
+            to use in generating metrics.
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.PatientTreatmentModelerArgs.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.PatientTreatmentModelerArgs.#ctor(System.Collections.Generic.IEnumerable{Semio.ClientService.Data.Intelligence.Enrollment.InvestigatorEnrollmentFlat},Semio.ClientService.Data.Intelligence.Enrollment.LineSeriesItemType,System.Double,System.Double)">
+            <summary>
+            Overloaded constructor which takes a set of initialization defaults.
+            </summary>
+            <param name="flatSites">The set of <see cref="T:Semio.ClientService.Data.Intelligence.Enrollment.InvestigatorEnrollmentFlat"/> to be used to generate metrics off of.</param>
+            <param name="type">The accuracy type</param>
+            <param name="maxMonths">The max months to be considered in the calcs.</param>
+            <param name="totalPatientsDesired">The amount of patients desired in the model.</param>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.PatientTreatmentModelerArgs.FilteredSites">
+            <summary>
+            Yields sites that conform to all the predicate rules.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.PatientTreatmentModelerArgs.MaxSites">
+            <summary>
+            The max months.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.PatientTreatmentModelerArgs.MaxMonths">
+            <summary>
+            The max months.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.PatientTreatmentModelerArgs.TotalPatientsDesired">
+            <summary>
+            The total patients desired.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.PatientTreatmentModelerArgs.FlatSites">
+            <summary>
+            The set of sites to be considered in the model.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.PatientTreatmentModelerArgs.DesiredTypes">
+            <summary>
+            The set of accuracy types to include in the model.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.PatientTreatmentModelerArgs.Rules">
+            <summary>
+            The set of rules that the sites need to conform to in 
+            order to participate in the model.
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Intelligence.RandomizedArm">
+            <summary>
+            Represents an arm in a trial candidate schema. Now arms are relative
+            to the "path" concept in schema. 
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.RandomizedArm.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.RandomizedArm.AddSteppedPeriod(System.Collections.Generic.IEnumerable{System.Tuple{System.Double,System.Collections.Generic.IEnumerable{System.String}}})">
+            <summary>
+            The dictionary needs to be keyed by the desired insertion order!
+            </summary>
+            <param name="interventions"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.RandomizedArm.AddPeriod(System.Double,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Adds a new treatment period to the arm at the
+            designated period and for the designated amount
+            of time.
+            </summary>
+            <param name="length">The length of time in months.</param>
+            <param name="interventions"></param>
+            <returns>A new <see cref="T:Semio.ClientService.Intelligence.TreatmentPeriod"/> object or an existing period.</returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.RandomizedArm.Path">
+            <summary>
+            Returns the treatment path that is comprised of the periods
+            it contains and the links it has to other arm periods.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.RandomizedArm.CollapsePeriod(Semio.ClientService.Intelligence.TreatmentPeriod)">
+            <summary>
+            If a treatment period is continous along the same arm, the
+            method will return a treatment period that represents
+            the chain of continuous periods of combined length.
+            </summary>
+            <param name="period"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.RandomizedArm.PeriodAt(System.Int32)">
+            <summary>
+            Returns the treatment period that exists for the specified
+            period number. If there is a stepped scenario where more 
+            than one treatment period occupies the same position, the
+            method will return last one in the sequence in order to 
+            ensure proper linking scenarios.
+            </summary>
+            <param name="period">The period number.</param>
+            <returns></returns>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.RandomizedArm.Name">
+            <summary>
+            The name of the trial arm.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.RandomizedArm.RandomizationRate">
+            <summary>
+            The randomization rate of the trial arm.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.RandomizedArm.RatioAsPercent">
+            <summary>
+            The randomization ratio as a real number.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.RandomizedArm.RatePart">
+            <summary>
+            The rate part of the arm. 
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.RandomizedArm.MonthsToEndOfArm">
+            <summary>
+            time after treatment til end of arm
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.RandomizedArm.MonthOffset">
+            <summary>
+            Represents the staggered start date that is
+            inherited from the candidate
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.RandomizedArm.ExposedToDrug">
+            <summary>
+            Flags if the arm is a treatment/investigational arm 
+            or a placebo arm.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.RandomizedArm.VariableRates">
+            <summary>
+            The collection of variable rates for this arm.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.RandomizedArm.Crossovers">
+            <summary>
+            List of crossovers sorted by period which they crossover.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.RandomizedArm.Periods">
+            <summary>
+            List of periods of treatment for this arm.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.RandomizedArm.Randomizations">
+            <summary>
+            Table of randomizations keyed by the period which they occur.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.RandomizedArm.ExtensionInterventions">
+            <summary>
+            List of interventions applied in an extension period
+            if so designated.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.RandomizedArm.MonthsOfTreatment">
+            <summary>
+            months thru end of treatment
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.RandomizedArm.HasExtension">
+            <summary>
+            Indicates if the arm rolls over into an extension.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.RandomizedArm.ExtensionMonthsOfTreatment">
+            <summary>
+            The months of extension treatment.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.RandomizedArm.ExtensionRollOverRate">
+            <summary>
+            The extension roll over rate.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.RandomizedArm.ExtensionDropOutRate">
+            <summary>
+            The drop-out rate of the extension.
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Intelligence.RandomizedArmQueue">
+            <summary>
+            Treats a collection of <see cref="T:Semio.ClientService.Intelligence.RandomizedArm"/> objects
+            and enqueues them as part of the process for distributing
+            patients onto treatment arms.
+            
+            For example, given a randomization ratio is 2:2:1, the 
+            queue will work as such:
+            
+            (TODO: Finish explanation)
+            
+            [ x x y y z ]
+             -------^
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.RandomizedArmQueue.#ctor(System.Collections.Generic.IEnumerable{Semio.ClientService.Intelligence.RandomizedArm})">
+            <summary>
+            Creates a new queue.
+            </summary>
+            <param name="arms">The collection of <see cref="T:Semio.ClientService.Intelligence.RandomizedArm"/> objects.</param>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.RandomizedArmQueue.Next(System.Int32)">
+            <summary>
+            Returns an <see cref="T:System.Collections.Generic.IEnumerable`1"/> which represents the
+            next sequence of arms in relation to their position in the 
+            queue.
+            </summary>
+            <param name="count">The amount of total positions to return.</param>
+            <returns>An enumerable of <see cref="T:Semio.ClientService.Intelligence.RandomizedArm"/> objects.</returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.RandomizedArmQueue.Enqueue(System.Collections.Generic.IEnumerable{Semio.ClientService.Intelligence.RandomizedArm})">
+            <summary>
+            Creates a lazy enumerable of <see cref="T:Semio.ClientService.Intelligence.RandomizedArm"/> objects in their
+            initial positions.
+            </summary>
+            <param name="arms">A collection of <see cref="T:Semio.ClientService.Intelligence.RandomizedArm"/> objects.</param>
+            <returns>An enumerable of <see cref="T:Semio.ClientService.Intelligence.RandomizedArm"/> objects.</returns>
+        </member>
+        <member name="T:Semio.ClientService.Intelligence.SiteMetricExtension">
+            <summary>
+             Class used to encapsulate collection logic for site metrics
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.SiteMetricExtension.GetPatientCounts(System.Collections.Generic.IEnumerable{Semio.ClientService.Data.Intelligence.Enrollment.SiteMetric},Semio.ClientService.Data.Intelligence.Enrollment.SiteMetricTypeEnum)">
+            <summary>
+             get total patients
+            </summary>
+            <param name="siteMetrics"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.SiteMetricExtension.GetPatientCounts(System.Collections.Generic.IEnumerable{Semio.ClientService.Data.Intelligence.Enrollment.SiteMetric},System.Nullable{Semio.ClientService.Data.Intelligence.Enrollment.SiteMetricTypeEnum},System.Nullable{Semio.ClientService.Intelligence.SiteMetricGroupingEnum},System.String)">
+            <summary>
+             Count Patients by type and grouping
+            </summary>
+            <param name="siteMetrics"></param>
+            <param name="type"></param>
+            <param name="groupType"></param>
+            <param name="groupName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.SiteMetricExtension.GetCountryPatientCounts(System.Collections.Generic.IEnumerable{Semio.ClientService.Data.Intelligence.Enrollment.SiteMetric},System.String)">
+            <summary>
+             helper method for country patient counts
+            </summary>
+            <param name="siteMetrics"></param>
+            <param name="country"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.SiteMetricExtension.GetCountrySiteCounts(System.Collections.Generic.IEnumerable{Semio.ClientService.Data.Intelligence.Enrollment.SiteMetric},System.String)">
+            <summary>
+            Gets the country site counts.
+            </summary>
+            <param name="siteMetrics">The site metrics.</param>
+            <param name="country">The country.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.SiteMetricExtension.GetSitePatientCounts(System.Collections.Generic.IEnumerable{Semio.ClientService.Data.Intelligence.Enrollment.SiteMetric},System.String)">
+            <summary>
+            </summary>
+            <param name="siteMetrics"></param>
+            <param name="site"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.SiteMetricExtension.GetSiteCounts(System.Collections.Generic.IEnumerable{Semio.ClientService.Data.Intelligence.Enrollment.SiteMetric},System.Nullable{Semio.ClientService.Intelligence.SiteMetricGroupingEnum},System.String)">
+            <summary>
+             Count unique sites that have been selected
+            </summary>
+            <param name="siteMetrics"></param>
+            <param name="groupType"></param>
+            <param name="groupName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.SiteMetricExtension.GetSiteCounts(System.Collections.Generic.IEnumerable{Semio.ClientService.Data.Intelligence.Enrollment.SiteMetric})">
+            <summary>
+            Gets the site counts.
+            </summary>
+            <param name="siteMetrics">The site metrics.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.SiteMetricExtension.MaxMonth(System.Collections.Generic.IEnumerable{Semio.ClientService.Data.Intelligence.Enrollment.SiteMetric})">
+            <summary>
+            Gets the maximum month value.
+            </summary>
+            <param name="siteMetrics">The site metrics.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.SiteMetricExtension.MonthsToMetricValue(System.Collections.Generic.IEnumerable{Semio.ClientService.Data.Intelligence.Enrollment.SiteMetric},System.String,System.Double)">
+            <summary>
+            ruturns the month that you hit disired patient number or -1 if cannot
+            </summary>
+            <param name="siteMetrics">The site metrics.</param>
+            <param name="country">The country.</param>
+            <param name="patients">The patients.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.SiteMetricExtension.GetEnrolledCountryTotalAtMonth(System.Collections.Generic.IEnumerable{Semio.ClientService.Data.Intelligence.Enrollment.SiteMetric},System.String,System.Double)">
+            <summary>
+            Gets the enrolled country total count at the specified month.
+            </summary>
+            <param name="siteMetrics">The site metrics.</param>
+            <param name="group">The group.</param>
+            <param name="month">The month.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.SiteMetricExtension.GetEnrolledTotalAtMonth(System.Collections.Generic.IEnumerable{Semio.ClientService.Data.Intelligence.Enrollment.SiteMetric},System.Double)">
+            <summary>
+            Gets the enrolled total count at the specified month.
+            </summary>
+            <param name="siteMetrics">The site metrics.</param>        
+            <param name="month">The month.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.SiteMetricExtension.GetPointsRunningSum(System.Collections.Generic.IEnumerable{Semio.ClientService.Data.Intelligence.Enrollment.SiteMetric},System.String,System.Func{System.Double,System.Double})">
+            <summary>
+             create running sum values for charts
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.SiteMetricExtension.GetPointsRunningSum(System.Collections.Generic.IEnumerable{Semio.ClientService.Data.Intelligence.Enrollment.SiteMetric},System.String,System.Func{System.Double,System.Double},Semio.ClientService.Data.Intelligence.Enrollment.SiteMetricTypeEnum)">
+            <summary>
+            create running sum values for charts 
+            
+            TODO: Join this method with the one above for default values.
+            </summary>
+            <param name="siteMetrics"></param>
+            <param name="pointLabel"></param>
+            <param name="valueFunc"></param>
+            <param name="valueTypeToUse"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.SiteMetricExtension.GetPointsRunningSum(System.Collections.Generic.IEnumerable{Semio.ClientService.Data.Intelligence.Enrollment.SiteMetric},System.String)">
+            <summary>
+             create running sum values for charts
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.SiteMetricExtension.GetPointsRunningCount(System.Collections.Generic.IEnumerable{Semio.ClientService.Data.Intelligence.Enrollment.SiteMetric},System.String)">
+            <summary>
+            </summary>
+            <param name="siteMetrics"></param>
+            <param name="pointLabel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.SiteMetricExtension.GetEnrollmentMilestones(System.Collections.Generic.IEnumerable{Semio.ClientService.Data.Intelligence.Enrollment.SiteMetric})">
+            <summary>
+            Gets the first patient visit and last patient first visit enrollment months.
+            </summary>
+            <param name="siteMetrics">The site metrics.</param>
+            <returns>A collection containing the FPV and LPFV milestones for the specified metrics.</returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.SiteMetricExtension.GetEnrollmentMilestonesWithEnums(System.Collections.Generic.IEnumerable{Semio.ClientService.Data.Intelligence.Enrollment.SiteMetric})">
+            <summary>
+            Gets the first patient visit and last patient first visit enrollment months.
+            </summary>
+            <param name="siteMetrics">The site metrics.</param>
+            <returns>A collection containing the FPV and LPFV milestones for the specified metrics.</returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.SiteMetricExtension.GetFirstPatientMonth(System.Collections.Generic.IEnumerable{Semio.ClientService.Data.Intelligence.Enrollment.SiteMetric})">
+            <summary>
+            Gets the first patient first month.
+            </summary>
+            <param name="siteMetrics">The site metrics.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.SiteMetricExtension.GetLastPatientMonth(System.Collections.Generic.IEnumerable{Semio.ClientService.Data.Intelligence.Enrollment.SiteMetric})">
+            <summary>
+            Gets the last patient first month.
+            </summary>
+            <param name="siteMetrics">The site metrics.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.SiteMetricExtension.GetSiteOpenFirstMonth(System.Collections.Generic.IEnumerable{Semio.ClientService.Data.Intelligence.Enrollment.SiteMetric})">
+            <summary>
+            Gets the first startup month.
+            </summary>
+            <param name="siteMetrics">The site metrics.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.SiteMetricExtension.GetFirstStartupMetricValue(System.Collections.Generic.IEnumerable{Semio.ClientService.Data.Intelligence.Enrollment.SiteMetric})">
+            <summary>
+            Gets the first startup month Value. which can be a partial month
+            </summary>
+            <param name="siteMetrics">The site metrics.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Intelligence.SiteMetricExtension.GetSiteOpenLastMonth(System.Collections.Generic.IEnumerable{Semio.ClientService.Data.Intelligence.Enrollment.SiteMetric})">
+            <summary>
+            Gets the Last startup month.
+            </summary>
+            <param name="siteMetrics">The site metrics.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Semio.ClientService.Intelligence.SiteMetricGroupingEnum">
+            <summary>
+             common grouping levels
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Intelligence.SiteMetricGroupingEnum.Total">
+            <summary>
+            Total
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Intelligence.SiteMetricGroupingEnum.Country">
+            <summary>
+            Country
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Intelligence.SiteMetricGroupingEnum.Site">
+            <summary>
+            Site
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Intelligence.SiteMetricTotals">
+            <summary>
+            Represents total metric counts for a site.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.SiteMetricTotals.GroupName">
+            <summary>
+            Gets or sets the name of the group.
+            </summary>
+            <value>The name of the group.</value>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.SiteMetricTotals.GroupCode">
+            <summary>
+            special property when a code is needed for the group name
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.SiteMetricTotals.DisplayName">
+            <summary>
+            Gets or sets the display name.
+            </summary>
+            <value>The display name.</value>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.SiteMetricTotals.RequiredPatients">
+            <summary>
+            Gets or sets the required patients.
+            </summary>
+            <value>The required patients.</value>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.SiteMetricTotals.MaxPatients">
+            <summary>
+            Gets or sets the max patients.
+            </summary>
+            <value>The max patients.</value>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.SiteMetricTotals.Priority">
+            <summary>
+            Priority of the country model
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.SiteMetricTotals.MaxSites">
+            <summary>
+            Gets or sets the maxsites.
+            </summary>
+            <value>The max patients.</value>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.SiteMetricTotals.PotentialCount">
+            <summary>
+            Gets or sets the potential count.
+            </summary>
+            <value>The potential count.</value>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.SiteMetricTotals.MedianCount">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.SiteMetricTotals.RequiredMonth">
+            <summary>
+            Gets or sets the required month.
+            </summary>
+            <value>The required month.</value>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.SiteMetricTotals.AvailableSiteCount">
+            <summary>
+            Count of sites available for selection
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.SiteMetricTotals.SiteCount">
+            <summary>
+            Gets or sets the site count for sites actually enrolling patients.
+            also know as contributing sites
+            </summary>
+            <value>The site count.</value>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.SiteMetricTotals.SelectedSiteCount">
+            <summary>
+            total number of sites selected
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.SiteMetricTotals.NonEnrollingSiteCount">
+            <summary>
+            these are the total sites that did not or could not enroll
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.SiteMetricTotals.PredictedZeroEnrollingSiteCount">
+            <summary>
+            these are the total sites that could not enroll because 
+            worst case or performance data yields zero patients
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.SiteMetricTotals.FirstSite">
+            <summary>
+            Gets or sets the first site.
+            </summary>
+            <value>The first site.</value>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.SiteMetricTotals.PatientCount">
+            <summary>
+            Gets or sets the patient count.
+            </summary>
+            <value>The patient count.</value>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.SiteMetricTotals.LastMonth">
+            <summary>
+            Gets or sets the last month.
+            </summary>
+            <value>The last month.</value>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.SiteMetricTotals.PredictedCost">
+            <summary>
+            Gets/Sets the predicted cost.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.SiteMetricTotals.MimimumExceedsPotential">
+            <summary>
+            Gets a value indicating whether the mimimum exceeds the potential count.
+            </summary>
+            <value>
+            	<c>true</c> if the mimimum exceeds the potential count; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.SiteMetricTotals.IsMaxedOut">
+            <summary>
+            Gets a value indicating whether this instance is maxed out.
+            </summary>
+            <value>
+            	<c>true</c> if this instance is maxed out; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.SiteMetricTotals.AcceptableSiteCount">
+            <summary>
+            Count of sites that are used by less than 2 trials
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.SiteMetricTotals.UnacceptableSiteCount">
+            <summary>
+            Used in CP only
+            Count of sites that are used by more than 2 trials
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.SiteMetricTotals.UnassignedSiteCount">
+            <summary>
+            This is used in CP only
+            Count of sites that are not assigned to any trials
+            
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.SiteMetricTotals.RegionName">
+            <summary>
+            Region where this site metric belongs.
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Intelligence.TreatmentPeriod">
+            <summary>
+            Represents a treatment period for a RandomizedArm
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.TreatmentPeriod.ParentArm">
+            <summary>
+            The parent <see cref="T:Semio.ClientService.Intelligence.RandomizedArm"/> of the period.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.TreatmentPeriod.Ordinal">
+            <summary>
+            The position of the period.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.TreatmentPeriod.Length">
+            <summary>
+            The length of time of the period in months.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.TreatmentPeriod.Interventions">
+            <summary>
+            List of interventions applied to the period
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.TreatmentPeriod.ExposedToDrug">
+            <summary>
+            Flags if the period is exposed to a treatment/investigational drug 
+            or any other type of intervention.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.TreatmentPeriod.InitialPath">
+            <summary>
+            Flags if the period is part of the initial path.
+            A period is in the initial path if the period lies
+            within the continuous set of periods starting from
+            period one.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.TreatmentPeriod.IsCombined">
+            <summary>
+            Flag if a treatment period is a combination of a 
+            series of continuous treatment periods.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.TreatmentPeriod.CombinedPeriods">
+            <summary>
+            Gets the list of periods this period combines
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.TreatmentPeriod.NextPeriod">
+            <summary>
+            Points to the next period in it's path.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.TreatmentPeriod.DropoutRate">
+            <summary>
+            Sets the dropout rate that occurs during this treatment period.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Intelligence.TreatmentPeriod.IsContinous">
+            <summary>
+            Returns true if the next period shares the same arm. What
+            is also important in the idea of continuity is that the
+            same intervention must be shared across to the next period.
+            This way if we have (eg.) two 6 month periods we can 
+            stitch the periods together to give a more accurate 12 month
+            period representation.
+            </summary>
+        </member>
+    </members>
+</doc>

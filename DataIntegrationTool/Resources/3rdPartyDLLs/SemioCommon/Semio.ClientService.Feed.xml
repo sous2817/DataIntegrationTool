@@ -1,0 +1,481 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Semio.ClientService.Feed</name>
+    </assembly>
+    <members>
+        <member name="T:Semio.ClientService.Feed.DataMap">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Feed.DataMap.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.DataMap.StoredProcedureName">
+            <summary>
+            Gets or sets the name of the stored procedure.
+            </summary>
+            <value>The name of the stored procedure.</value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.DataMap.TableName">
+            <summary>
+            Gets or sets the name of the table.
+            </summary>
+            <value>The name of the table.</value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.DataMap.FieldName">
+            <summary>
+            Gets or sets the name of the field.
+            </summary>
+            <value>The name of the field.</value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.DataMap.XPath">
+            <summary>
+            Gets or sets the X path.
+            </summary>
+            <value>The X path.</value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.DataMap.Values">
+            <summary>
+            Gets or sets the values.
+            </summary>
+            <value>The values.</value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.DataMap.Processor">
+            <summary>
+            Gets or sets the processor.
+            </summary>
+            <value>The processor.</value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.DataMap.Tag">
+            <summary>
+            Gets or sets the tag.  General use 
+            </summary>
+            <value>The tag.</value>
+        </member>
+        <member name="T:Semio.ClientService.Feed.Feed">
+            <summary>
+            Collection of FeedMaps
+            </summary>
+            
+        </member>
+        <member name="P:Semio.ClientService.Feed.Feed.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.Feed.ItemLevel">
+            <summary>
+            Gets or sets the item level.
+            </summary>
+            <value>The item level.</value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.Feed.Namespace">
+            <summary>
+            Gets or sets the namespace.
+            </summary>
+            <value>The namespace.</value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.Feed.DbTable">
+            <summary>
+            Gets or sets the database table name.
+            </summary>
+            <value>The db table.</value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.Feed.PkField">
+            <summary>
+            Gets or sets the database table name.
+            </summary>
+            <value>The db table.</value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.Feed.FeedMaps">
+            <summary>
+            Gets or sets the feedMaps.
+            </summary>
+            <value>The facets.</value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.Feed.DataMaps">
+            <summary>
+            Gets or sets the data maps.
+            </summary>
+            <value>The data maps.</value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.Feed.SolrMaps">
+            <summary>
+            Gets or sets the solr maps.
+            </summary>
+            <value>The solr maps.</value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.Feed.Processor">
+            <summary>
+            Gets or sets the processor.
+            </summary>
+            <value>The processor.</value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.Feed.FeedTitle">
+            <summary>
+            Gets or sets the feed title.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Feed.Feed.SyndicationFeedId">
+            <summary>
+            Gets or sets the syndication feed id
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Feed.FeedControl">
+            <summary>
+            Collection of feeds
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Feed.FeedControl.Feeds">
+            <summary>
+            Gets or sets the feeds.
+            </summary>
+            <value>The feeds.</value>
+        </member>
+        <member name="T:Semio.ClientService.Feed.FeedMap">
+            <summary>
+            Class representing a feed map facet.
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Feed.FeedMap.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/> that represents this instance.
+            </returns>
+        </member>
+        <member name="P:Semio.ClientService.Feed.FeedMap.Element">
+            <summary>
+            Gets or sets the element.
+            </summary>
+            <value>The element.</value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.FeedMap.Attribute">
+            <summary>
+            Gets or sets the attribute.
+            </summary>
+            <value>The attribute.</value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.FeedMap.IsProperty">
+            <summary>
+            Gets or sets a value indicating whether this instance is a property.
+            </summary>
+            <value>
+            	<c>true</c> if this instance is a property; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.FeedMap.IsFacet">
+            <summary>
+            Gets or sets a value indicating whether this instance is a facet.
+            </summary>
+            <value><c>true</c> if this instance is a facet; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.FeedMap.IsRange">
+            <summary>
+            Gets or sets a value indicating whether this instance is a range.
+            </summary>
+            <value><c>true</c> if this instance is a range; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.FeedMap.ItemLevel">
+            <summary>
+            Gets or sets the item level.
+            </summary>
+            <value>The item level.</value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.FeedMap.Order">
+            <summary>
+            Gets or sets the order.
+            </summary>
+            <value>The order.</value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.FeedMap.SolrOrder">
+            <summary>
+            Gets or sets the solr order.
+            </summary>
+            <value>The solr order.</value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.FeedMap.Groups">
+            <summary>
+            Gets or sets the groups.
+            </summary>
+            <value>The groups.</value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.FeedMap.IsAttribute">
+            <summary>
+            Gets a value indicating whether this instance is an attribute.
+            </summary>
+            <value>
+            	<c>true</c> if this instance is an attribute; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.FeedMap.DataType">
+            <summary>
+            Gets or sets the FeedMapDataType used to set the data type for display
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Feed.FeedMap.SolrPropertyName">
+            <summary>
+             Gets or sets the Solr Property Name
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Feed.FeedMapGroup">
+            <summary>
+            Class representing a group of feed maps.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Feed.FeedMapGroup.Level">
+            <summary>
+            Gets or sets the level.
+            </summary>
+            <value>The level.</value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.FeedMapGroup.Element">
+            <summary>
+            Gets or sets the element.
+            </summary>
+            <value>The element.</value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.FeedMapGroup.Display">
+            <summary>
+            Gets or sets the display.
+            </summary>
+            <value>The display.</value>
+        </member>
+        <member name="T:Semio.ClientService.Feed.Mapper">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Feed.Mapper.Initialize">
+            <summary>
+            initial setup. 
+            </summary>   
+        </member>
+        <member name="M:Semio.ClientService.Feed.Mapper.GetMapItem(System.String)">
+            <summary>
+            get an entry in feedmap object
+            </summary>           
+        </member>
+        <member name="M:Semio.ClientService.Feed.Mapper.GetMapItemNonFacet(System.String)">
+            <summary>
+            Gets the map not facet item.
+            </summary>
+            <param name="mapKey">The map key.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Feed.Mapper.GetAllFacets(System.Xml.Linq.XElement)">
+            <summary>
+            Builds a keyword packet for the atom feed
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Feed.Mapper.AppendAllNonFacetProperties(System.Xml.Linq.XElement,System.Xml.Linq.XElement)">
+            <summary>
+            Appends non-facet properties to the keyword packet
+            </summary>
+            <param name="packet"></param>
+            <param name="sourceItem"></param>
+        </member>
+        <member name="M:Semio.ClientService.Feed.Mapper.CreateFacetPacketItem(System.String,System.String,System.String,System.String)">
+            <summary>
+            craeate packet item xelement
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Feed.Mapper.GetOneValue(System.Xml.Linq.XElement,Semio.ClientService.Feed.FeedMap)">
+            <summary>
+            used to get the first value for a source item
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Feed.Mapper.GetOneValue(System.Xml.Linq.XElement,System.String)">
+            <summary>
+            used to get the first value for a source item
+            </summary>        
+        </member>
+        <member name="M:Semio.ClientService.Feed.Mapper.GetAttributeValue(System.Xml.Linq.XAttribute)">
+            <summary>
+            Gets an attribute's value
+            </summary>
+            <param name="attr">The attribute to get the value for</param>
+            <returns>The attribute's value</returns>
+        </member>
+        <member name="M:Semio.ClientService.Feed.Mapper.GetMappedItemsFromSource(System.Xml.Linq.XElement,Semio.ClientService.Feed.FeedMap)">
+            <summary>
+            get an item or item(s) from source
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Feed.Mapper.Container">
+            <summary>
+            Gets or sets the container - used by Intelligence processes
+            </summary>
+            <value>The container.</value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.Mapper.NameSpace">
+            <summary>
+            Gets the feed's xml namespace
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Feed.Mapper.ItemLevel">
+            <summary>
+            Gets the feed's item level
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Feed.Mapper.DataMaps">
+            <summary>
+            Gets the data maps.
+            </summary>
+            <value>The data maps.</value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.Mapper.SolrMaps">
+            <summary>
+            Gets the solr maps.
+            </summary>
+            <value>The solr maps.</value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.Mapper.MappedFacetsCollection">
+            <summary>
+             Gets the collection of facets
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Feed.Mapper.MappedFacetsAsFeedMap">
+            <summary>
+            Gets a dictionary of facets
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Feed.Mapper.MappedNonFacetPropertiesAsFeedMap">
+            <summary>
+             Gets the properties which are not facets
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Feed.Mapper.DbTable">
+            <summary>
+            Gets the database table name.
+            </summary>
+            <value>The db table.</value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.Mapper.PkField">
+            <summary>
+            Gets the primary key field for the specified table.
+            </summary>
+            <value>The pk field.</value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.Mapper.Processor">
+            <summary>
+            Gets the processor.
+            </summary>
+            <value>The processor.</value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.Mapper.FeedId">
+            <summary>
+            Gets or sets the ID of the feed
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Feed.Mapper.WhereClause">
+            <summary>
+            Gets or sets the where clause.
+            </summary>
+            <value>The where clause.</value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.Mapper.PrimarySqlQuery">
+            <summary>
+            Gets or sets the primary query.
+            </summary>
+            <value>The primary query.</value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.Mapper.IsBitWiseMaskFilter">
+            <summary>
+            Gets or sets a value indicating whether this instance is bit wise mask filter.
+            </summary>
+            <value>
+            	<c>true</c> if this instance is bit wise mask filter; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.Mapper.IsAppendingEachFacetToWhereClause">
+            <summary>
+            Gets a value indicating whether this instance is appending each facet to where clause.
+            </summary>
+            <value>
+            	<c>true</c> if this instance is appending each facet to where clause; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.Mapper.IsPrimarySqlQuery">
+            <summary>
+            Gets or sets a value indicating whether this instance is primary SQL query executed.
+            </summary>
+            <value>
+            	<c>true</c> if this instance is primary SQL query executed; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.Mapper.IsStoredProcedure">
+            <summary>
+            Gets or sets a value indicating whether this instance is stored procedure.
+            </summary>
+            <value>
+            	<c>true</c> if this instance is stored procedure; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:Semio.ClientService.Feed.SolrMap">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Feed.SolrMap.Id">
+            <summary>
+            Gets or sets the id.
+            </summary>
+            <value>The id.</value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.SolrMap.SolrCommand">
+            <summary>
+            Gets or sets the solr command.
+            </summary>
+            <value>The solr command.</value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.SolrMap.SchemaIndexName">
+            <summary>
+            Gets or sets the name of the table.
+            </summary>
+            <value>The name of the table.</value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.SolrMap.DataMapId">
+            <summary>
+            Gets or sets the name of the field.
+            </summary>
+            <value>The name of the field.</value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.SolrMap.FeedMapId">
+            <summary>
+            Gets or sets the facet map id.
+            </summary>
+            <value>The facet map id.</value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.SolrMap.Value">
+            <summary>
+            Gets or sets the value.
+            </summary>
+            <value>The value.</value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.SolrMap.Values">
+            <summary>
+            Gets or sets the values.
+            </summary>
+            <value>The values.</value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.SolrMap.Processor">
+            <summary>
+            Gets or sets the processor.
+            </summary>
+            <value>The processor.</value>
+        </member>
+        <member name="P:Semio.ClientService.Feed.SolrMap.Tag">
+            <summary>
+            Gets or sets the tag.  General use 
+            </summary>
+            <value>The tag.</value>
+        </member>
+    </members>
+</doc>

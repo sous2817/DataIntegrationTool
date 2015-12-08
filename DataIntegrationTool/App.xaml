@@ -1,0 +1,35 @@
+﻿<Application x:Class="DataIntegrationTool.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:ignore="http://www.galasoft.ch/ignore"
+             xmlns:mainProgram="clr-namespace:DataIntegrationTool.MainProgram"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             StartupUri="MainProgram/MainWindow/MainWindow.xaml"
+             mc:Ignorable="d ignore">
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colors.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Green.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.AnimatedTabControl.xaml" />
+                <ResourceDictionary Source="Resources/Styles/WizardStepsBorderStyle.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Viewboxes.xaml" />
+                <ResourceDictionary Source="Resources/Animations/WizardAnimations.xaml" />
+                <ResourceDictionary Source="Resources/Styles/TextStyles.xaml" />
+                <ResourceDictionary Source="Resources/Styles/CustomDialogRestyle.xaml" />
+                <ResourceDictionary Source="Resources/Styles/TextBoxFileDialog.xaml" />
+                <ResourceDictionary Source="Resources/Styles/GridSplitterStyle.xaml" />
+                <ResourceDictionary Source="Resources/Styles/ImportGroupBoxRestyle.xaml" />
+                <!--<ResourceDictionary Source="Resources/Styles/ContextMenu.xaml" />-->
+            </ResourceDictionary.MergedDictionaries>
+            <mainProgram:ViewModelLocator x:Key="Locator" d:IsDataSource="True" />
+        </ResourceDictionary>
+
+    </Application.Resources>
+
+</Application>

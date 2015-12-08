@@ -1,0 +1,2663 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Semio.ClientService.Entity.ObjectModel</name>
+    </assembly>
+    <members>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.ILockableEntity.IsLockedToOtherUser">
+            <summary>
+            Gets a value indicating whether this instance was locked to another user at the time locks were last checked.
+            </summary>
+            <value>
+            	<c>true</c> if this instance is locked to another user; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.ILockableEntity.IsLockedToMe">
+            <summary>
+            Gets a value indicating whether this instance is locked to the currently logged in user.
+            </summary>
+            <value>
+            	<c>true</c> if this instance is locked to me; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.ILockableEntity.CurrentLock">
+            <summary>
+            Gets the current lock applied to this entity if any as of the last lock refresh.
+            </summary>
+            <value>The current lock or null.</value>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.SemioEntityBase.GetEntityType">
+            <summary>
+            Get the type of this entity.
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.SemioEntityBase.OnBeforeSave">
+            <summary>
+            Called before save executes.
+            </summary>
+            <returns>A list of additional entities to save.</returns>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.SemioEntityBase.OnAfterSave">
+            <summary>
+            Called after save completes.
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.BlockAssignmentLevel">
+            <summary>
+            Partial class definition for supporting properties
+            and methods that aren't part of the code generation process.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.BlockAssignmentLevel.Name">
+            <summary>
+            Returns the name
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.CatalogEntry.GetStudioCatalogEntryId">
+            <summary>
+             Gets the Id from the catalog entry's source url
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.CatalogEntry.GetEntitySetId">
+            <summary>
+             Gets the Id from the catalog entry's source url
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.CatalogEntry.FormattedSourceUrl">
+            <summary>
+            Gets the formatted source URL.
+            </summary>
+            <value>The formatted source URL.</value>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.CatalogEntry.FormattedKeywordSourceUrl">
+            <summary>
+            Gets the formatted keyword source URL.
+            </summary>
+            <value>The formatted keyword source URL.</value>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.CatalogEntry.MoleculeName">
+            <summary>
+            Gets the CatalogEntry's Molecule's name
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.CatalogEntryLookup.FormattedSourceUrl">
+            <summary>
+            Gets the formatted source URL.
+            </summary>
+            <value>The formatted source URL.</value>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.CatalogEntryLookup.FormattedKeywordSourceUrl">
+            <summary>
+            Gets the formatted keyword source URL.
+            </summary>
+            <value>The formatted keyword source URL.</value>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.IVersionedEntity">
+            <summary>
+             Represents an Entity that has both candidates and a molecule.
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.IVersionedEntity.GetEntityType">
+            <summary>
+            Get the type of this entity.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.IVersionedEntity.Name">
+            <summary>
+            Gets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.IVersionedEntity.Alias">
+            <summary>
+            Gets or sets the alias.
+            </summary>
+            <value>The alias.</value>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.IVersionedEntity.Candidates">
+            <summary>
+            Gets the candidates.
+            </summary>
+            <value>The candidates.</value>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.IVersionedEntity.MoleculeID">
+            <summary>
+            Gets the molecule id.
+            </summary>
+            <value>The molecule id.</value>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.IVersionedEntity.Molecule">
+            <summary>
+            Gets the molecule.
+            </summary>
+            <value>The molecule.</value>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.IVersionedEntity.Id">
+            <summary>
+            The unique identifier of this design candidate
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.ClinicalPlan.Candidates">
+            <summary>
+            Gets the candidates for this trial.
+            </summary>
+            <value>The candidates.</value>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.Country">
+            <summary>
+            Partial class definition for supporting properties
+            and methods that aren't part of the code generation process.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.Country.Name">
+            <summary>
+            Returns the name
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.Country.Abbreviation">
+            <summary>
+            Returns the abbreviation
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.IEntityWithFindings.GetEntityType">
+            <summary>
+            Get the type of this entity.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.IEntityWithFindings.RelatedFindings">
+            <summary>
+            The findings for this Entity.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.IEntityWithFindings.Guid">
+            <summary>
+            A globally unique identifier of this design candidate.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.IEntityWithFindings.Id">
+            <summary>
+            The unique identifier of this design candidate
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.DesignCandidate.GetElement(Semio.ClientService.Entity.ObjectModel.DesignElementType)">
+            <summary>
+            Returns the specified element for this candidate.
+            </summary>
+            <param name="elementType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.DesignCandidate.Element(Semio.ClientService.Entity.ObjectModel.DesignElementType)">
+            <summary>
+            Returns the specified element for this candidate.
+            </summary>
+            <param name="elementType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.DesignCandidate.HasElement(Semio.ClientService.Entity.ObjectModel.DesignElementType)">
+            <summary>
+            Determines whether the candidate has an element of the specified element type.
+            </summary>
+            <param name="elementType">Type of the element.</param>
+            <returns>
+            	<c>true</c> if the specified element type is present; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.DesignCandidate.TrialLength">
+            <summary>
+            Gets the First Patient Visit to Last Patient Visit trial length in days.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.DesignCandidate.HasCanvasData">
+            <summary>
+            Gets a value indicating if a Canvas element exists for this Design Candidate
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.DesignCandidate.PrivacyType">
+            <summary>
+            Gets or sets the PrivacyType of this DesignCandidate
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.DesignCandidate.ExistingStatus">
+            <summary>
+            The existing status (in the database) for this candidate.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.DesignCandidate.Status">
+            <summary>
+            Get or set the Status for this DesignCandidate.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.DesignCandidate.HasEnrollmentPlan">
+            <summary>
+            Gets a value indicating whether this instance has enrollment plan.
+            </summary>
+            <value>
+            	<c>true</c> if this instance has enrollment plan; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.DesignCandidate.StatusChangedRationale">
+            <summary>
+             Rationale for rejecting the candidate.
+             Will be used to create a Decision finding.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.DesignCandidate.DeleteCandidateRationale">
+            <summary>
+            Rationale for the decision finding
+            that will be generted when the candidate is deleted.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.DesignCandidate.IsExtension">
+            <summary>
+            Indicates if the candidate is an extension.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.DesignCandidate.EntityParent">
+            <summary>
+            Gets or sets the entity parent, which currently are: trial,ClinicalPlan,TargetProductProfile
+            </summary>
+            <value>The entity parent.</value>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.IDesignCandidateNode">
+            <summary>
+            Design candidate node. Independent of level.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.IDesignCandidateNode.SourceId">
+            <summary>
+            Gets or sets the source id.
+            </summary>
+            <value>The source id.</value>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.IDesignCandidateNode.Xml">
+            <summary>
+            Gets or sets the XML.
+            </summary>
+            <value>The XML.</value>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.IDesignCandidateNode.ImageArtifactId">
+            <summary>
+            Gets or sets the image artifact id.
+            </summary>
+            <value>The image artifact id.</value>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.IDesignCandidateNode.Name">
+            <summary>
+            Gets the name of this node.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.IDesignCandidateNode.Candidate">
+            <summary>
+            Gets the candidate containing this node.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.DesignElement.Findings">
+            <summary>
+             The findings for this DesignElement.
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.Diagnostic">
+            <summary>
+            Partial class definition for supporting properties
+            and methods that aren't part of the code generation process.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.Diagnostic.Name">
+            <summary>
+            Returns the name
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.Diagnostic.Description">
+            <summary>
+            Returns the description
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.Diagnostic.Category">
+            <summary>
+            Returns the category
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.Diagnostic.Code">
+            <summary>
+            Returns the code
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.Diagnostic.IsCostMappedFlag">
+            <summary>
+            Gets or sets the cost mapped flag.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.Diagnostic.IsPartialCostMappedFlag">
+            <summary>
+            Gets or sets the cost mapped flag for bundles.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.Diagnostic.BundledDiagnostics">
+            <summary>
+            Gets or sets the Bundled diagnostics.
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.EntityConfiguration.GetEntitySettingCollection(System.String)">
+            <summary>
+            Returns a collection of the <code>XElement</code>s in the Configuration with the provided name
+            </summary>
+            <param name="settingName">Name of the configuration elements to return</param>
+            <returns>A collection of the <code>XElement</code>s in the Configuration with the provided name.</returns>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.EntityConfiguration.GetSharePointUris">
+            <summary>
+            Gets a collection of <code>SharePointUris</code> from the current <code>EntityConfiguration</code>.
+            </summary>
+            <returns>A collection of <code>SharePointUris</code> from the current <code>EntityConfiguration</code>.</returns>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.EntityConfiguration.AddSharePointUri(Semio.ClientService.Interfaces.ISharePointUri)">
+            <summary>
+            Adds an Xml element to the configuration for the entity
+            </summary>
+            <param name="uri">ISharePointUri to add the configuration for</param>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.EntityConfiguration.AddSharePointUri(System.String,System.String,System.String)">
+            <summary>
+            Adds a new SharePointUri to the configuration for the entity
+            </summary>
+            <param name="name">Name for the new SharePoint Uri</param>
+            <param name="documentUri">Uri of the document library</param>
+            <param name="templateUri">Uri of the template for the document library</param>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.Finding.GetElementForText(System.String)">
+            <summary>
+            Gets an html xml element for the specified text.
+            </summary>
+            <param name="value">The value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.Finding.SetDescriptionText(System.String)">
+            <summary>
+            Sets the xml to the specified description text with added HTML wrapper tags.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.Finding.GetDescriptionText(System.Xml.Linq.XElement)">
+            <summary>
+            Gets the plain description text without xml tags.
+            </summary>
+            <param name="xml">The XML.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.Finding.GetDescriptionText">
+            <summary>
+            Gets the plain description text without xml tags.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.Finding.ReNotifyDirtyStatus">
+            <summary>
+            Re-notifies any listeners of the current dirty status.
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.Finding.ClearDirtyState">
+            <summary>
+            Clears the state of the dirty flag.
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.Finding.Equals(Semio.ClientService.Entity.ObjectModel.Finding)">
+            <summary>
+            Determines whether two Object instances are equal.
+            </summary>
+            <param name="finding"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.Finding.Description">
+            <summary>
+            Property for binding the link to the description text
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.FormDef.RetrieveTree(System.Int32)">
+            <summary>
+            Retrieves an XML tree defining the Form Definition and
+            all of its related elements for display
+            </summary>
+            <param name="id">ID of the <see cref="T:Semio.ClientService.Entity.ObjectModel.FormDef"/> to retrieve the tree of</param>
+            <returns></returns>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.FormDef.FormDefTree">
+            <summary>
+            Contains the XML tree for the Form Definition
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.LabTest">
+            <summary>
+            Partial class definition for supporting properties
+            and methods that aren't part of the code generation process.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.LabTest.IsCostMappedFlag">
+            <summary>
+            Gets or sets the cost mapped flag.
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.Measurement">
+            <summary>
+            Partial class definition for supporting properties
+            and methods that aren't part of the code generation process.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.Measurement.Name">
+            <summary>
+            Returns the name
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.Measurement.Description">
+            <summary>
+            Returns the description
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.Measurement.IsCostMappedFlag">
+            <summary>
+            Gets or sets the cost mapped flag.
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.MedDRASoC">
+            <summary>
+            Partial class definition for supporting properties
+            and methods that aren't part of the code generation process.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.MedDRASoC.Code">
+            <summary>
+            Returns the code
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.MedDRASoC.Name">
+            <summary>
+            Returns the name
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.MedDRASoC.Description">
+            <summary>
+            Returns the description
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.Molecule.Sponsor">
+            <summary>
+             Gets the molecule's lead sponsor
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.Molecule.DisplayNameAlias">
+            <summary>
+             Gets or sets the display name alias for this molecule
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.Molecule.DisplayName">
+            <summary>
+             Gets the Display name from the display name alias if it is set,
+             otherwise it uses the molecule entity Name
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.Molecule.GenericAliases">
+            <summary>
+             Gets the ProprietaryAlias from the alias collection
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.Molecule.ProprietaryAliases">
+            <summary>
+             Gets the ProprietaryAlias from the alias collection
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.Molecule.OtherAliases">
+            <summary>
+             Gets a collection of 
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.Molecule.CompoundIDs">
+            <summary>
+             Gets the LY Number alisas from the alias collection
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.Molecule.EntityConfiguration">
+            <summary>
+            Gets the entity configuration.
+            </summary>
+            <value>The entity configuration.</value>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.NIHDrugLabel.LabelTitle">
+            <summary>
+            Returns the title. 
+            Note, title already exists in the DB but is never used.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.NIHDrugLabel.Summary">
+            <summary>
+            Returns the summary
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.NIHDrugLabel.Sponsor">
+            <summary>
+            Returns the sponsor
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.Person.CanEdit(Semio.ClientService.Entity.ObjectModel.SemioEntityBase)">
+            <summary>
+            Returns true if this person can update the specified entity.
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.Person.CanView(Semio.ClientService.Entity.ObjectModel.SemioEntityBase)">
+            <summary>
+            Returns true if this person can view the specified entity.
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.Person.CanEditFindings(Semio.ClientService.Entity.ObjectModel.DesignCandidate)">
+            <summary>
+            Returns true if this person can edit findings in the specified candidate
+            </summary>
+            <param name="candidate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.Person.HasPermission(Semio.ClientService.Entity.ObjectModel.Permission)">
+            <summary>
+            Returns true if this person has the specified permission on any entity.
+            </summary>
+            <param name="permission"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.Person.HasPermission(Semio.ClientService.Entity.ObjectModel.DesignCandidate,Semio.ClientService.Entity.ObjectModel.Permission)">
+            <summary>
+            Returns true if this person has one or more of the specified permissions on the specified design candidate.
+            </summary>
+            <param name="designCandidate"></param>
+            <param name="permission"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.Person.HasPermission(Semio.ClientService.Entity.ObjectModel.Trial,Semio.ClientService.Entity.ObjectModel.Permission)">
+            <summary>
+            Returns true if this person has one or more of the specified permissions on the specified trial.
+            </summary>
+            <param name="trial"></param>
+            <param name="permission"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.Person.HasPermission(Semio.ClientService.Entity.ObjectModel.ClinicalPlan,Semio.ClientService.Entity.ObjectModel.Permission)">
+            <summary>
+            Returns true if this person has one or more of the specified permissions on the specified clinical plan.
+            </summary>
+            <param name="clinicalPlan"></param>
+            <param name="permission"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.Person.HasPermission(Semio.ClientService.Entity.ObjectModel.IVersionedEntity,Semio.ClientService.Entity.ObjectModel.Permission)">
+            <summary>
+            Returns true if this person has one or more of the specified permissions on the specified entity.
+            </summary>
+            <param name="entity">The entity.</param>
+            <param name="permission">The permission.</param>
+            <returns>
+            	<c>true</c> if the specified entity has permission; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.Person.HasPermission(Semio.ClientService.Entity.ObjectModel.Molecule,Semio.ClientService.Entity.ObjectModel.Permission)">
+            <summary>
+            Returns true if this person has the specified permission on the specified molecule.
+            </summary>
+            <param name="molecule"></param>
+            <param name="permission"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.Person.HasPermission(Semio.ClientService.Entity.ObjectModel.Molecule,Semio.ClientService.Entity.ObjectModel.Permission[])">
+            <summary>
+            Returns true if this person has one or more of the specified permissions on the specified molecule.
+            </summary>
+            <param name="molecule"></param>
+            <param name="permissions"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.Person.DisplayName">
+            <summary>
+            The display name for this person.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.Person.IsGod">
+            <summary>
+            Indicates that this person has all permissions.  To be used in development only.
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.QIndication">
+            <summary>
+            Partial class definition for supporting properties
+            and methods that aren't part of the code generation process.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.QIndication.Code">
+            <summary>
+            Returns the code
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.QIndication.Name">
+            <summary>
+            Returns the name
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.QIndication.Description">
+            <summary>
+            Returns the description
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.QIndication.Semio#ClientService#Interfaces#ILookupData#Code">
+            <summary>
+            Returns the code
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.QTherapeuticArea">
+            <summary>
+            Partial class definition for supporting properties
+            and methods that aren't part of the code generation process.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.QTherapeuticArea.Code">
+            <summary>
+            Returns the code
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.QTherapeuticArea.Name">
+            <summary>
+            Returns the name
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.QTherapeuticArea.Description">
+            <summary>
+            Returns the description
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.QTherapeuticArea.Semio#ClientService#Interfaces#ILookupData#Code">
+            <summary>
+            Returns the code
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.QTherapeuticAreaQIndication.Code">
+            <summary>
+            Returns the code
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.QTherapeuticAreaQIndication.QTherapeuticAreaCode">
+            <summary>
+            Returns the code
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.QTherapeuticAreaQIndication.QIndicationCode">
+            <summary>
+            Returns the code
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.QTherapeuticAreaQIndication.Semio#ClientService#Interfaces#ILookupData#Code">
+            <summary>
+            Returns the code
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.QuintilesQIPTherapeuticArea">
+            <summary>
+            Partial class definition for supporting properties
+            and methods that aren't part of the code generation process.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.QuintilesQIPTherapeuticArea.Code">
+            <summary>
+            Returns the code
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.QuintilesQIPTherapeuticArea.Name">
+            <summary>
+            Returns the name
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.QuintilesQIPTherapeuticArea.Description">
+            <summary>
+            Returns the description
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.QuintilesQIPTherapeuticArea.Semio#ClientService#Interfaces#ILookupData#Code">
+            <summary>
+            Returns the code
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.CandidateSourcingModelType">
+            <summary>
+            Clinical.CandidateSourcingModelType generated enumeration
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.CandidateSourcingModelType.None">
+            <summary>
+            No value or default
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.CandidateSourcingModelType.Functional">
+            <summary>
+            Functional
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.CandidateSourcingModelType.InSourced">
+            <summary>
+            In-sourced
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.CandidateSourcingModelType.Project">
+            <summary>
+            Project
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.CandidateStatus">
+            <summary>
+            Clinical.CandidateStatus generated enumeration
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.CandidateStatus.None">
+            <summary>
+            No value or default
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.CandidateStatus.Active">
+            <summary>
+            Active
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.CandidateStatus.Leading">
+            <summary>
+            Leading
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.CandidateStatus.Rejected">
+            <summary>
+            Rejected
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.CandidateStatus.DesignApproved">
+            <summary>
+            Design Approved
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.CandidateStatus.Amended">
+            <summary>
+            Amended
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.CandidateStatus.Completed">
+            <summary>
+            Completed
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.CandidateStatus.Imported">
+            <summary>
+            Imported
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.CandidateStatus.DashboardActive">
+            <summary>
+            Dashboard Active
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.CanvasModelType">
+            <summary>
+            PredictiveAnalytics.CanvasModelType generated enumeration
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.CanvasModelType.None">
+            <summary>
+            No value or default
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.CanvasModelType.PredictiveAnalyticsInvestigator">
+            <summary>
+            PredictiveAnalyticsInvestigator
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.CanvasModelType.PredictiveAnalyticsCost">
+            <summary>
+            PredictiveAnalyticsCost
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.CanvasModelType.PredictiveAnalyticsDefaultCost">
+            <summary>
+            PredictiveAnalyticsDefaultCost
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.CanvasModelType.PredictiveAnalyticsEnrollment">
+            <summary>
+            PredictiveAnalyticsEnrollment
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.CanvasModelType.PredictiveAnalyticsCountry">
+            <summary>
+            PredictiveAnalyticsCountry
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.CanvasModelType.PredictiveAnalyticsPatient">
+            <summary>
+            PredictiveAnalyticsPatient
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.CanvasModelType.PredictiveAnalyticsSOC">
+            <summary>
+            PredictiveAnalyticsSOC
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.CanvasModelType.PredictiveAnalyticsDataMining">
+            <summary>
+            PredictiveAnalyticsDataMining
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.CatalogEntryDataType">
+            <summary>
+            Clinical.CatalogEntryDataType generated enumeration
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.CatalogEntryDataType.None">
+            <summary>
+            No value or default
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.CatalogEntryDataType.TrialCandidates">
+            <summary>
+            Trial Candidates
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.CatalogEntryDataType.Findings">
+            <summary>
+            Findings
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.CatalogEntryDataType.TrialCollections">
+            <summary>
+            Trial Collections
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.CatalogEntryDataType.CTGov">
+            <summary>
+            CT Gov
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.CatalogEntryDataType.eCRFs">
+            <summary>
+            eCRFs
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.CatalogEntryDataType.TrialCollection">
+            <summary>
+            Trial Collection
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.CatalogEntryDataType.ClinicalPlanCandidates">
+            <summary>
+            Clinical Plan Candidates
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.CatalogEntryDataType.ClinicalPlanCollections">
+            <summary>
+            Clinical Plan Collections
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.CatalogEntryDataType.ClinicalPlanCollectionCandidates">
+            <summary>
+            Clinical Plan Collection Candidates
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.CatalogEntryDataType.DrugInformation">
+            <summary>
+            Drug Information
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.CatalogEntryDataType.QuickCollection">
+            <summary>
+            Quick Collection
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.CatalogEntryDataType.EntitySets">
+            <summary>
+            Entity Sets
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.CatalogEntryDataType.TargetProductProfileCandidates">
+            <summary>
+            Target Product Profile Candidates
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.CatalogEntryDataType.TargetProductProfileCollections">
+            <summary>
+            Target Product Profile Collections
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.CatalogEntryDataType.TargetProductProfileCollectionCandidates">
+            <summary>
+            Target Product Profile Collection Candidates
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.CatalogEntryDataType.EntitySet">
+            <summary>
+            Entity Set
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.CatalogEntryDataType.Molecules">
+            <summary>
+            Molecules
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.CatalogEntryDataType.QueryBuilder">
+            <summary>
+            QueryBuilder
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.CatalogEntryDataType.Projects">
+            <summary>
+            Projects
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.CatalogEntryDataType.DrugInfoQueryBuilder">
+            <summary>
+            Drug Info QueryBuilder
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.ClinicalPlanOrganizationType">
+            <summary>
+            Clinical.ClinicalPlanOrganizationType generated enumeration
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.ClinicalPlanOrganizationType.None">
+            <summary>
+            No value or default
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.ClinicalPlanOrganizationType.Collaborator">
+            <summary>
+            Collaborator
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.ClinicalPlanOrganizationType.Sponsor">
+            <summary>
+            Sponsor
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.ClinicalPlanOrganizationType.LeadSponsor">
+            <summary>
+            Lead Sponsor
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.DesignCategoryType">
+            <summary>
+            Clinical.DesignCategoryType generated enumeration
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignCategoryType.None">
+            <summary>
+            No value or default
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignCategoryType.Objectives">
+            <summary>
+            Objectives
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignCategoryType.Treatment">
+            <summary>
+            Treatment
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignCategoryType.StatisticalPlan">
+            <summary>
+            Statistical Plan
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignCategoryType.Measurements">
+            <summary>
+            Measurements
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignCategoryType.StudyPopulation">
+            <summary>
+            Study Population
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignCategoryType.InvestigationalPlan">
+            <summary>
+            Investigational Plan
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignCategoryType.DataQualityPlan">
+            <summary>
+            Data Quality Plan
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignCategoryType.RegulatoryConsiderations">
+            <summary>
+            Regulatory Considerations
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignCategoryType.Operations">
+            <summary>
+            Operations
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignCategoryType.EfficacyStrategy">
+            <summary>
+            Efficacy Strategy
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignCategoryType.ClinicalStrategy">
+            <summary>
+            Clinical Strategy
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignCategoryType.TargetProductProfileHigh">
+            <summary>
+            High Attributes
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignCategoryType.TargetProductProfileLow">
+            <summary>
+            Low Attributes
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignCategoryType.TargetProductProfileBase">
+            <summary>
+            Base Attributes
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignCategoryType.TargetProductProfileUnfunded">
+            <summary>
+            Unfunded Attributes
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignCategoryType.RegulatoryStrategy">
+            <summary>
+            Regulatory Strategy
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignCategoryType.HealthOutcomeStrategy">
+            <summary>
+            Health Outcome Strategy
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignCategoryType.Diversity">
+            <summary>
+            Diversity
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignCategoryType.CompassionateUse">
+            <summary>
+            Compassionate Use
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignCategoryType.CPMBudget">
+            <summary>
+            Budget
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignCategoryType.RisksAndContigencyPlans">
+            <summary>
+            Risks &amp; Contingency Plans
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignCategoryType.ClinicalPlanSchema">
+            <summary>
+            Schemas
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignCategoryType.BiopharmaceuticalPackage">
+            <summary>
+            Biopharmaceutical Package
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignCategoryType.AssessmentOfSafety">
+            <summary>
+            Assessment of Safety
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignCategoryType.TargetProductProfile">
+            <summary>
+            Target Product Profiles
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignCategoryType.ClinicalPlanStrategies">
+            <summary>
+            Clinical Strategies
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignCategoryType.DraftLaunchLabel">
+            <summary>
+            Draft Launch Labels
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignCategoryType.PredictiveAnalytics">
+            <summary>
+            Predictive Analytics
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignCategoryType.AttributeAssociations">
+            <summary>
+            Attribute Associations
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignCategoryType.ClinicalPlanCost">
+            <summary>
+            Cost
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignCategoryType.PatientAnalytics">
+            <summary>
+            Patient Analytics
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignCategoryType.StandardOfCare">
+            <summary>
+            Standard of Care
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignCategoryType.StudyGenerator">
+            <summary>
+            Study Generator
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignCategoryType.ClinicalPlans">
+            <summary>
+            Clinical Plans
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignCategoryType.Trials">
+            <summary>
+            Trials
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignCategoryType.CandidateComparison">
+            <summary>
+            Candidate Comparison
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.DesignElementType">
+            <summary>
+            Clinical.DesignElementType generated enumeration
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.None">
+            <summary>
+            No value or default
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.PrimaryObjective">
+            <summary>
+            Primary Objective
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.SecondaryObjective">
+            <summary>
+            Secondary Objective
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.ExploratoryObjective">
+            <summary>
+            Exploratory Objective
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.Treatments">
+            <summary>
+            Interventions
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.Methods">
+            <summary>
+            Methods
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.ConcomitantTherapy">
+            <summary>
+            Concomitant Therapy
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.SampleSize">
+            <summary>
+            Sample Size
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.AnalysisPlan">
+            <summary>
+            Analysis Plan
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.Diagnostics">
+            <summary>
+            Diagnostics
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.Safety">
+            <summary>
+            Safety
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.Efficacy">
+            <summary>
+            Efficacy
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.PatientDemographics">
+            <summary>
+            Patient Demographics
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.InclusionCriteria">
+            <summary>
+            Inclusion Criteria
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.ExclusionCriteria">
+            <summary>
+            Exclusion Criteria
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.Discontinuations">
+            <summary>
+            Discontinuations
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.DesignAndControls">
+            <summary>
+            Design &amp; Controls
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.Schema">
+            <summary>
+            Schema
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.ScheduleOfEvents">
+            <summary>
+            Schedule Of Events
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.DataCaptureSystem">
+            <summary>
+            Data Capture System
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.InformedConsent">
+            <summary>
+            Informed Consent
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.EthicalReview">
+            <summary>
+            Ethical Review
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.OtherRegulatory">
+            <summary>
+            Other
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.Budget">
+            <summary>
+            Cost
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.Timeline">
+            <summary>
+            Timeline
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.Quality">
+            <summary>
+            Quality
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.Contract">
+            <summary>
+            Contract
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.QuantitativePharmacology">
+            <summary>
+            Quantitative Pharmacology
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.BiomarkerGenetics">
+            <summary>
+            Biomarker Genetics
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.TailoredTherapy">
+            <summary>
+            Tailored Therapy
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.NonGenotropicHeterogeneityAnalysis">
+            <summary>
+            Non-Genotropic Heterogeneity Analysis
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.OverallDoseDetermination">
+            <summary>
+            Overall Dose Determination
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.CompoundDelivery">
+            <summary>
+            Compound Delivery
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.PediatricDevelopment">
+            <summary>
+            Pediatric Development
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.ClinicalPlanSchema">
+            <summary>
+            Schema
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.Burden">
+            <summary>
+            Burden
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.Administrative">
+            <summary>
+            Administrative
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.TargetProductProfile">
+            <summary>
+            Target Product Profile
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.DraftLaunchLabel">
+            <summary>
+            Draft Launch Label
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.ClinicalPlanSummary">
+            <summary>
+            Summary
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.ClinicalPlanSafety">
+            <summary>
+            Safety
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.ClinicalPlanEfficacy">
+            <summary>
+            Efficacy
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.ClinicalPlanOtherStrategies">
+            <summary>
+            Other Strategies
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.TrialAttributeAssociation">
+            <summary>
+            Trial Attribute Association
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.ObjectiveAttributeAssociation">
+            <summary>
+            Objective Attribute Association
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.ProjectStudyGenerator">
+            <summary>
+            Study Generator
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignElementType.ProjectCandidateComparison">
+            <summary>
+            Candidate Comparison
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.EntityMappingType">
+            <summary>
+            Clinical.EntityMappingType generated enumeration
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.EntityMappingType.None">
+            <summary>
+            No value or default
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.EntityMappingType.Parent">
+            <summary>
+            Parent
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.EntitySetType">
+            <summary>
+            Clinical.EntitySetType generated enumeration
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.EntitySetType.None">
+            <summary>
+            No value or default
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.EntitySetType.Catalog">
+            <summary>
+            Catalog
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.EntitySetType.Security">
+            <summary>
+            Security
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.EntityType">
+            <summary>
+            Clinical.EntityType generated enumeration
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.EntityType.None">
+            <summary>
+            No value or default
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.EntityType.Molecule">
+            <summary>
+            Molecule
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.EntityType.TrialSet">
+            <summary>
+            TrialSet
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.EntityType.Trial">
+            <summary>
+            Trial
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.EntityType.DesignCandidate">
+            <summary>
+            DesignCandidate
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.EntityType.DesignCategory">
+            <summary>
+            DesignCategory
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.EntityType.DesignElement">
+            <summary>
+            DesignElement
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.EntityType.Finding">
+            <summary>
+            Finding
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.EntityType.CanvasElement">
+            <summary>
+            Canvas Element
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.EntityType.ClinicalPlan">
+            <summary>
+            Clinical Plan
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.EntityType.CtGovTrial">
+            <summary>
+            CtGovTrial
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.EntityType.eCRF">
+            <summary>
+            eCRF
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.EntityType.Project">
+            <summary>
+            Project
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.EntityType.CanvasModel">
+            <summary>
+            CanvasModel
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.EntityType.DrugInformation">
+            <summary>
+            DrugInformation
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.EntityType.Person">
+            <summary>
+            Person
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.EntityType.DataMiningTrial">
+            <summary>
+            Data Mining Trial
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.EntityType.Country">
+            <summary>
+            Country
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.FindingEvent">
+            <summary>
+            Clinical.FindingEvent generated enumeration
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.FindingEvent.None">
+            <summary>
+            None
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.FindingEvent.DesignCandidateCreated">
+            <summary>
+            Design Candidate Created
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.FindingEvent.DesignCandidateCopied">
+            <summary>
+            Design Candidate Copied
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.FindingEvent.DesignCandidateStatusActive">
+            <summary>
+            Design Candidate Status Active
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.FindingEvent.DesignCandidateStatusRejected">
+            <summary>
+            Design Candidate Status Rejected
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.FindingEvent.DesignCandidateDeleted">
+            <summary>
+            Design Candidate Deleted
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.FindingEvent.DesignCandidateStatusLeading">
+            <summary>
+            Design Candidate Status Leading
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.FindingEvent.DesignCandidateStatusDesignApproved">
+            <summary>
+            Design Candidate Status Design Approved
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.FindingEvent.DesignCandidateStatusAmended">
+            <summary>
+            Design Candidate Status Amended
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.FindingEvent.DesignCandidateStatusCompleted">
+            <summary>
+            Design Candidate Status Completed
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.FindingEvent.DesignCandidateImported">
+            <summary>
+            Design Candidate Imported
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.FindingEvent.DesignCandidateStatusDashboardActive">
+            <summary>
+            Design Candidate Status Dashboard Active
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.FindingType">
+            <summary>
+            Clinical.FindingType generated enumeration
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.FindingType.None">
+            <summary>
+            No value or default
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.FindingType.Assumption">
+            <summary>
+            Assumption
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.FindingType.Reference">
+            <summary>
+            Reference
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.FindingType.Comment">
+            <summary>
+            Comment
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.FindingType.Decision">
+            <summary>
+            Decision
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.FindingType.Status">
+            <summary>
+            Status
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.FindingType.Archive">
+            <summary>
+            Archive
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.MoleculeAliasType">
+            <summary>
+            Clinical.MoleculeAliasType generated enumeration
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.MoleculeAliasType.None">
+            <summary>
+            No value or default
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.MoleculeAliasType.GenericName">
+            <summary>
+            Generic Name
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.MoleculeAliasType.ProprietaryName">
+            <summary>
+            Proprietary Name
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.MoleculeAliasType.OtherAlias">
+            <summary>
+            Other Alias
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.MoleculeAliasType.CompoundID">
+            <summary>
+            Compound ID
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.MoleculeOrganizationType">
+            <summary>
+            Clinical.MoleculeOrganizationType generated enumeration
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.MoleculeOrganizationType.None">
+            <summary>
+            No value or default
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.MoleculeOrganizationType.Sponsor">
+            <summary>
+            Sponsor
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.MoleculeOrganizationType.SourcingVendor">
+            <summary>
+            Sourcing Vendor
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.OrganizationType">
+            <summary>
+            Clinical.OrganizationType generated enumeration
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.OrganizationType.None">
+            <summary>
+            No value or default
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.OrganizationType.Pharma">
+            <summary>
+            Pharma
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.OrganizationType.CRO">
+            <summary>
+            CRO
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.OrganizationType.University">
+            <summary>
+            University
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.OrganizationType.Other">
+            <summary>
+            Other
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.Permission">
+            <summary>
+            Security.Permission generated enumeration
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.Permission.None">
+            <summary>
+            No value or default
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.Permission.Login">
+            <summary>
+            Allows user to login to the application (all users need this permission).
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.Permission.ViewDesignCandidates">
+            <summary>
+            Allows user to view any (Team or Personal) design candidates in a program.
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.Permission.EditTeamDesignCandidates">
+            <summary>
+            Allows user to create and edit any "Team" design candidates in a program.
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.Permission.EditPersonalDesignCandidates">
+            <summary>
+            Allows user to create and edit their own (and only their own) "Personal" design candidates in a program.
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.Permission.ViewDesignFindings">
+            <summary>
+            Allows user to view any (Team or Personal) design findings in a program.
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.Permission.EditTeamDesignFindings">
+            <summary>
+            Allows user to create and edit any "Team" design findings in a program.
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.Permission.EditPersonalDesignFindings">
+            <summary>
+            Allows user to create and edit their own (and only their own) "Personal" design findings in a program.
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.Permission.LaunchIntelligenceModules">
+            <summary>
+            Allows user to launch Intelligence modules, create/view visualizations, etc.
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.Permission.LaunchExplorerModule">
+            <summary>
+            Allows user to launch Explorer module, view feeds, etc.
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.Permission.LaunchAdminModule">
+            <summary>
+            Allows user to administer security, ref lists, etc.
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.Permission.EditExportLocations">
+            <summary>
+            Allows user to add new export locations to Export dialog.
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.Permission.LaunchDashboardApplication">
+            <summary>
+            Allows a user to launch the Dashboard application.
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.Permission.LaunchOnboardingView">
+            <summary>
+            Allows a user to launch the CPSI Onboard view
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.Permission.EditDashboardTeamSettings">
+            <summary>
+            Allows user to edit settings for a dashboard team.
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.Permission.EditDashboardComments">
+            <summary>
+            Allows user to edit the comments of other users and view the history of all comments.
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.Permission.ViewProjectDashboardData">
+            <summary>
+            Allows user to view and create dashboards for a specific project.
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.Permission.ViewTrialDashboardData">
+            <summary>
+            Allows user to view trial data for a given trial.
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.Permission.EditLabsLists">
+            <summary>
+            Allows user to administer Lab Tests
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.Permission.EditMeasurementsLists">
+            <summary>
+            Allows user to administer Measurements
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.Permission.EditSecurityLists">
+            <summary>
+            Allows user to administer Security lists
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.Permission.EditTreatmentGuidelines">
+            <summary>
+            Allows user to administer Treatment Guidelines
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.Permission.LoginClinicalAdmin">
+            <summary>
+            Allows user to log into the Clinical Admin utility
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.Permission.LoginSolrMaintenance">
+            <summary>
+            Allows user to log into the Solr Maintenance utility
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.Permission.CreateCatalogShortcuts">
+            <summary>
+            Allows user to create catalog shortcuts in Explorer
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.Permission.EditDataMining">
+            <summary>
+            Allows user to create and edit Data Mining nodes in PA
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.Permission.ViewOpportunityInformation">
+            <summary>
+            Allows user to view opportunity information for a canvas in PA
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.Permission.EditOpportunityInformation">
+            <summary>
+            Allows user to edit opportunity information for a canvas in PA
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.Permission.UseV2ScoringSystem">
+            <summary>
+            Allows user to use the V2 scoring system in PA
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.Permission.UseResearchFacilityPerformanceView">
+            <summary>
+            Allows user to use the Research Facility Investigational Performance view in PA
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.Permission.CreateESPModels">
+            <summary>
+            Allows user to create ESP enrollment models for a canvas in PA
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.PrivacyType">
+            <summary>
+            Security.PrivacyType generated enumeration
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.PrivacyType.None">
+            <summary>
+            No value or default
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.PrivacyType.Team">
+            <summary>
+            Team
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.PrivacyType.Personal">
+            <summary>
+            Personal
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.PrivacyType.Import">
+            <summary>
+            Import
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.TrialAliasType">
+            <summary>
+            Clinical.TrialAliasType generated enumeration
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.TrialAliasType.None">
+            <summary>
+            No value or default
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.TrialAliasType.StudyID">
+            <summary>
+            Study ID
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.TrialAliasType.IMPACTNumber">
+            <summary>
+            IMPACT Number
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.TrialAliasType.Other">
+            <summary>
+            Other
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.TrialAliasType.NCTID">
+            <summary>
+            NCT ID
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.TrialOrganizationType">
+            <summary>
+            Clinical.TrialOrganizationType generated enumeration
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.TrialOrganizationType.None">
+            <summary>
+            No value or default
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.TrialOrganizationType.LeadSponsor">
+            <summary>
+            Lead Sponsor
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.TrialOrganizationType.SourcingVendor">
+            <summary>
+            Sourcing Vendor
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.TrialOrganizationType.Collaborator">
+            <summary>
+            Collaborator
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.TrialOrganizationType.Sponsor">
+            <summary>
+            Sponsor
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.TrialStatus">
+            <summary>
+            Clinical.TrialStatus generated enumeration
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.TrialStatus.None">
+            <summary>
+            No value or default
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.TrialStatus.ActiveNotrecruiting">
+            <summary>
+            Active, not recruiting
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.TrialStatus.Approvedformarketing">
+            <summary>
+            Approved for marketing
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.TrialStatus.Available">
+            <summary>
+            Available
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.TrialStatus.Completed">
+            <summary>
+            Completed
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.TrialStatus.Enrollingbyinvitation">
+            <summary>
+            Enrolling by invitation
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.TrialStatus.Nolongeravailable">
+            <summary>
+            No longer available
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.TrialStatus.Notyetrecruiting">
+            <summary>
+            Not yet recruiting
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.TrialStatus.Recruiting">
+            <summary>
+            Recruiting
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.TrialStatus.Suspended">
+            <summary>
+            Suspended
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.TrialStatus.Temporarilynotavailable">
+            <summary>
+            Temporarily not available
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.TrialStatus.Terminated">
+            <summary>
+            Terminated
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.TrialStatus.Withdrawn">
+            <summary>
+            Withdrawn
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.TrialStatus.Withheld">
+            <summary>
+            Withheld
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.StudyPeriod">
+            <summary>
+            Partial class definition for supporting properties
+            and methods that aren't part of the code generation process.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.StudyPeriod.Name">
+            <summary>
+            Returns the name
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.StudyPeriod.Description">
+            <summary>
+            Returns the description
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.TreatmentFormulation">
+            <summary>
+            Partial class definition for supporting properties
+            and methods that aren't part of the code generation process.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.TreatmentFormulation.Name">
+            <summary>
+            Returns the name
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.TreatmentFormulation.Description">
+            <summary>
+            Returns the description
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.TreatmentFormulation.Code">
+            <summary>
+            Returns the code
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.TreatmentFrequency">
+            <summary>
+            Partial class definition for supporting properties
+            and methods that aren't part of the code generation process.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.TreatmentFrequency.Name">
+            <summary>
+            Returns the name
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.TreatmentFrequency.Description">
+            <summary>
+            Returns the description
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.TreatmentFrequency.Code">
+            <summary>
+            Returns the code
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.TreatmentRouteOfAdministration">
+            <summary>
+            Partial class definition for supporting properties
+            and methods that aren't part of the code generation process.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.TreatmentRouteOfAdministration.Name">
+            <summary>
+            Returns the name
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.TreatmentRouteOfAdministration.Description">
+            <summary>
+            Returns the description
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.TreatmentRouteOfAdministration.IsInjectable">
+            <summary>
+            Returns if it's injectable
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.TreatmentRouteOfAdministration.Code">
+            <summary>
+            Returns the code
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.TreatmentType">
+            <summary>
+            Partial class definition for supporting properties
+            and methods that aren't part of the code generation process.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.TreatmentType.Name">
+            <summary>
+            Returns the name
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.TreatmentType.Description">
+            <summary>
+            Returns the description
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.TreatmentType.Category">
+            <summary>
+            Returns the category
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.TreatmentType.Code">
+            <summary>
+            Returns the code
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.Trial.DisplayNameAlias">
+            <summary>
+             Gets or sets the display name alias for this trial
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.Trial.ImpactNumber">
+            <summary>
+            Gets the Impact Number for this Trial
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.Trial.Candidates">
+            <summary>
+            Gets the candidates for this trial.
+            </summary>
+            <value>The candidates.</value>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.TrialDetail">
+            <summary>
+            Partial class definition for a TrialDetail. Exposes properties
+            that are queried fromt he XML Trial Detail value.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.TrialDetail.Title">
+            <summary>
+            Returns the title
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.TrialDetail.Summary">
+            <summary>
+            Returns the summary
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.TrialDetail.Sponsor">
+            <summary>
+            Returns the sponsor
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.UnitOfMeasure">
+            <summary>
+            Partial class definition for supporting properties
+            and methods that aren't part of the code generation process.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.UnitOfMeasure.Unit">
+            <summary>
+            Returns the unit
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.UnitOfMeasure.Description">
+            <summary>
+            Returns the description
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.UnitOfMeasure.Code">
+            <summary>
+            Returns the code
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.VisitIntervalType">
+            <summary>
+            Partial class definition for supporting properties
+            and methods that aren't part of the code generation process.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.VisitIntervalType.Name">
+            <summary>
+            Returns the name
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.DesignAndControls.Design.HospitalizationType">
+            <summary>
+            Indicates the hospitalization type, Inpatient, outpatient, or mixed
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.DesignAndControls.Design.SaeRate">
+            <summary>
+            Serious adverse event rate
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.DesignAndControls.PatientNumbers">
+            <summary>
+            Node content for Design and Controls patient numbers
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.DesignAndControls.PatientNumbers.#ctor">
+            <summary>
+            Constructor for a new PatientNumbers instance
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.DesignAndControls.PatientNumbers.Diff(System.Collections.Generic.IEnumerable{Semio.ClientService.Entity.ObjectModel.DesignAndControls.PatientNumbers})">
+            <summary>
+            Diffs the specified items
+            </summary>
+            <param name="items">PatientNumbers instance to compare with</param>
+            <returns>Returns a MultiDiffResult</returns>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.DesignAndControls.PatientNumbers.Numbers">
+            <summary>
+            Gets the collection of patient number fields
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignAndControls.PatientNumberState.NoPatients">
+            <summary>
+            No patient data is stored
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignAndControls.PatientNumberState.HighLevel">
+            <summary>
+            Only high level estimated patient data is stored
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.DesignAndControls.PatientNumberState.Detailed">
+            <summary>
+            Detailed patient data has been entered or calculated
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.PersonPermissionPack">
+            <summary>
+            Provides a compact data format for permissions that can be checked against IDs and types.
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.PersonPermissionPack.Contains(System.Int32,Semio.ClientService.Entity.ObjectModel.Permission,Semio.ClientService.Entity.ObjectModel.EntityType)">
+            <summary>
+            Returns true if the collection contains the specified permission.
+            </summary>
+            <param name="entityId">The entity id.</param>
+            <param name="permission">The permission.</param>
+            <param name="type">The entity type.</param>
+            <returns>
+            	<c>true</c> if contains the specified permission for the specified entity; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.PersonPermissionPack.Contains(System.Int32,Semio.ClientService.Entity.ObjectModel.Permission)">
+            <summary>
+            Returns true if the collection contains the specified permission.
+            </summary>
+            <param name="moleculeId">The molecule id.</param>
+            <param name="permission">The permission.</param>
+            <returns>
+            	<c>true</c> if contains the specified permission for the specified molecule; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.PersonPermissionPack.Contains(Semio.ClientService.Entity.ObjectModel.Permission)">
+            <summary>
+            Returns true if the collection contains the specified permission for *any* program.
+            Caution:  Do not use this overload to check program level permissions.
+            </summary>
+            <param name="permission"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.PersonPermissionPack.ReadPack(System.String)">
+            <summary>
+            Reads the permission set from a compact plain text representation.
+            </summary>
+            <param name="text">The text.</param>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.PersonPermissionPack.WritePack">
+            <summary>
+            Writes the permission set to a compact plain text representation.
+            </summary>
+            <returns>The text representation.</returns>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.PersonPermissionPack.Permissions">
+            <summary>
+            Gets the permissions.
+            </summary>
+            <value>The permissions.</value>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.PersonPermissionPack.PermissionCount">
+            <summary>
+            Gets the total permission count.
+            </summary>
+            <value>The permission count.</value>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.PersonPermissionPack.GlobalPermissionCount">
+            <summary>
+            Gets the count of global permissions.
+            </summary>
+            <value>The global permission count.</value>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.CompactPermission">
+            <summary>
+            Represents permissions in a minimal format that can be used to check a person's authorizations.
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.CompactPermission.PackIds">
+            <summary>
+            Packs the ids into a compact string format for transmission.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.CompactPermission.FromPackedIds(System.String)">
+            <summary>
+            Creates a new instance from a set of packed ids.
+            </summary>
+            <param name="packedIds">The packed ids.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.CompactPermission.SetPermission(System.Int32)">
+            <summary>
+            Sets the permission to the correct enum value for the specified id.
+            </summary>
+            <param name="permissionId">The permission id.</param>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.CompactPermission.SetEntityType(System.Int32)">
+            <summary>
+            Sets the type of the entity to the correct enum value for the specified id.
+            </summary>
+            <param name="entityTypeId">The entity type id.</param>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.CompactPermission.PersonId">
+            <summary>
+            Gets or sets the person id.
+            </summary>
+            <value>The person id.</value>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.CompactPermission.Permission">
+            <summary>
+            Gets or sets the permission.
+            </summary>
+            <value>The permission.</value>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.CompactPermission.EntitySetId">
+            <summary>
+            Gets or sets the entity set id.
+            </summary>
+            <value>The entity set id.</value>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.CompactPermission.EntityId">
+            <summary>
+            Gets or sets the entity id.
+            </summary>
+            <value>The entity id.</value>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.CompactPermission.EntityType">
+            <summary>
+            Gets or sets the type of the entity.
+            </summary>
+            <value>The type of the entity.</value>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.CompactPermission.IsGlobal">
+            <summary>
+            Gets a value indicating whether this instance is a global permission.
+            </summary>
+            <value><c>true</c> if this instance is global; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.IQueryableExtensions.WithCache``1(Semio.ClientService.Entity.ObjectModel.IDataServiceQuery{``0},Semio.ClientService.Entity.ObjectModel.IQueryCacheProvider)">
+            <summary>
+            Executes the IDataserviceQuery using the provided cache provider
+            Always use at the end of an expression.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="queryable"></param>
+            <param name="cacheProvider"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.SystemPerson">
+            <summary>
+            SystemPerson Enumeration.
+            Defines PersonIds for system users.
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.SystemPerson.SystemAdministrator">
+            <summary>
+            The default Person.Id used by the system for administration operations when no other credential is available.
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.SystemPerson.IntegrationTest">
+            <summary>
+            The Person.Id used by the system during integration tests.
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.SystemPerson.SemioDeveloper">
+            <summary>
+            The Person.Id used by the system when security is disabled during development.
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.FindingLinkingExtensions">
+            <summary>
+            Extension methods to replace FindingRelationshipCollection functionality
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.FindingLinkingExtensions.Contains(System.Collections.Generic.IList{Semio.ClientService.Entity.ObjectModel.FindingRelationship},Semio.ClientService.Entity.ObjectModel.FindingType,Semio.ClientService.Entity.ObjectModel.FindingEvent)">
+            <summary>
+            Returns true if the collection contains a finding for the specified type and event.
+            </summary>
+            <param name="relationshipCollection">The relationship collection.</param>
+            <param name="findingType">Type of the finding.</param>
+            <param name="findingEvent">The finding event.</param>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.FindingLinkingExtensions.Get(System.Collections.Generic.IList{Semio.ClientService.Entity.ObjectModel.FindingRelationship},Semio.ClientService.Entity.ObjectModel.FindingType,Semio.ClientService.Entity.ObjectModel.FindingEvent)">
+            <summary>
+            Returns the FindingRelationship for the specified type and event.
+            </summary>
+            <param name="relationshipCollection">The relationship collection.</param>
+            <param name="findingType">Type of the finding.</param>
+            <param name="findingEvent">The finding event.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.FindingLinkingExtensions.Add(Semio.ClientService.Entity.ObjectModel.Finding,System.Guid,Semio.ClientService.Entity.ObjectModel.EntityType,System.Int32)">
+            <summary>
+            Add the specified item to the collection.
+            </summary>
+            <param name="finding">The finding.</param>
+            <param name="entityGuid">The entity GUID.</param>
+            <param name="entityType">Type of the entity.</param>
+            <param name="entityId">The entity id.</param>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.FindingLinkingExtensions.Contains(System.Collections.Generic.IList{Semio.ClientService.Entity.ObjectModel.FindingRelationship},System.Guid,Semio.ClientService.Entity.ObjectModel.EntityType,System.Int32)">
+            <summary>
+            Returns true if the collection contains the specified relationship.
+            </summary>
+            <param name="relationshipCollection">The relationship collection.</param>
+            <param name="entityGuid">The entity GUID.</param>
+            <param name="entityType">Type of the entity.</param>
+            <param name="entityId">The entity id.</param>
+            <returns>
+            	<c>true</c> if [contains] [the specified relationship collection]; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.CustomDSPropertyAttribute">
+            <summary>
+             Exposes a custom property on an entity to the service.
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.SharePointUri">
+            <summary>
+            Lookup object representing a SharePoint share location
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.SharePointUri.IsStudyWorksheetLibrary">
+            <summary>
+            True if this item is a Study Worksheet document library.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.SharePointUri.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.SharePointUri.DocumentUri">
+            <summary>
+            Gets or sets the Document URI.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.SharePointUri.TemplateUri">
+            <summary>
+            Gets or sets the Template URI.
+            </summary>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.SharePointUri.Code">
+            <summary>
+            Gets or sets the identifier code.
+            </summary>
+            <value>The code.</value>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.EntityDataFieldAttribute.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Semio.ClientService.Entity.ObjectModel.EntityDataFieldAttribute"/> class.
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Entity.ObjectModel.FindingStatus">
+            <summary>
+            Lists possible status values for an assumption Finding.
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.FindingStatus.None">
+            <summary>
+            No status
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.FindingStatus.Active">
+            <summary>
+            Active
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.FindingStatus.Rejected">
+            <summary>
+            Rejected
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.OnDemandCollectionOperation`1.#ctor">
+            <summary>
+            Initializes a new instance of the OnDemandOperation class.
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.OnDemandCollectionOperation`1.#ctor(System.Func{Semio.ClientService.Entity.ObjectModel.IDataServiceQuery{`0},System.Collections.Generic.IEnumerable{`0}},System.Action{System.Collections.Generic.IEnumerable{`0}},System.Func{System.Collections.Generic.IEnumerable{`0},System.Boolean})">
+            <summary>
+            Initializes a new instance of the OnDemandOperation class.
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.OnDemandInstanceOperation`1.#ctor">
+            <summary>
+            Initializes a new instance of the OnDemandOperation class.
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.OnDemandInstanceOperation`1.#ctor(System.Func{Semio.ClientService.Entity.ObjectModel.IDataServiceQuery{`0},`0},System.Action{`0},System.Func{`0,System.Boolean})">
+            <summary>
+            Initializes a new instance of the OnDemandOperation class.
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.OnDemandInstanceOperation`1.#ctor(System.Func{Semio.ClientService.Entity.ObjectModel.GetInstanceOperation{`0},`0},System.Action{`0},System.Func{`0,System.Boolean})">
+            <summary>
+            Initializes a new instance of the OnDemandOperation class.
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Entity.ObjectModel.SemioEntityKey.Empty">
+            <summary>
+            Key representing a non-data entity like a relationship or linking object.
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.SemioEntityKey.IsValidId(System.Nullable{System.Int32})">
+            <summary>
+            Determines whether the primary key value is a valid id.
+            </summary>
+            <param name="keyValue">The key value.</param>
+            <returns>
+            	<c>true</c> if keyValue is a valid id; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.SemioEntityKey.#ctor(System.Nullable{System.Int32})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Semio.ClientService.Entity.ObjectModel.SemioEntityKey"/> struct.
+            </summary>
+            <param name="entityId">The entity id.</param>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.SemioEntityKey.GetKey(Semio.ClientService.Entity.ObjectModel.IBaseEntity,System.Boolean,System.Nullable{System.Int32})">
+            <summary>
+            Gets the key, including a guid if specified, for the entity.
+            </summary>
+            <param name="entity">The entity.</param>
+            <param name="forceIncludeGuid">if set to <c>true</c> force inclusion of the GUID in the key, even if a valid ID is present.</param>
+            <param name="resolvedKey">The known resolved key of this entity.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.SemioEntityKey.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/> that represents this instance.
+            </returns>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.SemioEntityKey.Type">
+            <summary>
+            Gets or sets the type of the entity.
+            </summary>
+            <value>The type.</value>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.SemioEntityKey.EntityId">
+            <summary>
+            Gets or sets the entity id.
+            </summary>
+            <value>The entity id.</value>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.SemioEntityKey.ClientId">
+            <summary>
+            Gets or sets the entity GUID.
+            </summary>
+            <value>The entity GUID.</value>
+        </member>
+        <member name="P:Semio.ClientService.Entity.ObjectModel.SemioEntityKey.HasValidId">
+            <summary>
+            Gets a value indicating whether this instance has a valid primary key id.
+            </summary>
+            <value>
+            	<c>true</c> if this instance has a valid primary key id; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.SemioEntityObjectExtensions.CreateIncludeQuery``2(System.Collections.Generic.IEnumerable{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+            <summary>
+            Converts the specified query to an include string.
+            </summary>
+            <remarks>
+            Based on the following post:
+            http://blogs.microsoft.co.il/blogs/shimmy/archive/2010/08/06/say-goodbye-to-the-hard-coded-objectquery-t-include-calls.aspx
+            </remarks>
+            <typeparam name="TSource">The type of the source.</typeparam>
+            <typeparam name="TResult">The type of the result.</typeparam>
+            <param name="selector">The selector.</param>
+            <param name="path">The path.</param>
+            <example>.Include(x => x.MyCollection.Single().PropertyOnObject.OtherProperty would be the same as
+            .Include("MyCollection.PropertyOnObject.OtherProperty") but provides a type and refactor safe way to do it.</example>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.SemioEntityObjectExtensions.CloneEntity``1(``0)">
+            <summary>
+            Clones the entity data values into a new instance.
+            </summary>
+            <typeparam name="T">The type of the entity.</typeparam>
+            <param name="entity">The entity.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Entity.ObjectModel.SemioEntityObjectExtensions.CloneEntity(Semio.ClientService.Entity.ObjectModel.SemioEntityBase,System.Type)">
+            <summary>
+            Clones the entity data values into a new instance.
+            </summary>
+            <param name="entity">The entity.</param>
+            <param name="asType">The type of the entity.</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

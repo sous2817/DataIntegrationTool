@@ -1,0 +1,990 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Semio.ClientService</name>
+    </assembly>
+    <members>
+        <member name="T:Semio.ClientService.Helpers.HttpHelper">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Helpers.HttpHelper.HandleIfModifiedSince(System.ServiceModel.Web.IncomingWebRequestContext,System.ServiceModel.Web.OutgoingWebResponseContext,System.DateTime)">
+            <summary>
+             Handles the HTTP protocol's IfModifiedSince mechanism. If the
+             IfModifiedSince communication applies, this well set the
+             response SuppressEntityBody and StatusCode to NotModified.
+            </summary>
+             <remarks>
+             Also sets <paramref name="outResponse"/>.LastModified to <paramref name="serverModifiedDate"/>
+             </remarks>
+            <param name="inRequest"></param>
+            <param name="outResponse"></param>
+            <param name="serverModifiedDate"></param>
+        </member>
+        <member name="M:Semio.ClientService.Helpers.HttpHelper.GetIfModifiedSince(System.ServiceModel.Web.IncomingWebRequestContext)">
+            <summary>
+            Get the "If-Modified-Since" header
+            </summary>
+            <param name="inRequest"></param>
+            <returns>DateTime or null</returns>
+        </member>
+        <member name="M:Semio.ClientService.Helpers.HttpHelper.GetHeader``1(System.String,System.ServiceModel.Web.IncomingWebRequestContext)">
+            <summary>
+            Get a typed header value.
+            </summary>
+            <param name="hdr"></param>
+            <param name="inRequest"></param>
+            <returns>Header value in requested type, or default(<typeparam name="T"/>)
+            if no value was found</returns>
+        </member>
+        <member name="M:Semio.ClientService.Helpers.HttpHelper.GetResponse(System.Net.HttpWebRequest)">
+            <summary>
+            Safely get a response
+            </summary>
+            <remarks>
+            This is required since responses such as 304 (Not Modified) throw exceptions.
+            </remarks>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Helpers.HttpHelper.HttpDate(System.DateTime)">
+            <summary>
+            Produce a date in an HTTP acceptable format
+            </summary>
+            <param name="dateTime"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Helpers.HttpHelper.HttpDate(System.DateTime,Semio.ClientService.Helpers.HttpDateType)">
+            <summary>
+            Produce a date in an HTTP acceptable format
+            </summary>
+            <param name="dateTime"></param>
+            <param name="dateType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Helpers.HttpHelper.HttpDateFormat(Semio.ClientService.Helpers.HttpDateType)">
+            <summary>
+            Produce a date in an HTTP acceptable format
+            </summary>
+            <param name="httpDateType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Helpers.HttpHelper.GetTimeout">
+            <summary>
+            Get the configured timeout value in Milliseconds.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Semio.ClientService.Helpers.HttpDateType">
+            <summary>
+            Acceptable HTTP date formats according to http://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.3.1
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Helpers.HttpDateType.Rfc1123Date">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Helpers.HttpDateType.Rfc850Date">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Helpers.HttpDateType.AscTimeDate">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Helpers.OutputCacheMgr">
+            <summary>
+            Simple output cache manager
+            </summary>
+            <remarks>
+            Minimal support of web.config system.web/caching/outputCacheSettings/outputCacheProfiles section:
+                Location=Client implemented
+                Enabled implemented
+                NoStore implemented
+                Duration implemented
+            
+            <para>
+            See http://msdn.microsoft.com/en-us/library/dd410202.aspx
+            </para>
+            
+            <para>
+            TODO: Should later change this to allow a pluggable framework for checking whether the
+            response is still valid for the request's If-Modified-Since date.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Semio.ClientService.Helpers.OutputCacheMgr.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Semio.ClientService.Helpers.OutputCacheMgr"/> class.
+            </summary>
+            <param name="cacheProfileName">Name of the cache profile.</param>
+        </member>
+        <member name="M:Semio.ClientService.Helpers.OutputCacheMgr.Handle">
+            <summary>
+            Attempt to handle the request. Will reply with "304 Not Modified" if possible, otherwise sets
+            response with HTTP caching headers as configured.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Helpers.OutputCacheMgr.TryToHandleAsNotModified">
+            <summary>
+            Check for (possible) modification.
+            </summary>
+            <remarks>
+            TODO: Make this smarter (probably with pluggable checking modules)
+            </remarks>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Helpers.OutputCacheMgr.DoNotCache">
+            <summary>
+            Determine if this should never be cached.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Helpers.OutputCacheMgr.InjectResponseHeaders">
+            <summary>
+            Inject response headers
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Semio.ClientService.Helpers.OutputCacheMgr.CacheProfile">
+            <summary>
+            Gets or sets the cache profile.
+            </summary>
+            <value>The cache profile.</value>
+        </member>
+        <member name="P:Semio.ClientService.Helpers.OutputCacheMgr.NoStore">
+            <summary>
+            Gets or sets a value indicating whether [no store].
+            </summary>
+            <value><c>true</c> if [no store]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Semio.ClientService.Helpers.OutputCacheMgr.Location">
+            <summary>
+            Gets or sets the location.
+            </summary>
+            <value>The location.</value>
+        </member>
+        <member name="P:Semio.ClientService.Helpers.OutputCacheMgr.Enabled">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:Semio.ClientService.Helpers.OutputCacheMgr"/> is enabled.
+            </summary>
+            <value><c>true</c> if enabled; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Semio.ClientService.Helpers.OutputCacheMgr.Duration">
+            <summary>
+            Gets or sets the duration.
+            </summary>
+            <value>The duration.</value>
+        </member>
+        <member name="P:Semio.ClientService.Helpers.OutputCacheMgr.Found">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:Semio.ClientService.Helpers.OutputCacheMgr"/> is found.
+            </summary>
+            <value><c>true</c> if found; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="M:Semio.ClientService.Helpers.SyndicationHelper.GetFirstMetaDataValue(System.ServiceModel.Syndication.SyndicationContent,System.String)">
+            <summary>
+             Gets the first metadata value with the provided name
+            </summary>
+            <param name="content"></param>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Helpers.SyndicationHelper.GetMetaDataValues(System.ServiceModel.Syndication.SyndicationContent,System.String)">
+            <summary>
+            </summary>
+            <param name="content"></param>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:JetBrains.Annotations.CanBeNullAttribute">
+            <summary>
+            Indicates that the value of the marked element could be <c>null</c> sometimes,
+            so the check for <c>null</c> is necessary before its usage
+            </summary>
+            <example><code>
+            [CanBeNull] public object Test() { return null; }
+            public void UseTest() {
+              var p = Test();
+              var s = p.ToString(); // Warning: Possible 'System.NullReferenceException'
+            }
+            </code></example>
+        </member>
+        <member name="T:JetBrains.Annotations.NotNullAttribute">
+            <summary>
+            Indicates that the value of the marked element could never be <c>null</c>
+            </summary>
+            <example><code>
+            [NotNull] public object Foo() {
+              return null; // Warning: Possible 'null' assignment
+            }
+            </code></example>
+        </member>
+        <member name="T:JetBrains.Annotations.StringFormatMethodAttribute">
+            <summary>
+            Indicates that the marked method builds string by format pattern and (optional) arguments.
+            Parameter, which contains format string, should be given in constructor. The format string
+            should be in <see cref="M:System.String.Format(System.IFormatProvider,System.String,System.Object[])"/>-like form
+            </summary>
+            <example><code>
+            [StringFormatMethod("message")]
+            public void ShowError(string message, params object[] args) { /* do something */ }
+            public void Foo() {
+              ShowError("Failed: {0}"); // Warning: Non-existing argument in format string
+            }
+            </code></example>
+        </member>
+        <member name="M:JetBrains.Annotations.StringFormatMethodAttribute.#ctor(System.String)">
+            <param name="formatParameterName">
+            Specifies which parameter of an annotated method should be treated as format-string
+            </param>
+        </member>
+        <member name="T:JetBrains.Annotations.InvokerParameterNameAttribute">
+            <summary>
+            Indicates that the function argument should be string literal and match one
+            of the parameters of the caller function. For example, ReSharper annotates
+            the parameter of <see cref="T:System.ArgumentNullException"/>
+            </summary>
+            <example><code>
+            public void Foo(string param) {
+              if (param == null)
+                throw new ArgumentNullException("par"); // Warning: Cannot resolve symbol
+            }
+            </code></example>
+        </member>
+        <member name="T:JetBrains.Annotations.NotifyPropertyChangedInvocatorAttribute">
+             <summary>
+             Indicates that the method is contained in a type that implements
+             <see cref="T:System.ComponentModel.INotifyPropertyChanged"/> interface
+             and this method is used to notify that some property value changed
+             </summary>
+             <remarks>
+             The method should be non-static and conform to one of the supported signatures:
+             <list>
+             <item><c>NotifyChanged(string)</c></item>
+             <item><c>NotifyChanged(params string[])</c></item>
+             <item><c>NotifyChanged{T}(Expression{Func{T}})</c></item>
+             <item><c>NotifyChanged{T,U}(Expression{Func{T,U}})</c></item>
+             <item><c>SetProperty{T}(ref T, T, string)</c></item>
+             </list>
+             </remarks>
+             <example><code>
+             public class Foo : INotifyPropertyChanged {
+               public event PropertyChangedEventHandler PropertyChanged;
+               [NotifyPropertyChangedInvocator]
+               protected virtual void NotifyChanged(string propertyName) { ... }
+            
+               private string _name;
+               public string Name {
+                 get { return _name; }
+                 set { _name = value; NotifyChanged("LastName"); /* Warning */ }
+               }
+             }
+             </code>
+             Examples of generated notifications:
+             <list>
+             <item><c>NotifyChanged("Property")</c></item>
+             <item><c>NotifyChanged(() =&gt; Property)</c></item>
+             <item><c>NotifyChanged((VM x) =&gt; x.Property)</c></item>
+             <item><c>SetProperty(ref myField, value, "Property")</c></item>
+             </list>
+             </example>
+        </member>
+        <member name="T:JetBrains.Annotations.ContractAnnotationAttribute">
+            <summary>
+            Describes dependency between method input and output
+            </summary>
+            <syntax>
+            <p>Function Definition Table syntax:</p>
+            <list>
+            <item>FDT      ::= FDTRow [;FDTRow]*</item>
+            <item>FDTRow   ::= Input =&gt; Output | Output &lt;= Input</item>
+            <item>Input    ::= ParameterName: Value [, Input]*</item>
+            <item>Output   ::= [ParameterName: Value]* {halt|stop|void|nothing|Value}</item>
+            <item>Value    ::= true | false | null | notnull | canbenull</item>
+            </list>
+            If method has single input parameter, it's name could be omitted.<br/>
+            Using <c>halt</c> (or <c>void</c>/<c>nothing</c>, which is the same)
+            for method output means that the methos doesn't return normally.<br/>
+            <c>canbenull</c> annotation is only applicable for output parameters.<br/>
+            You can use multiple <c>[ContractAnnotation]</c> for each FDT row,
+            or use single attribute with rows separated by semicolon.<br/>
+            </syntax>
+            <examples><list>
+            <item><code>
+            [ContractAnnotation("=> halt")]
+            public void TerminationMethod()
+            </code></item>
+            <item><code>
+            [ContractAnnotation("halt &lt;= condition: false")]
+            public void Assert(bool condition, string text) // regular assertion method
+            </code></item>
+            <item><code>
+            [ContractAnnotation("s:null => true")]
+            public bool IsNullOrEmpty(string s) // string.IsNullOrEmpty()
+            </code></item>
+            <item><code>
+            // A method that returns null if the parameter is null, and not null if the parameter is not null
+            [ContractAnnotation("null => null; notnull => notnull")]
+            public object Transform(object data) 
+            </code></item>
+            <item><code>
+            [ContractAnnotation("s:null=>false; =>true,result:notnull; =>false, result:null")]
+            public bool TryParse(string s, out Person result)
+            </code></item>
+            </list></examples>
+        </member>
+        <member name="T:JetBrains.Annotations.LocalizationRequiredAttribute">
+            <summary>
+            Indicates that marked element should be localized or not
+            </summary>
+            <example><code>
+            [LocalizationRequiredAttribute(true)]
+            public class Foo {
+              private string str = "my string"; // Warning: Localizable string
+            }
+            </code></example>
+        </member>
+        <member name="T:JetBrains.Annotations.CannotApplyEqualityOperatorAttribute">
+            <summary>
+            Indicates that the value of the marked type (or its derivatives)
+            cannot be compared using '==' or '!=' operators and <c>Equals()</c>
+            should be used instead. However, using '==' or '!=' for comparison
+            with <c>null</c> is always permitted.
+            </summary>
+            <example><code>
+            [CannotApplyEqualityOperator]
+            class NoEquality { }
+            class UsesNoEquality {
+              public void Test() {
+                var ca1 = new NoEquality();
+                var ca2 = new NoEquality();
+                if (ca1 != null) { // OK
+                  bool condition = ca1 == ca2; // Warning
+                }
+              }
+            }
+            </code></example>
+        </member>
+        <member name="T:JetBrains.Annotations.BaseTypeRequiredAttribute">
+            <summary>
+            When applied to a target attribute, specifies a requirement for any type marked
+            with the target attribute to implement or inherit specific type or types.
+            </summary>
+            <example><code>
+            [BaseTypeRequired(typeof(IComponent)] // Specify requirement
+            public class ComponentAttribute : Attribute { }
+            [Component] // ComponentAttribute requires implementing IComponent interface
+            public class MyComponent : IComponent { }
+            </code></example>
+        </member>
+        <member name="T:JetBrains.Annotations.UsedImplicitlyAttribute">
+            <summary>
+            Indicates that the marked symbol is used implicitly
+            (e.g. via reflection, in external library), so this symbol
+            will not be marked as unused (as well as by other usage inspections)
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.MeansImplicitUseAttribute">
+            <summary>
+            Should be used on attributes and causes ReSharper
+            to not mark symbols marked with such attributes as unused
+            (as well as by other usage inspections)
+            </summary>
+        </member>
+        <member name="F:JetBrains.Annotations.ImplicitUseKindFlags.Access">
+            <summary>Only entity marked with attribute considered used</summary>
+        </member>
+        <member name="F:JetBrains.Annotations.ImplicitUseKindFlags.Assign">
+            <summary>Indicates implicit assignment to a member</summary>
+        </member>
+        <member name="F:JetBrains.Annotations.ImplicitUseKindFlags.InstantiatedWithFixedConstructorSignature">
+            <summary>
+            Indicates implicit instantiation of a type with fixed constructor signature.
+            That means any unused constructor parameters won't be reported as such.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Annotations.ImplicitUseKindFlags.InstantiatedNoFixedConstructorSignature">
+            <summary>Indicates implicit instantiation of a type</summary>
+        </member>
+        <member name="T:JetBrains.Annotations.ImplicitUseTargetFlags">
+            <summary>
+            Specify what is considered used implicitly
+            when marked with <see cref="T:JetBrains.Annotations.MeansImplicitUseAttribute"/>
+            or <see cref="T:JetBrains.Annotations.UsedImplicitlyAttribute"/>
+            </summary>
+        </member>
+        <member name="F:JetBrains.Annotations.ImplicitUseTargetFlags.Members">
+            <summary>Members of entity marked with attribute are considered used</summary>
+        </member>
+        <member name="F:JetBrains.Annotations.ImplicitUseTargetFlags.WithMembers">
+            <summary>Entity marked with attribute and all its members considered used</summary>
+        </member>
+        <member name="T:JetBrains.Annotations.PublicAPIAttribute">
+            <summary>
+            This attribute is intended to mark publicly available API
+            which should not be removed and so is treated as used
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.InstantHandleAttribute">
+            <summary>
+            Tells code analysis engine if the parameter is completely handled
+            when the invoked method is on stack. If the parameter is a delegate,
+            indicates that delegate is executed while the method is executed.
+            If the parameter is an enumerable, indicates that it is enumerated
+            while the method is executed
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.PureAttribute">
+            <summary>
+            Indicates that a method does not make any observable state changes.
+            The same as <c>System.Diagnostics.Contracts.PureAttribute</c>
+            </summary>
+            <example><code>
+            [Pure] private int Multiply(int x, int y) { return x * y; }
+            public void Foo() {
+              const int a = 2, b = 2;
+              Multiply(a, b); // Waring: Return value of pure method is not used
+            }
+            </code></example>
+        </member>
+        <member name="T:JetBrains.Annotations.PathReferenceAttribute">
+            <summary>
+            Indicates that a parameter is a path to a file or a folder
+            within a web project. Path can be relative or absolute,
+            starting from web root (~)
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcActionAttribute">
+            <summary>
+            ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter
+            is an MVC action. If applied to a method, the MVC action name is calculated
+            implicitly from the context. Use this attribute for custom wrappers similar to
+            <c>System.Web.Mvc.Html.ChildActionExtensions.RenderAction(HtmlHelper, String)</c>
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcAreaAttribute">
+            <summary>
+            ASP.NET MVC attribute. Indicates that a parameter is an MVC area.
+            Use this attribute for custom wrappers similar to
+            <c>System.Web.Mvc.Html.ChildActionExtensions.RenderAction(HtmlHelper, String)</c>
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcControllerAttribute">
+            <summary>
+            ASP.NET MVC attribute. If applied to a parameter, indicates that
+            the parameter is an MVC controller. If applied to a method,
+            the MVC controller name is calculated implicitly from the context.
+            Use this attribute for custom wrappers similar to 
+            <c>System.Web.Mvc.Html.ChildActionExtensions.RenderAction(HtmlHelper, String, String)</c>
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcMasterAttribute">
+            <summary>
+            ASP.NET MVC attribute. Indicates that a parameter is an MVC Master.
+            Use this attribute for custom wrappers similar to
+            <c>System.Web.Mvc.Controller.View(String, String)</c>
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcModelTypeAttribute">
+            <summary>
+            ASP.NET MVC attribute. Indicates that a parameter is an MVC model type.
+            Use this attribute for custom wrappers similar to
+            <c>System.Web.Mvc.Controller.View(String, Object)</c>
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcPartialViewAttribute">
+            <summary>
+            ASP.NET MVC attribute. If applied to a parameter, indicates that
+            the parameter is an MVC partial view. If applied to a method,
+            the MVC partial view name is calculated implicitly from the context.
+            Use this attribute for custom wrappers similar to
+            <c>System.Web.Mvc.Html.RenderPartialExtensions.RenderPartial(HtmlHelper, String)</c>
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcSupressViewErrorAttribute">
+            <summary>
+            ASP.NET MVC attribute. Allows disabling all inspections
+            for MVC views within a class or a method.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcDisplayTemplateAttribute">
+            <summary>
+            ASP.NET MVC attribute. Indicates that a parameter is an MVC display template.
+            Use this attribute for custom wrappers similar to 
+            <c>System.Web.Mvc.Html.DisplayExtensions.DisplayForModel(HtmlHelper, String)</c>
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcEditorTemplateAttribute">
+            <summary>
+            ASP.NET MVC attribute. Indicates that a parameter is an MVC editor template.
+            Use this attribute for custom wrappers similar to
+            <c>System.Web.Mvc.Html.EditorExtensions.EditorForModel(HtmlHelper, String)</c>
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcTemplateAttribute">
+            <summary>
+            ASP.NET MVC attribute. Indicates that a parameter is an MVC template.
+            Use this attribute for custom wrappers similar to
+            <c>System.ComponentModel.DataAnnotations.UIHintAttribute(System.String)</c>
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcViewAttribute">
+            <summary>
+            ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter
+            is an MVC view. If applied to a method, the MVC view name is calculated implicitly
+            from the context. Use this attribute for custom wrappers similar to
+            <c>System.Web.Mvc.Controller.View(Object)</c>
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcActionSelectorAttribute">
+            <summary>
+            ASP.NET MVC attribute. When applied to a parameter of an attribute,
+            indicates that this parameter is an MVC action name
+            </summary>
+            <example><code>
+            [ActionName("Foo")]
+            public ActionResult Login(string returnUrl) {
+              ViewBag.ReturnUrl = Url.Action("Foo"); // OK
+              return RedirectToAction("Bar"); // Error: Cannot resolve action
+            }
+            </code></example>
+        </member>
+        <member name="T:JetBrains.Annotations.RazorSectionAttribute">
+            <summary>
+            Razor attribute. Indicates that a parameter or a method is a Razor section.
+            Use this attribute for custom wrappers similar to 
+            <c>System.Web.WebPages.WebPageBase.RenderSection(String)</c>
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Restful.ContentTypes">
+            <summary>
+            Content types used by the Semio systems.
+            </summary>
+            <remarks>
+            RFC1341 states: "The type, subtype, and parameter names are not case sensitive."
+            Thus it is assumed that all content types listed here are lower cased for comparison purposes. If any upper case
+            characters are used, portions of the system will not recognize them as a ToLower() was probably used on values
+            becore the compare.
+            </remarks>
+        </member>
+        <member name="F:Semio.ClientService.Restful.ContentTypes.ContentTypeDictionary">
+            <summary>
+            Actual raw content type for a serialized "System.Collections.Generic.Dictionary"
+            </summary>
+            <remarks>This string was invented at Semio. It follows MIME conventions, but is not an industry standard.</remarks>
+        </member>
+        <member name="F:Semio.ClientService.Restful.ContentTypes.ContentTypeText">
+            <summary>
+            Actual raw content type for plain text
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Restful.ContentTypes.ContentTypeHtml">
+            <summary>
+            Actual raw content type for plain html
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Restful.ContentTypes.ContentTypeXml">
+            <summary>
+            Actual raw content type for generic XML
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Restful.ContentTypes.ContentTypeAtom">
+            <summary>
+            Actual raw content type for ATOM (and feed)
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Restful.ContentTypes.ContentTypePdf">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Restful.ContentTypes.ContentTypeJpeg">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Restful.ContentTypes.ContentTypeGif">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Restful.ContentTypes.ContentTypePng">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Restful.ContentTypes.ContentTypeAtomEntry">
+            <summary>
+            Actual raw content type for an ATOM entry
+            </summary>
+            <remarks>
+            Unfortunately Internet Explorer 8 doesn't understand how to render this type.
+            If IE8 tries, it will say "Internet Explorer cannot display this feed" yet
+            "View source" will show you the ATOM entry's xml.
+            Note: Adding this MIME type to the registry (regedit) did not work either.
+            The ";" notation seemed to prevent the MIME type from being found.
+            </remarks>
+        </member>
+        <member name="F:Semio.ClientService.Restful.ContentTypes.ContentTypeCsv">
+            <summary>
+            Actual raw content type for CSV
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Restful.ContentTypes.ContentTypeMultiPartFormData">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.Restful.ContentTypes.TypeSeparator">
+            <summary>
+            Separator between the main content type and the abbreviation.
+            Example use of "+" separator : application/vnd.semio.semio.trial+atom-V1
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.Restful.QueryStringMgr">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Restful.QueryStringMgr.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Semio.ClientService.Restful.QueryStringMgr"/> class.
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.Restful.QueryStringMgr.GetValue(System.String,System.Int32)">
+            <summary>
+            Gets the value.
+            </summary>
+            <param name="key">The key.</param>
+            <param name="def">The def.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Restful.QueryStringMgr.GetValue(System.String,System.String)">
+            <summary>
+            Gets the value.
+            </summary>
+            <param name="key">The key.</param>
+            <param name="def">The def.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Restful.QueryStringMgr.GetValue(System.String)">
+            <summary>
+            Gets the value.
+            </summary>
+            <param name="key">The key.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Restful.QueryStringMgr.ContainsKey(System.String)">
+            <summary>
+            Determines whether the specified key contains key.
+            </summary>
+            <param name="key">The key.</param>
+            <returns>
+            	<c>true</c> if the specified key contains key; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Semio.ClientService.Restful.QueryStringMgr.GetValues(System.String,System.String)">
+            <summary>
+            Gets the values.
+            </summary>
+            <param name="key">The key.</param>
+            <param name="def">The def.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Restful.QueryStringMgr.GetValues(System.String)">
+            <summary>
+            Gets the values.
+            </summary>
+            <param name="key">The key.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.Restful.QueryStringMgr.GetDictionary">
+            <summary>
+            Copies all Http query parameters into a dictionary.
+            </summary>
+            <remarks>
+            Note that in this dictionary, the keys are case sensative.
+            </remarks>
+            <returns></returns>
+        </member>
+        <member name="P:Semio.ClientService.Restful.QueryStringMgr.Keys">
+            <summary>
+            Get an iteratable list of keys.
+            </summary>
+        </member>
+        <member name="T:Semio.ClientService.ServiceModel.SyndHelper">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.ServiceModel.SyndHelper.GetEntries(System.String)">
+            <summary>
+            Get a SyndicationFeed of SyndicationItems (usually RSS feed of Atom entries)
+            </summary>
+            <param name="feedUrl"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.ServiceModel.SyndHelper.GetEntry(System.String)">
+            <summary>
+            Get a SyndicationItem from the given Uri
+            </summary>
+            <param name="entryUri">The Uri of the entry (entry.Id) that you want to get</param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.ServiceModel.SyndHelper.GetId(System.String)">
+            <summary>
+            Get the id (usually a Guid) from the entryId (Uri)
+            </summary>
+            <param name="entryUri">Uri of the Entry</param>
+            <returns>The last segment of the Uri (usually a Guid)</returns>
+        </member>
+        <member name="M:Semio.ClientService.ServiceModel.SyndHelper.GetContentLink(System.ServiceModel.Syndication.SyndicationItem)">
+            <summary>
+            Get a link directly to the entry's content, as surfaced by the AtomPub service.
+            </summary>
+            <param name="entry"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.ServiceModel.SyndHelper.GetContentLink(System.String)">
+            <summary>
+            Get a link directly to the entry's content, as surfaced by the AtomPub service.
+            The service will provide a properly formatted response with Content-Type and raw content.
+            </summary>
+            <remarks>This won't work unless the feed is (or is based on) the ReferenceSvc AtomPub service.</remarks>
+            <param name="entryUri">Uri of the Entry</param>
+            <returns>Url that can be used in a browser or elsewhere (typically as href= or src= attributes)</returns>
+        </member>
+        <member name="M:Semio.ClientService.ServiceModel.SyndHelper.GetPreviewLink(System.ServiceModel.Syndication.SyndicationItem)">
+            <summary>
+            Get a link to the entry's html preview, as surfaced by the AtomPub service.
+            The service will provide a properly formatted response with Content-Type and raw content.
+            </summary>
+            <param name="entry"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.ServiceModel.SyndHelper.GetPreviewLink(System.String)">
+            <summary>
+            Get a link to the entry's html preview, as surfaced by the AtomPub service.
+            The service will provide a properly formatted response with Content-Type and raw content.
+            </summary>
+            <remarks>This won't work unless the feed is (or is based on) the AtomPub service.</remarks>
+            <param name="entryUri">Uri of the Entry</param>
+            <returns>Url that can be used in a browser or elsewhere (typically as href= or src= attributes)</returns>
+        </member>
+        <member name="M:Semio.ClientService.ServiceModel.SyndHelper.SaveNewEntry(System.String,System.String)">
+            <summary>
+            Save a new SyndicationItem (Entry) to the provided AtomPub feed
+            </summary>
+            <param name="feedUrl"></param>
+            <param name="entryXml"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.ServiceModel.SyndHelper.SaveNewEntry(System.String,System.ServiceModel.Syndication.SyndicationItem)">
+            <summary>
+            Save a new SyndicationItem (Entry) to the provided AtomPub feed
+            </summary>
+            <param name="feedUrl"></param>
+            <param name="entry"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.ServiceModel.SyndHelper.UpdateEntry(System.ServiceModel.Syndication.SyndicationItem)">
+            <summary>
+            Update the SyndicationItem (Entry) which lives at the Uri in entry.Id
+            </summary>
+            <param name="entry"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.ServiceModel.SyndHelper.DeleteEntry(System.ServiceModel.Syndication.SyndicationItem)">
+            <summary>
+            Delete the SyndicationItem (Entry) which lives at the Uri in entry.Id
+            </summary>
+            <param name="entry"></param>
+        </member>
+        <member name="M:Semio.ClientService.ServiceModel.SyndHelper.DeleteEntry(System.String)">
+            <summary>
+            Delete the SyndicationItem (Entry) which lives at the passed Uri
+            </summary>
+            <param name="entryUri">Uri of the Entry</param>
+        </member>
+        <member name="M:Semio.ClientService.ServiceModel.SyndHelper.XmlToEntry(System.String)">
+            <summary>
+            Convert xml to SyndicationItem (Entry)
+            </summary>
+            <param name="entryXml"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Semio.ClientService.ServiceModel.SyndicationItemExtensions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Semio.ClientService.ServiceModel.SyndicationItemExtensions.ToXmlString(System.ServiceModel.Syndication.SyndicationItem)">
+            <summary>
+            Serialize item into Xml string (ASCII encoding)
+            </summary>
+            <remarks>
+            ASCII encoding is more suitable for text-only use since it has no Unicode Byte
+            order mark (BOM: bytes 239 187 191) at the start of the string.
+            </remarks>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.ServiceModel.SyndicationItemExtensions.ToXmlString(System.ServiceModel.Syndication.SyndicationItem,System.Text.Encoding,System.Xml.XmlWriterSettings)">
+            <summary>
+            Serialize item into Xml string
+            </summary>
+            <param name="item"></param>
+            <param name="encoding"></param>
+            <param name="settings"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.ServiceModel.SyndicationItemExtensions.ToXmlBytes(System.ServiceModel.Syndication.SyndicationItem)">
+            <summary>
+            Serialize item into Xml bytes (with no Xml indentation)
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.ServiceModel.SyndicationItemExtensions.ToXmlBytes(System.ServiceModel.Syndication.SyndicationItem,System.Xml.XmlWriterSettings)">
+            <summary>
+            Serialize item into Xml bytes
+            </summary>
+            <param name="item"></param>
+            <param name="settings"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.ServiceModel.SyndicationItemExtensions.ToSyndicationItem(System.ServiceModel.Syndication.SyndicationItem,System.String)">
+            <summary>
+            Create a SyndicationItem from the passed xml.
+            </summary>
+            <example>
+            var item = new SyndicationItem().ToSyndicationItem(xml);
+            </example>
+            <param name="item"></param>
+            <param name="xml"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.ServiceModel.SyndicationItemExtensions.SetContent(System.ServiceModel.Syndication.SyndicationItem,System.Object)">
+            <summary>
+            Set the SyndicationItem.Content to the provided object.
+            </summary>
+            <param name="item"></param>
+            <param name="dataContractExtension"></param>
+        </member>
+        <member name="M:Semio.ClientService.ServiceModel.SyndicationItemExtensions.SetContent(System.ServiceModel.Syndication.SyndicationItem,System.Object,System.String)">
+            <summary>
+            Set the SyndicationItem.Content to the provided object
+            </summary>
+            <param name="item"></param>
+            <param name="dataContractExtension"></param>
+            <param name="contentType"></param>
+        </member>
+        <member name="M:Semio.ClientService.ServiceModel.SyndicationItemExtensions.GetContent``1(System.ServiceModel.Syndication.SyndicationItem)">
+            <summary>
+            Get the SyndicationItem.Content as the requested object type
+            </summary>
+            <typeparam name="TObject"></typeparam>
+            <param name="item"></param>
+            <returns>Object if it can be converted to TObject, otherwise null</returns>
+        </member>
+        <member name="M:Semio.ClientService.ServiceModel.SyndicationItemExtensions.UseDataContractSerializer(System.Type)">
+            <summary>
+            Determine if the type has the data contract attribute
+            </summary>
+            <returns>True if has data contract attribute, false otherwise</returns>
+        </member>
+        <member name="M:Semio.ClientService.ServiceModel.SyndicationItemExtensions.GetContentText(System.ServiceModel.Syndication.SyndicationItem)">
+            <summary>
+            Convert SyndicationItem.Content specifically saved as TextSyndicationContent (ie: a string)
+            </summary>
+            <remarks>
+            Note that this will also produce a string if a string had been stored in an XmlSyndicationContent.
+            Anything more complex than a string will result in null return.
+            </remarks>
+            <param name="item"></param>
+            <returns>String found in TextSyndicationContent (or in XmlSyndicationContent), otherwise null.</returns>
+        </member>
+        <member name="M:Semio.ClientService.ServiceModel.SyndicationItemExtensions.GetContentXml(System.ServiceModel.Syndication.SyndicationItem)">
+            <summary>
+            Convert content specifically saved as XmlSyndicationContent
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.ServiceModel.SyndicationItemExtensions.GetContentXml(System.ServiceModel.Syndication.SyndicationContent)">
+            <summary>
+            Convert content specifically saved as XmlSyndicationContent
+            </summary>
+            <param name="content"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.ServiceModel.SyndicationItemExtensions.GetLink(System.ServiceModel.Syndication.SyndicationItem,System.String,Semio.ClientService.ServiceModel.LinkUriType)">
+            <summary>
+            Find the first link that matches the passed RelationshipType
+            </summary>
+            <param name="item"></param>
+            <param name="rel"></param>
+            <param name="linkUriType"></param>
+            <returns>Returns SyndicationLink if match found, otherwise null</returns>
+        </member>
+        <member name="M:Semio.ClientService.ServiceModel.SyndicationItemExtensions.GetLinks(System.ServiceModel.Syndication.SyndicationItem,System.String,Semio.ClientService.ServiceModel.LinkUriType)">
+            <summary>
+            Find the list of links that match the passed RelationshipType (case insensitive)
+            </summary>
+            <param name="item"></param>
+            <param name="rel"></param>
+            <param name="linkUriType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.ServiceModel.SyndicationItemExtensions.GetLinks(System.ServiceModel.Syndication.SyndicationItem,Semio.ClientService.ServiceModel.LinkUriType)">
+            <summary>
+            Get all links, resolving/fixing them as it goes.
+            </summary>
+            <param name="item"></param>
+            <param name="linkUriType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Semio.ClientService.ServiceModel.SyndicationItemExtensions.RemoveLinks(System.ServiceModel.Syndication.SyndicationItem,System.String)">
+            <summary>
+             Convenience for removing a particular type of link from the item.
+            </summary>
+            <param name="item"></param>
+            <param name="rel"></param>
+        </member>
+        <member name="M:Semio.ClientService.ServiceModel.SyndicationItemExtensions.ResolveLinkUriType(System.ServiceModel.Syndication.SyndicationItem,System.ServiceModel.Syndication.SyndicationLink,Semio.ClientService.ServiceModel.LinkUriType)">
+            <summary>
+            Resolve the link to the requested type of link.
+            </summary>
+            <param name="item"></param>
+            <param name="link"></param>
+            <param name="linkUriType"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Semio.ClientService.ServiceModel.LinkUriType">
+            <summary>
+            Determine if/how to modify a given Uri.
+            </summary>
+            <remarks>
+            It becomes necessary to ask for the "Using Same Host" when data created on dev or test environments
+            lasts into test, or used on someone else's machine. If it is known that the data is coming from the
+            same host as the item, then ask that the Uri be translated to the same host, ie: UsingSameHost.
+            </remarks>
+        </member>
+        <member name="F:Semio.ClientService.ServiceModel.LinkUriType.AsIs">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Semio.ClientService.ServiceModel.LinkUriType.UsingSameHost">
+            <summary>
+            
+            </summary>
+        </member>
+    </members>
+</doc>

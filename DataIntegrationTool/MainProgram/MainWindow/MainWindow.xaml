@@ -1,0 +1,420 @@
+﻿<metro:MetroWindow x:Class="DataIntegrationTool.MainWindow"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:cleanData="clr-namespace:DataIntegrationTool.MainProgram.CleanData"
+                   xmlns:command="http://www.galasoft.ch/mvvmlight"
+                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+                   xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+                   xmlns:evaluateMatches="clr-namespace:DataIntegrationTool.MainProgram.EvaluateMatches"
+                   xmlns:exportData="clr-namespace:DataIntegrationTool.MainProgram.ExportData"
+                   xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                   xmlns:ignore="http://www.galasoft.ch/ignore"
+                   xmlns:importData="clr-namespace:DataIntegrationTool.MainProgram.ImportData"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+                   xmlns:system="clr-namespace:System;assembly=mscorlib"
+                   xmlns:welcome="clr-namespace:DataIntegrationTool.MainProgram.Welcome"
+                   Title="Data Integration Tool"
+                   DataContext="{Binding Main,
+                                         Source={StaticResource Locator}}"
+                   GlowBrush="{DynamicResource AccentColorBrush}"
+                   Icon="/Resources/Icons/MagicWand.png"
+                   ResizeMode="CanResizeWithGrip"
+                   WindowStartupLocation="CenterScreen"
+                   WindowState="Maximized"
+                   WindowTransitionsEnabled="False"
+                   dialog:DialogParticipation.Register="{Binding}"
+                   mc:Ignorable="d ignore">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Closing">
+            <i:InvokeCommandAction Command="{Binding ExitProgramCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <metro:MetroWindow.Resources>
+        <DataTemplate DataType="{x:Type welcome:WelcomeViewModel}">
+            <welcome:WelcomeView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type cleanData:CleanDataViewModel}">
+            <cleanData:CleanDataView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type evaluateMatches:EvaluateMatchesViewModel}">
+            <evaluateMatches:EvaluateMatchesView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type exportData:ExportDataViewModel}">
+            <exportData:ExportDataView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type importData:ImportDataViewModel}">
+            <importData:ImportDataView />
+        </DataTemplate>
+        <DataTemplate x:Key="AccentAndThemeComboBox">
+            <StackPanel Orientation="Horizontal">
+                <Ellipse Width="16"
+                         Height="16"
+                         Fill="{Binding ColorBrush,
+                                        Mode=OneWay}"
+                         Stroke="{DynamicResource TextBrush}" />
+                <TextBlock Margin="3,0,0,0" Text="{Binding Name}" />
+            </StackPanel>
+        </DataTemplate>
+    </metro:MetroWindow.Resources>
+    <metro:MetroWindow.IconTemplate>
+        <DataTemplate>
+            <Image Source="/Resources/Icons/MagicWand.png" />
+        </DataTemplate>
+    </metro:MetroWindow.IconTemplate>
+    <metro:MetroWindow.RightWindowCommands>
+        <metro:WindowCommands>
+            <ComboBox x:Name="ThemeComboBox"
+                      MinWidth="115"
+                      MaxWidth="115"
+                      ItemTemplate="{DynamicResource AccentAndThemeComboBox}"
+                      ItemsSource="{Binding AppThemes,
+                                            Mode=OneWay}"
+                      SelectedIndex="{Binding SelectedThemeIndex,
+                                              Mode=TwoWay,
+                                              UpdateSourceTrigger=PropertyChanged}"
+                      metro:TextBoxHelper.Watermark="Theme">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <command:EventToCommand Command="{Binding ChangeThemeCommand}" CommandParameter="{Binding ElementName=ThemeComboBox, Path=SelectedItem.Name}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ComboBox>
+            <ComboBox x:Name="AccentComboBox"
+                      MinWidth="115"
+                      MaxWidth="115"
+                      ItemTemplate="{DynamicResource AccentAndThemeComboBox}"
+                      ItemsSource="{Binding AccentColors,
+                                            Mode=OneWay}"
+                      SelectedIndex="{Binding SelectedAccentIndex,
+                                              Mode=TwoWay,
+                                              UpdateSourceTrigger=PropertyChanged}"
+                      metro:TextBoxHelper.Watermark="Accent">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <command:EventToCommand Command="{Binding ChangeAccentCommand}" CommandParameter="{Binding ElementName=AccentComboBox, Path=SelectedItem.Name}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ComboBox>
+        </metro:WindowCommands>
+    </metro:MetroWindow.RightWindowCommands>
+    <metro:MetroContentControl>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*" />
+                <ColumnDefinition Width="95*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="95*" />
+                <RowDefinition Height="5*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.Resources />
+            <Menu Grid.Row="0"
+                  Grid.ColumnSpan="2"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Stretch">
+                <MenuItem Header="File">
+                    <MenuItem Command="{Binding ExitProgramCommand}" Header="Exit" />
+                </MenuItem>
+                <MenuItem Header="Help">
+                    <MenuItem Header="About" />
+                </MenuItem>
+            </Menu>
+            <DockPanel Grid.Row="1"
+                       Grid.RowSpan="2"
+                       Grid.Column="0"
+                       LastChildFill="False">
+                <Border x:Name="SomeBorder"
+                        Grid.Row="0"
+                        DockPanel.Dock="Top"
+                        Opacity="1"
+                        Style="{StaticResource WizardBorder}">
+                    <Border.Resources>
+                        <system:String x:Key="AnimationTarget">SomeBorder</system:String>
+                    </Border.Resources>
+                    <i:Interaction.Triggers>
+                        <ei:PropertyChangedTrigger Binding="{Binding WizardIndex}">
+                            <i:Interaction.Behaviors>
+                                <ei:ConditionBehavior>
+                                    <ei:ConditionalExpression>
+                                        <ei:ComparisonCondition LeftOperand="{Binding WizardIndex}"
+                                                                Operator="Equal"
+                                                                RightOperand="0" />
+                                    </ei:ConditionalExpression>
+                                </ei:ConditionBehavior>
+                            </i:Interaction.Behaviors>
+                            <ei:ControlStoryboardAction Storyboard="{StaticResource FadeIn}" />
+                        </ei:PropertyChangedTrigger>
+                        <ei:PropertyChangedTrigger Binding="{Binding WizardIndex}">
+                            <i:Interaction.Behaviors>
+                                <ei:ConditionBehavior>
+                                    <ei:ConditionalExpression>
+                                        <ei:ComparisonCondition LeftOperand="{Binding WizardIndex}"
+                                                                Operator="NotEqual"
+                                                                RightOperand="0" />
+                                    </ei:ConditionalExpression>
+                                </ei:ConditionBehavior>
+                            </i:Interaction.Behaviors>
+                            <ei:ControlStoryboardAction Storyboard="{StaticResource FadeOut}" />
+                        </ei:PropertyChangedTrigger>
+                    </i:Interaction.Triggers>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Viewbox Child="{StaticResource Power-Button}" Stretch="None" />
+                        <TextBlock Grid.Row="1"
+                                   Text="Welcome"
+                                   TextAlignment="Center" />
+                    </Grid>
+                </Border>
+                <Border x:Name="SomeBorder2"
+                        DockPanel.Dock="Top"
+                        Style="{StaticResource WizardBorder}">
+                    <Border.Resources>
+                        <system:String x:Key="AnimationTarget">SomeBorder2</system:String>
+                    </Border.Resources>
+                    <i:Interaction.Triggers>
+                        <ei:PropertyChangedTrigger Binding="{Binding WizardIndex}">
+                            <i:Interaction.Behaviors>
+                                <ei:ConditionBehavior>
+                                    <ei:ConditionalExpression>
+                                        <ei:ComparisonCondition LeftOperand="{Binding WizardIndex}"
+                                                                Operator="Equal"
+                                                                RightOperand="1" />
+                                    </ei:ConditionalExpression>
+                                </ei:ConditionBehavior>
+                            </i:Interaction.Behaviors>
+                            <ei:ControlStoryboardAction Storyboard="{StaticResource FadeIn}" />
+                        </ei:PropertyChangedTrigger>
+                        <ei:PropertyChangedTrigger Binding="{Binding WizardIndex}">
+                            <i:Interaction.Behaviors>
+                                <ei:ConditionBehavior>
+                                    <ei:ConditionalExpression>
+                                        <ei:ComparisonCondition LeftOperand="{Binding WizardIndex}"
+                                                                Operator="NotEqual"
+                                                                RightOperand="1" />
+                                    </ei:ConditionalExpression>
+                                </ei:ConditionBehavior>
+                            </i:Interaction.Behaviors>
+                            <ei:ControlStoryboardAction Storyboard="{StaticResource FadeOut}" />
+                        </ei:PropertyChangedTrigger>
+                    </i:Interaction.Triggers>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Viewbox Child="{StaticResource Data-Import}" Stretch="None" />
+                        <TextBlock Grid.Row="1"
+                                   Text="Import"
+                                   TextAlignment="Center" />
+                    </Grid>
+                </Border>
+                <Border x:Name="SomeBorder3"
+                        DockPanel.Dock="Top"
+                        Style="{StaticResource WizardBorder}">
+                    <Border.Resources>
+                        <system:String x:Key="AnimationTarget">SomeBorder3</system:String>
+                    </Border.Resources>
+                    <i:Interaction.Triggers>
+                        <ei:PropertyChangedTrigger Binding="{Binding WizardIndex}">
+                            <i:Interaction.Behaviors>
+                                <ei:ConditionBehavior>
+                                    <ei:ConditionalExpression>
+                                        <ei:ComparisonCondition LeftOperand="{Binding WizardIndex}"
+                                                                Operator="Equal"
+                                                                RightOperand="2" />
+                                    </ei:ConditionalExpression>
+                                </ei:ConditionBehavior>
+                            </i:Interaction.Behaviors>
+                            <ei:ControlStoryboardAction Storyboard="{StaticResource FadeIn}" />
+                        </ei:PropertyChangedTrigger>
+                        <ei:PropertyChangedTrigger Binding="{Binding WizardIndex}">
+                            <i:Interaction.Behaviors>
+                                <ei:ConditionBehavior>
+                                    <ei:ConditionalExpression>
+                                        <ei:ComparisonCondition LeftOperand="{Binding WizardIndex}"
+                                                                Operator="NotEqual"
+                                                                RightOperand="2" />
+                                    </ei:ConditionalExpression>
+                                </ei:ConditionBehavior>
+                            </i:Interaction.Behaviors>
+                            <ei:ControlStoryboardAction Storyboard="{StaticResource FadeOut}" />
+                        </ei:PropertyChangedTrigger>
+                    </i:Interaction.Triggers>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Viewbox Child="{StaticResource Clean}" Stretch="None" />
+                        <TextBlock Grid.Row="1"
+                                   Text="Clean"
+                                   TextAlignment="Center" />
+                    </Grid>
+                </Border>
+                <Border x:Name="SomeBorder4"
+                        DockPanel.Dock="Top"
+                        Style="{StaticResource WizardBorder}">
+                    <Border.Resources>
+                        <system:String x:Key="AnimationTarget">SomeBorder4</system:String>
+                    </Border.Resources>
+                    <i:Interaction.Triggers>
+                        <ei:PropertyChangedTrigger Binding="{Binding WizardIndex}">
+                            <i:Interaction.Behaviors>
+                                <ei:ConditionBehavior>
+                                    <ei:ConditionalExpression>
+                                        <ei:ComparisonCondition LeftOperand="{Binding WizardIndex}"
+                                                                Operator="Equal"
+                                                                RightOperand="3" />
+                                    </ei:ConditionalExpression>
+                                </ei:ConditionBehavior>
+                            </i:Interaction.Behaviors>
+                            <ei:ControlStoryboardAction Storyboard="{StaticResource FadeIn}" />
+                        </ei:PropertyChangedTrigger>
+                        <ei:PropertyChangedTrigger Binding="{Binding WizardIndex}">
+                            <i:Interaction.Behaviors>
+                                <ei:ConditionBehavior>
+                                    <ei:ConditionalExpression>
+                                        <ei:ComparisonCondition LeftOperand="{Binding WizardIndex}"
+                                                                Operator="NotEqual"
+                                                                RightOperand="3" />
+                                    </ei:ConditionalExpression>
+                                </ei:ConditionBehavior>
+                            </i:Interaction.Behaviors>
+                            <ei:ControlStoryboardAction Storyboard="{StaticResource FadeOut}" />
+                        </ei:PropertyChangedTrigger>
+                    </i:Interaction.Triggers>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Viewbox Child="{StaticResource DataMerge-WF}" Stretch="None" />
+                        <TextBlock Grid.Row="1"
+                                   Text="Evaluate"
+                                   TextAlignment="Center" />
+                    </Grid>
+                </Border>
+                <Border x:Name="SomeBorder5"
+                        DockPanel.Dock="Top"
+                        Style="{StaticResource WizardBorder}">
+                    <Border.Resources>
+                        <system:String x:Key="AnimationTarget">SomeBorder5</system:String>
+                    </Border.Resources>
+                    <i:Interaction.Triggers>
+                        <ei:PropertyChangedTrigger Binding="{Binding WizardIndex}">
+                            <i:Interaction.Behaviors>
+                                <ei:ConditionBehavior>
+                                    <ei:ConditionalExpression>
+                                        <ei:ComparisonCondition LeftOperand="{Binding WizardIndex}"
+                                                                Operator="Equal"
+                                                                RightOperand="4" />
+                                    </ei:ConditionalExpression>
+                                </ei:ConditionBehavior>
+                            </i:Interaction.Behaviors>
+                            <ei:ControlStoryboardAction Storyboard="{StaticResource FadeIn}" />
+                        </ei:PropertyChangedTrigger>
+                        <ei:PropertyChangedTrigger Binding="{Binding WizardIndex}">
+                            <i:Interaction.Behaviors>
+                                <ei:ConditionBehavior>
+                                    <ei:ConditionalExpression>
+                                        <ei:ComparisonCondition LeftOperand="{Binding WizardIndex}"
+                                                                Operator="NotEqual"
+                                                                RightOperand="4" />
+                                    </ei:ConditionalExpression>
+                                </ei:ConditionBehavior>
+                            </i:Interaction.Behaviors>
+                            <ei:ControlStoryboardAction Storyboard="{StaticResource FadeOut}" />
+                        </ei:PropertyChangedTrigger>
+                    </i:Interaction.Triggers>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Viewbox Child="{StaticResource Data-Export}" Stretch="None" />
+                        <TextBlock Grid.Row="1"
+                                   Text="Export"
+                                   TextAlignment="Center" />
+                    </Grid>
+                </Border>
+                <Button Margin="5" DockPanel.Dock="Bottom">
+                    <Button.Content>
+                        <Viewbox MaxWidth="78"
+                                 MaxHeight="78"
+                                 Child="{StaticResource 'User Help'}" />
+                    </Button.Content>
+                </Button>
+            </DockPanel>
+            <Border Grid.Row="1"
+                    Grid.Column="1"
+                    Margin="2,5,5,5"
+                    BorderBrush="{DynamicResource AccentColorBrush}"
+                    BorderThickness="2">
+                <metro:TransitioningContentControl Content="{Binding CurrentViewModel}" Transition="LeftReplace" />
+            </Border>
+            <Grid Grid.Row="2"
+                  Grid.Column="0"
+                  Grid.ColumnSpan="2"
+                  Margin="0,5,0,5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10*" />
+                    <ColumnDefinition Width="10*" />
+                    <ColumnDefinition Width="75*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="10*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="10*" />
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="3"
+                        MinWidth="78"
+                        MaxWidth="50"
+                        Command="{Binding MoveBackCommand}">
+                    <Button.Content>
+                        <Viewbox Child="{StaticResource ArrowLeft}" />
+                    </Button.Content>
+                </Button>
+                <Button Grid.Column="5"
+                        MinWidth="78"
+                        MaxWidth="78"
+                        Command="{Binding MoveForwardCommand}">
+                    <Button.Content>
+                        <Viewbox Child="{StaticResource ArrowRight}" />
+                    </Button.Content>
+                </Button>
+            </Grid>
+            <StatusBar Grid.Row="3"
+                       Grid.Column="0"
+                       Grid.ColumnSpan="2">
+                <StatusBarItem>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="ClinWeb Environment: {0}">
+                                <Binding Path="CurrentEnvironment" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </StatusBarItem>
+                <StatusBarItem>
+                    <Separator />
+                </StatusBarItem>
+                <StatusBarItem>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="Current Version: {0}">
+                                <Binding Path="CurrentVersion" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </StatusBarItem>
+            </StatusBar>
+        </Grid>
+    </metro:MetroContentControl>
+</metro:MetroWindow>

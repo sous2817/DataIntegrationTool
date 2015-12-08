@@ -1,0 +1,445 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DDD659AF-C8F8-47B0-9160-AA7A8BC384AB}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DataIntegrationTool</RootNamespace>
+    <AssemblyName>DataIntegrationTool</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeAnalysisIgnoreGeneratedCode>true</CodeAnalysisIgnoreGeneratedCode>
+    <NoWarn>105</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Label="SlowCheetah">
+    <SlowCheetahToolsPath>$([System.IO.Path]::GetFullPath( $(MSBuildProjectDirectory)\..\packages\SlowCheetah.2.5.15\tools\))</SlowCheetahToolsPath>
+    <SlowCheetah_EnableImportFromNuGet Condition=" '$(SlowCheetah_EnableImportFromNuGet)'=='' ">true</SlowCheetah_EnableImportFromNuGet>
+    <SlowCheetah_NuGetImportPath Condition=" '$(SlowCheetah_NuGetImportPath)'=='' ">$([System.IO.Path]::GetFullPath( $(MSBuildProjectDirectory)\Properties\SlowCheetah\SlowCheetah.Transforms.targets ))</SlowCheetah_NuGetImportPath>
+    <SlowCheetahTargets Condition=" '$(SlowCheetah_EnableImportFromNuGet)'=='true' and Exists('$(SlowCheetah_NuGetImportPath)') ">$(SlowCheetah_NuGetImportPath)</SlowCheetahTargets>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'LOCAL|AnyCPU'">
+    <OutputPath>bin\LOCAL\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PROD|AnyCPU'">
+    <OutputPath>bin\PROD\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'QUAT|AnyCPU'">
+    <OutputPath>bin\QUAT\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DEV|AnyCPU'">
+    <OutputPath>bin\DEV\</OutputPath>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Stage|AnyCPU'">
+    <OutputPath>bin\Stage\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'TEST|AnyCPU'">
+    <OutputPath>bin\TEST\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'TEST01|AnyCPU'">
+    <OutputPath>bin\TEST01\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'TEST02|AnyCPU'">
+    <OutputPath>bin\TEST02\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Excel, Version=2.1.2.3, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelDataReader.2.1.2.3\lib\net45\Excel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FastMember, Version=1.0.0.9, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FastMember.1.1.0-beta1\lib\net40\FastMember.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight, Version=5.2.0.37222, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.2.0.0\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.2.0.37222, Culture=neutral, PublicKeyToken=669f0b5e8f868abf, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.2.0.0\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.2.0.37226, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.2.0.0\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="LumenWorks.Framework.IO, Version=3.9.0.0, Culture=neutral, PublicKeyToken=5ad3ea2f85776344, processorArchitecture=MSIL">
+      <HintPath>..\packages\LumenWorksCsvReader.3.9\lib\net20\LumenWorks.Framework.IO.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MahApps.Metro, Version=1.1.3.236, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.1.3-ALPHA236\lib\net45\MahApps.Metro.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Resources\3rdPartyDLLs\Microsoft\Microsoft.Data.Services.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Semio.ClientService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=457312be13f8f84b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Resources\3rdPartyDLLs\SemioCommon\Semio.ClientService.dll</HintPath>
+    </Reference>
+    <Reference Include="Semio.ClientService.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=457312be13f8f84b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Resources\3rdPartyDLLs\SemioCommon\Semio.ClientService.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Semio.ClientService.Provide, Version=1.0.0.0, Culture=neutral, PublicKeyToken=457312be13f8f84b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Resources\3rdPartyDLLs\SemioCommon\Semio.ClientService.Provide.dll</HintPath>
+    </Reference>
+    <Reference Include="Semio.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=457312be13f8f84b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Resources\3rdPartyDLLs\SemioCommon\Semio.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.1.3-ALPHA236\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="BaseClasses\ClinWebDataMiningStructure.cs" />
+    <Compile Include="BaseClasses\DataIntegrationViewModelBase.cs" />
+    <Compile Include="BaseClasses\DynamicHelper\DynamicPropertyInfoHelper.cs" />
+    <Compile Include="BaseClasses\DynamicHelper\DynamicType.cs" />
+    <Compile Include="BaseClasses\DynamicHelper\DynamicTypeHelper.cs" />
+    <Compile Include="BaseClasses\ThemeAndAccentColorMenuData.cs" />
+    <Compile Include="HelperMethods\OpenAndImportFiles.cs" />
+    <Compile Include="MainProgram\CleanData\CleanDataView.xaml.cs">
+      <DependentUpon>CleanDataView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainProgram\CleanData\CleanDataViewModel.cs" />
+    <Compile Include="MainProgram\Dialogs\ExceptionDialog\ExceptionDialogView.xaml.cs">
+      <DependentUpon>ExceptionDialogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainProgram\Dialogs\ExceptionDialog\ExceptionDialogViewModel.cs" />
+    <Compile Include="MainProgram\Dialogs\OpenFile\OpenFileDialogView.xaml.cs">
+      <DependentUpon>OpenFileDialogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainProgram\Dialogs\OpenFile\OpenFileDialogViewModel.cs" />
+    <Compile Include="MainProgram\EvaluateMatches\EvaluateMatchesView.xaml.cs">
+      <DependentUpon>EvaluateMatchesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainProgram\EvaluateMatches\EvaluateMatchesViewModel.cs" />
+    <Compile Include="MainProgram\ExportData\ExportDataViewModel.cs" />
+    <Compile Include="MainProgram\ExportData\ExportDataView.xaml.cs">
+      <DependentUpon>ExportDataView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainProgram\ImportData\ImportDataBLL.cs" />
+    <Compile Include="MainProgram\ImportData\ImportDataView.xaml.cs">
+      <DependentUpon>ImportDataView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainProgram\ImportData\ImportDataViewModel.cs" />
+    <Compile Include="MainProgram\Dialogs\ImportDialog\ImportDialogView.xaml.cs">
+      <DependentUpon>ImportDialogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainProgram\Dialogs\ImportDialog\ImportDialogViewModel.cs" />
+    <Compile Include="MainProgram\MainWindow\MainViewModel.cs" />
+    <Compile Include="MainProgram\MainWindow\MainWindowBLL.cs" />
+    <Compile Include="MessengerPackages\ImportToCleanPackage.cs" />
+    <Compile Include="MultiConverterClasses\ImportButtonParameters.cs" />
+    <Compile Include="MainProgram\ViewModelLocator.cs" />
+    <Compile Include="Resources\Converters\ImportButtonParametersConverter.cs" />
+    <Compile Include="Resources\Enums\ImportSource.cs" />
+    <Compile Include="Resources\Enums\WizardSteps.cs" />
+    <Page Include="MainProgram\CleanData\CleanDataView.xaml">
+      <SubType>Form</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainProgram\Dialogs\ExceptionDialog\ExceptionDialogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainProgram\Dialogs\OpenFile\OpenFileDialogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainProgram\EvaluateMatches\EvaluateMatchesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainProgram\ExportData\ExportDataView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainProgram\ImportData\ImportDataView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainProgram\Dialogs\ImportDialog\ImportDialogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainProgram\Welcome\WelcomeView.xaml">
+      <SubType>Form</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainProgram\MainWindow\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainProgram\Welcome\WelcomeView.xaml.cs">
+      <DependentUpon>WelcomeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainProgram\Welcome\WelcomeViewModel.cs" />
+    <Compile Include="MainProgram\MainWindow\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Resources\Animations\WizardAnimations.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Styles\ContextMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Styles\CustomDialogRestyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Styles\GridSplitterStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Styles\ImportGroupBoxRestyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Styles\TextBoxFileDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Styles\TextStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Styles\Viewboxes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Styles\WizardStepsBorderStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MessengerPackages\ImportDataPackage.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="App.Debug.config">
+      <DependentUpon>App.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="App.DEV.config">
+      <DependentUpon>App.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="App.LOCAL.config">
+      <DependentUpon>App.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="App.PROD.config">
+      <DependentUpon>App.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="App.QUAT.config">
+      <DependentUpon>App.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="App.Release.config">
+      <DependentUpon>App.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="App.Stage.config">
+      <DependentUpon>App.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="App.TEST.config">
+      <DependentUpon>App.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="App.TEST01.config">
+      <DependentUpon>App.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="App.TEST02.config">
+      <DependentUpon>App.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="Properties\SlowCheetah\SlowCheetah.Transforms.targets" />
+    <None Include="Resources\3rdPartyDLLs\SemioCommon\Semio.Core.dll.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <TransformOnBuild>true</TransformOnBuild>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Icons\MagicWand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\3rdPartyDLLs\Microsoft\Microsoft.Data.Services.Client.dll" />
+    <Resource Include="Resources\3rdPartyDLLs\Microsoft\Microsoft.Data.Services.Client.xml" />
+    <Content Include="Resources\3rdPartyDLLs\SemioCommon\Semio.ClientService.Data.dll" />
+    <Content Include="Resources\3rdPartyDLLs\SemioCommon\Semio.ClientService.Data.pdb" />
+    <Resource Include="Resources\3rdPartyDLLs\SemioCommon\Semio.ClientService.Data.xml" />
+    <Content Include="Resources\3rdPartyDLLs\SemioCommon\Semio.ClientService.dll" />
+    <Content Include="Resources\3rdPartyDLLs\SemioCommon\Semio.ClientService.Entity.ObjectModel.dll" />
+    <Content Include="Resources\3rdPartyDLLs\SemioCommon\Semio.ClientService.Entity.ObjectModel.pdb" />
+    <Resource Include="Resources\3rdPartyDLLs\SemioCommon\Semio.ClientService.Entity.ObjectModel.xml" />
+    <Content Include="Resources\3rdPartyDLLs\SemioCommon\Semio.ClientService.Feed.dll" />
+    <Content Include="Resources\3rdPartyDLLs\SemioCommon\Semio.ClientService.Feed.pdb" />
+    <Resource Include="Resources\3rdPartyDLLs\SemioCommon\Semio.ClientService.Feed.xml" />
+    <Content Include="Resources\3rdPartyDLLs\SemioCommon\Semio.ClientService.Intelligence.dll" />
+    <Content Include="Resources\3rdPartyDLLs\SemioCommon\Semio.ClientService.Intelligence.pdb" />
+    <Resource Include="Resources\3rdPartyDLLs\SemioCommon\Semio.ClientService.Intelligence.xml" />
+    <Content Include="Resources\3rdPartyDLLs\SemioCommon\Semio.ClientService.Interfaces.dll" />
+    <Content Include="Resources\3rdPartyDLLs\SemioCommon\Semio.ClientService.Interfaces.pdb" />
+    <Resource Include="Resources\3rdPartyDLLs\SemioCommon\Semio.ClientService.Interfaces.xml" />
+    <Content Include="Resources\3rdPartyDLLs\SemioCommon\Semio.ClientService.pdb" />
+    <Content Include="Resources\3rdPartyDLLs\SemioCommon\Semio.ClientService.Provide.dll" />
+    <Content Include="Resources\3rdPartyDLLs\SemioCommon\Semio.ClientService.Provide.pdb" />
+    <Resource Include="Resources\3rdPartyDLLs\SemioCommon\Semio.ClientService.Provide.xml" />
+    <Resource Include="Resources\3rdPartyDLLs\SemioCommon\Semio.ClientService.xml" />
+    <Content Include="Resources\3rdPartyDLLs\SemioCommon\Semio.Core.dll" />
+    <Content Include="Resources\3rdPartyDLLs\SemioCommon\Semio.Core.pdb" />
+    <Resource Include="Resources\3rdPartyDLLs\SemioCommon\Semio.Core.xml" />
+    <Content Include="Resources\3rdPartyDLLs\SemioCommon\Semio.SMart.Data.dll" />
+    <Content Include="Resources\3rdPartyDLLs\SemioCommon\Semio.SMart.Data.pdb" />
+    <Resource Include="Resources\3rdPartyDLLs\SemioCommon\Semio.SMart.Data.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SlowCheetahTargets)" Condition="Exists('$(SlowCheetahTargets)')" Label="SlowCheetah" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

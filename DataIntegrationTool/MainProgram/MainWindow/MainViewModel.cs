@@ -47,9 +47,7 @@ namespace DataIntegrationTool.MainProgram.MainWindow
             CurrentVersion = MainWindowBLL.GetCurrentVerision();
             CurrentEnvironment = MainWindowBLL.GetCurrentEnvironment();
         }
-
-
-
+        
         #region Commands
         private RelayCommand _exitProgramCommand;
         public RelayCommand ExitProgramCommand

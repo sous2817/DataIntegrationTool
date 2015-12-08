@@ -11,10 +11,10 @@
                       MaxHeight="800"
                       DataContext="{Binding ImportDialog,
                                             Source={StaticResource Locator}}"
-                      Style="{StaticResource NewCustomDialogStyle}"
                       d:DesignHeight="800"
                       d:DesignWidth="1200"
                       mc:Ignorable="d">
+    <!--  Style="{StaticResource NewCustomDialogStyle}"  -->
     <dialogs:CustomDialog.Content>
         <StackPanel>
             <TextBlock FontSize="20"

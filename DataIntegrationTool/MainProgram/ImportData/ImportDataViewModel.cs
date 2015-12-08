@@ -114,10 +114,10 @@ namespace DataIntegrationTool.MainProgram.ImportData
             switch (closingSource)
             {
                 case "ClinWebDialog":
-                    await _dialogCoordinator.HideMetroDialogAsync(this, _importDialog);
+                    await _dialogCoordinator.HideMetroDialogAsync(this, ImportDialog);
                     break;
                 case "FileDialog":
-                    await _dialogCoordinator.HideMetroDialogAsync(this, _openFileDialog);
+                    await _dialogCoordinator.HideMetroDialogAsync(this, OpenFileDialog);
                     break;
             }
         }
@@ -133,7 +133,7 @@ namespace DataIntegrationTool.MainProgram.ImportData
                 _canvasGuid = importedData.ClinWebCanvasGuid;
                 try
                 {
-                    await _dialogCoordinator.HideMetroDialogAsync(this, _importDialog);
+                    await _dialogCoordinator.HideMetroDialogAsync(this, ImportDialog);
 
                     // ReSharper disable once SuggestVarOrType_SimpleTypes
                     InvestigationalPerformanceCollection facilityInvListDataForACanvas = await Task.Run(()=>
@@ -155,7 +155,7 @@ namespace DataIntegrationTool.MainProgram.ImportData
                 var ext = Path.GetExtension(importedData.FileName);
                 try
                 {
-                    await _dialogCoordinator.HideMetroDialogAsync(this, _openFileDialog);
+                    await _dialogCoordinator.HideMetroDialogAsync(this, OpenFileDialog);
                     var sourceData = ext == ".csv" ? await Task.Run(()=>HelperMethods.OpenAndImportFiles.ImportCSV(importedData.FileName)) : 
                                                         await Task.Run(()=>HelperMethods.OpenAndImportFiles.ImportExcel(importedData.FileName));
 
@@ -228,10 +228,12 @@ namespace DataIntegrationTool.MainProgram.ImportData
                 case ImportSource.FileSource.ClinWeb:
                     var progressDialog = await _dialogCoordinator.ShowProgressAsync(this, "Fetching ClinWeb Canvas Information...", string.Empty);
                     progressDialog.SetIndeterminate();
+
                     ClinWebData = await ImportDataBLL.ImportClinWeb();
+
                     Messenger.Default.Send(ClinWebData);
 
-                    await _dialogCoordinator.ShowMetroDialogAsync(this, _importDialog);
+                    await _dialogCoordinator.ShowMetroDialogAsync(this, ImportDialog);
 
                     await progressDialog.CloseAsync();
 
@@ -251,8 +253,8 @@ namespace DataIntegrationTool.MainProgram.ImportData
 
         private async void ImportFile()
         {
-            _openFileDialog.DataContext = new OpenFileDialogViewModel();
-            await _dialogCoordinator.ShowMetroDialogAsync(this, _openFileDialog);
+            OpenFileDialog.DataContext = new OpenFileDialogViewModel();
+            await _dialogCoordinator.ShowMetroDialogAsync(this, OpenFileDialog);
         }
 
 
@@ -260,8 +262,22 @@ namespace DataIntegrationTool.MainProgram.ImportData
 
         #region Properties
 
-        private readonly ImportDialogView _importDialog = new ImportDialogView();
-        private readonly OpenFileDialogView _openFileDialog = new OpenFileDialogView();
+        private ImportDialogView _importDialog;
+
+        private ImportDialogView ImportDialog
+        {
+            get { return _importDialog ?? (_importDialog = new ImportDialogView()); }
+        }
+
+        private OpenFileDialogView _openFileDialog;
+        
+        private OpenFileDialogView OpenFileDialog
+        {
+            get { return _openFileDialog ?? (_openFileDialog = new OpenFileDialogView()); }
+        }
+
+   //     private readonly OpenFileDialogView _openFileDialog = new OpenFileDialogView();
+
         private readonly IDialogCoordinator _dialogCoordinator;
         private bool _receivedImportData;
         private Guid _canvasGuid;

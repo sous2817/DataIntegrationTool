@@ -11,7 +11,6 @@ namespace DataIntegrationToolTests
         public void ImportClinWebTest()
         {
             var clinWebCanvasList = ImportDataBLL.ImportClinWeb().Result;
-
             Assert.IsTrue(clinWebCanvasList.Count >0);
         }
     }

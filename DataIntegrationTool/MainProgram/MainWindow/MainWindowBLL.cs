@@ -97,9 +97,6 @@ namespace DataIntegrationTool.MainProgram.MainWindow
                 case "https://infosario-design-test02.quintiles.com:8001/Service.svc":
                     environemntName = "Test 2";
                     return environemntName;
-                case "http://replacedfromtransform.quintiles.net/":
-                    environemntName = "UnitTesting";
-                    return environemntName;
             }
             return environemntName;
         }

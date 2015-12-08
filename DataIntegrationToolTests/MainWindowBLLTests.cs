@@ -8,10 +8,18 @@ namespace DataIntegrationToolTests
     public class MainWindowBLLTests
     {
         [TestMethod]
+        public void TestWizardCount()
+        {
+            var wizList = MainWindowBLL.GetWizardSteps();
+
+            Assert.IsTrue(wizList.Count==5);
+        }
+
+        [TestMethod]
         public void TestEnvironemntName()
         {
             var environmentName = MainWindowBLL.GetCurrentEnvironment();
-            Assert.AreEqual(environmentName, "UnitTesting");
+            Assert.AreEqual(environmentName, "Development");
         }
 
         [TestMethod]

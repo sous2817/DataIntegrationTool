@@ -33,8 +33,7 @@ namespace DataIntegrationTool.MainProgram.ImportData
             }
             catch (Exception ex)
             {
-                var ev = new ExceptionDialogView("An unexpected error occurred in the application.", ex,
-                    Application.Current.MainWindow);
+                var ev = new ExceptionDialogView("An unexpected error occurred in the application.", ex);
                 ev.Show();
                 return clinWebData;
             }

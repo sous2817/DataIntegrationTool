@@ -149,8 +149,7 @@ namespace DataIntegrationTool.MainProgram.ImportData
                     await _dialogCoordinator.HideMetroDialogAsync(this, ImportDialog);
                     
                     _receivedImportData = false;
-                    var ev = new ExceptionDialogView("An unexpected error occurred in the application.", ex,
-                    Application.Current.MainWindow);
+                    var ev = new ExceptionDialogView("An unexpected error occurred in the application.", ex);
                     ev.ShowDialog();
                     await progressDialog.CloseAsync();
                 }

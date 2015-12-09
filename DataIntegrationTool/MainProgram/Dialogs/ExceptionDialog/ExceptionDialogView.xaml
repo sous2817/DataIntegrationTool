@@ -4,15 +4,16 @@
                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                    xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+                   Title="Error - Data Integration Tool"
                    Width="520"
                    Height="300"
                    MinWidth="350"
                    MinHeight="200"
+                   GlowBrush="{DynamicResource AccentColorBrush}"
                    Loaded="Window_Loaded"
-                   SizeChanged="ExpressionViewerWindow_SizeChanged"
-                   mc:Ignorable="d"
                    ShowInTaskbar="False"
-                   GlowBrush="{DynamicResource AccentColorBrush}">
+                   SizeChanged="ExpressionViewerWindow_SizeChanged"
+                   mc:Ignorable="d">
     <Grid Name="mainGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />

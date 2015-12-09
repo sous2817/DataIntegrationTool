@@ -40,6 +40,11 @@ namespace DataIntegrationTool.MainProgram.ImportData
             }
         }
 
+        public static async Task<InvestigationalPerformanceCollection> GetInvestigationalPerformanceCollection(Guid canvasGuid)
+        { 
+            return  await Task.Run(() => ProvideClient.Default.GetFacilityInvestigatorData(canvasGuid.ToString()));
+        }
+
         public static DataView ConvertClinWebDataToDataView(InvestigationalPerformanceCollection clinwebCollection)
         {
             var sourceDataTable = new DataTable();

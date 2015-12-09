@@ -135,11 +135,10 @@ namespace DataIntegrationTool.MainProgram.ImportData
                 {
                     await _dialogCoordinator.HideMetroDialogAsync(this, ImportDialog);
 
-                    // ReSharper disable once SuggestVarOrType_SimpleTypes
-                    InvestigationalPerformanceCollection facilityInvListDataForACanvas = await Task.Run(()=>
-                        ProvideClient.Default.GetFacilityInvestigatorData(_canvasGuid.ToString()));
+                    var facilityInvListDataForACanvas = await ImportDataBLL.GetInvestigationalPerformanceCollection(_canvasGuid);
+
                     BaseData = importedData;
-                    BaseData.ImportedData = await Task.Run(()=>ImportDataBLL.ConvertClinWebDataToDataView(facilityInvListDataForACanvas));
+                    BaseData.ImportedData = await Task.Run(() => ImportDataBLL.ConvertClinWebDataToDataView(facilityInvListDataForACanvas));
                     _receivedImportData = true;
                     await progressDialog.CloseAsync();
                 }
@@ -231,9 +230,9 @@ namespace DataIntegrationTool.MainProgram.ImportData
 
                     ClinWebData = await ImportDataBLL.ImportClinWeb();
 
-                    Messenger.Default.Send(ClinWebData);
-
                     await _dialogCoordinator.ShowMetroDialogAsync(this, ImportDialog);
+
+                    Messenger.Default.Send(ClinWebData);
 
                     await progressDialog.CloseAsync();
 

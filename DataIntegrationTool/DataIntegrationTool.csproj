@@ -181,7 +181,7 @@
     <Compile Include="BaseClasses\DynamicHelper\DynamicType.cs" />
     <Compile Include="BaseClasses\DynamicHelper\DynamicTypeHelper.cs" />
     <Compile Include="BaseClasses\ThemeAndAccentColorMenuData.cs" />
-    <Compile Include="HelperMethods\OpenAndImportFiles.cs" />
+    <Compile Include="BaseClasses\HelperMethods\OpenAndImportFiles.cs" />
     <Compile Include="MainProgram\CleanData\CleanDataView.xaml.cs">
       <DependentUpon>CleanDataView.xaml</DependentUpon>
     </Compile>

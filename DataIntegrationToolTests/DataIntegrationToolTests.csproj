@@ -120,6 +120,7 @@
       <HintPath>..\DataIntegrationTool\Resources\3rdPartyDLLs\SemioCommon\Semio.SMart.Data.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.1.3-ALPHA236\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>

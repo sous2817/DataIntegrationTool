@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
@@ -133,6 +134,7 @@ namespace DataIntegrationTool.MainProgram.ImportData
                 _canvasGuid = importedData.ClinWebCanvasGuid;
                 try
                 {
+                    throw new AccessViolationException();
                     await _dialogCoordinator.HideMetroDialogAsync(this, ImportDialog);
 
                     var facilityInvListDataForACanvas = await ImportDataBLL.GetInvestigationalPerformanceCollection(_canvasGuid);
@@ -142,12 +144,17 @@ namespace DataIntegrationTool.MainProgram.ImportData
                     _receivedImportData = true;
                     await progressDialog.CloseAsync();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    await _dialogCoordinator.HideMetroDialogAsync(this, ImportDialog);
+                    
                     _receivedImportData = false;
-                    //  ErrorRaised = true;
+                    var ev = new ExceptionDialogView("An unexpected error occurred in the application.", ex,
+                    Application.Current.MainWindow);
+                    ev.ShowDialog();
+                    await progressDialog.CloseAsync();
                 }
-               // if (!_receivedImportData) await progressDialog.CloseAsync();
+               // if (!_receivedImportData) ;
             }
             else
             {
@@ -213,7 +220,7 @@ namespace DataIntegrationTool.MainProgram.ImportData
                 }
                 
             }
-            if (!_receivedImportData) await progressDialog.CloseAsync();
+           // if (!_receivedImportData) await progressDialog.CloseAsync();
            // if (_receivedImportData) return;
 
           //  await progressDialog.CloseAsync();

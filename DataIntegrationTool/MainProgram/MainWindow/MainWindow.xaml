@@ -393,6 +393,7 @@
             <StatusBar Grid.Row="3"
                        Grid.Column="0"
                        Grid.ColumnSpan="2">
+                <Separator Margin="5,0,0,0" Style="{DynamicResource MetroStatusBarSeparator}" />
                 <StatusBarItem>
                     <TextBlock>
                         <TextBlock.Text>
@@ -402,9 +403,7 @@
                         </TextBlock.Text>
                     </TextBlock>
                 </StatusBarItem>
-                <StatusBarItem>
-                    <Separator />
-                </StatusBarItem>
+                <Separator Style="{DynamicResource MetroStatusBarSeparator}" />
                 <StatusBarItem>
                     <TextBlock>
                         <TextBlock.Text>
@@ -413,6 +412,11 @@
                             </MultiBinding>
                         </TextBlock.Text>
                     </TextBlock>
+                </StatusBarItem>
+                <Separator Style="{DynamicResource MetroStatusBarSeparator}" />
+                <StatusBarItem>
+                    <!--  This blank textblock is here to extend the status bar color to the end of the window.  If it's not here, the status bar shows up white (the color of the separator)  -->
+                    <TextBlock />
                 </StatusBarItem>
             </StatusBar>
         </Grid>

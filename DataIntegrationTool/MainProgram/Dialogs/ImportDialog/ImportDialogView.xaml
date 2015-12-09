@@ -68,7 +68,7 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Button Grid.Column="1"
-                    Command="{Binding SendGuidMessageCommand}"
+                    Command="{Binding SendMessageCommand}"
                     Content="OK"
                     DockPanel.Dock="Top" />
             <Button Grid.Column="3"

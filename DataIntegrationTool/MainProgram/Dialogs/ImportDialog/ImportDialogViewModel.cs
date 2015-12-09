@@ -49,17 +49,22 @@ namespace DataIntegrationTool.MainProgram.ImportDialog
             Messenger.Default.Send("ClinWebDialog", "Cancel");
         }
 
+        private RelayCommand _sendMessageCommand;
 
-        private RelayCommand _sendGuidMessageCommand;
-
-        public RelayCommand SendGuidMessageCommand
+        public RelayCommand SendMessageCommand
         {
             get
             {
-                return _sendGuidMessageCommand
-                       ?? (_sendGuidMessageCommand = new RelayCommand(SendMessage));
+                return _sendMessageCommand
+                       ?? (_sendMessageCommand = new RelayCommand(SendMessage, CanExecuteSendMessage));
             }
         }
+
+        private bool CanExecuteSendMessage()
+        {
+            return SelectedCanvasItem.CanvasModelGuid != Guid.Empty;
+        }
+
 
         private void SendMessage()
         {
@@ -75,11 +80,11 @@ namespace DataIntegrationTool.MainProgram.ImportDialog
         }
 
 
-        private CanvasModelListItem _selectedCanvasItem = new CanvasModelListItem();
+        private CanvasModelListItem _selectedCanvasItem;
 
         public CanvasModelListItem SelectedCanvasItem
         {
-            get { return _selectedCanvasItem; }
+            get { return _selectedCanvasItem ?? (_selectedCanvasItem = new CanvasModelListItem()); }
 
             set
             {

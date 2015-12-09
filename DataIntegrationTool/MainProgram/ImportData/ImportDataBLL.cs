@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using DataIntegrationTool.BaseClasses;
 using DataIntegrationTool.MainProgram.Dialogs.ExceptionDialog;
+using DataIntegrationTool.Resources.Enums;
 using FastMember;
 using Semio.ClientService.Data.Intelligence.Canvas;
 using Semio.ClientService.Data.Intelligence.Investigator;
@@ -106,7 +108,40 @@ namespace DataIntegrationTool.MainProgram.ImportData
             return sourceDataTable.DefaultView;
         }
 
-        public static List<string> GenerateMandatoryBioPharmColumnList()
+        public static async Task<DataTable> GetFileData(string fileName)
+        {
+            var ext = Path.GetExtension(fileName);
+            var fileData = ext == ".csv" ? await Task.Run(() => HelperMethods.OpenAndImportFiles.ImportCSV(fileName)) :
+                                                await Task.Run(() => HelperMethods.OpenAndImportFiles.ImportExcel(fileName));
+
+            foreach (DataColumn dataColumn in fileData.Table.Columns)
+            {
+                dataColumn.ColumnName = dataColumn.ColumnName.Replace("/", "_");
+            }
+
+            return fileData.Table;
+        }
+
+        public static async Task<List<string>> MissingMandatoryColumnList(ImportSource.FileSource fileSource,DataTable fileDataTable)
+        {
+            var submittedColumnList =
+                        (from DataColumn dc in fileDataTable.Columns select dc.ToString()).ToList();
+            var mandatoryColumnList = new List<string>();
+
+            switch (fileSource)
+            {
+                case ImportSource.FileSource.CTMS:
+                    mandatoryColumnList = GenerateMandatoryCTMSManualColumnsList();
+                    break;
+                case ImportSource.FileSource.BioPharm:
+                    mandatoryColumnList = GenerateMandatoryBioPharmColumnList();
+                    break;
+            }
+
+            return mandatoryColumnList.Where(mandatory => submittedColumnList.Count(submitted => submitted == mandatory) != 1).ToList();
+        }
+
+        private static List<string> GenerateMandatoryBioPharmColumnList()
         {
             return new List<string>
             {
@@ -128,7 +163,7 @@ namespace DataIntegrationTool.MainProgram.ImportData
             };
         }
 
-        public static List<string> GenerateMandatoryCTMSManualColumnsList()
+        private static List<string> GenerateMandatoryCTMSManualColumnsList()
         {
             return new List<string>
             {

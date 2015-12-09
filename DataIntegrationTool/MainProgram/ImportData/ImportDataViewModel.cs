@@ -1,22 +1,17 @@
 ﻿using System;
-using System.CodeDom;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
 using DataIntegrationTool.MainProgram.ImportDialog;
-using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using GalaSoft.MvvmLight.Messaging;
 using MahApps.Metro.Controls.Dialogs;
 using Semio.ClientService.Data.Intelligence.Canvas;
-using Semio.ClientService.Provide;
 using System.Threading.Tasks;
-using System.Windows;
 using DataIntegrationTool.BaseClasses;
 using DataIntegrationTool.MainProgram.Dialogs.ExceptionDialog;
 using DataIntegrationTool.MainProgram.Dialogs.OpenFile;
-using Semio.ClientService.Data.Intelligence.Investigator;
 using DataIntegrationTool.MessengerPackages;
 using DataIntegrationTool.MultiConverterClasses;
 using DataIntegrationTool.Resources.Enums;
@@ -125,65 +120,36 @@ namespace DataIntegrationTool.MainProgram.ImportData
 
         private async void ProcessDataImport(ImportDataPackage importedData)
         {
-            _receivedImportData = false;
             var progressDialog = await _dialogCoordinator.ShowProgressAsync(this, "Fetching Data...", string.Empty);
             progressDialog.SetIndeterminate();
-
-            if (importedData.ClinWebCanvasGuid != Guid.Empty)
+            try
             {
-                _canvasGuid = importedData.ClinWebCanvasGuid;
-                try
+                if (importedData.ClinWebCanvasGuid != Guid.Empty)
                 {
-                    throw new AccessViolationException();
+                    _canvasGuid = importedData.ClinWebCanvasGuid;
                     await _dialogCoordinator.HideMetroDialogAsync(this, ImportDialog);
 
-                    var facilityInvListDataForACanvas = await ImportDataBLL.GetInvestigationalPerformanceCollection(_canvasGuid);
+                    var facilityInvListDataForACanvas =
+                        await ImportDataBLL.GetInvestigationalPerformanceCollection(_canvasGuid);
 
                     BaseData = importedData;
-                    BaseData.ImportedData = await Task.Run(() => ImportDataBLL.ConvertClinWebDataToDataView(facilityInvListDataForACanvas));
-                    _receivedImportData = true;
+                    BaseData.ImportedData =
+                        await Task.Run(() => ImportDataBLL.ConvertClinWebDataToDataView(facilityInvListDataForACanvas));
                     await progressDialog.CloseAsync();
                 }
-                catch (Exception ex)
-                {
-                    await _dialogCoordinator.HideMetroDialogAsync(this, ImportDialog);
-                    
-                    _receivedImportData = false;
-                    var ev = new ExceptionDialogView("An unexpected error occurred in the application.", ex);
-                    ev.ShowDialog();
-                    await progressDialog.CloseAsync();
-                }
-               // if (!_receivedImportData) ;
-            }
-            else
-            {
-                var ext = Path.GetExtension(importedData.FileName);
-                try
+                else
                 {
                     await _dialogCoordinator.HideMetroDialogAsync(this, OpenFileDialog);
-                    var sourceData = ext == ".csv" ? await Task.Run(()=>HelperMethods.OpenAndImportFiles.ImportCSV(importedData.FileName)) : 
-                                                        await Task.Run(()=>HelperMethods.OpenAndImportFiles.ImportExcel(importedData.FileName));
 
-                    foreach (DataColumn dataColumn in sourceData.Table.Columns)
-                    {
-                        dataColumn.ColumnName = dataColumn.ColumnName.Replace("/", "_");
-                    }
+                    var importedFileDataTable = await Task.Run(() => ImportDataBLL.GetFileData(importedData.FileName));
 
-                    var submittedColumnList =
-                        (from DataColumn dc in sourceData.Table.Columns select dc.ToString()).ToList();
-                    var mandatoryColumnList = new List<string>();
+                    var missingMandatoryColumns =
+                        await
+                            Task.Run(
+                                () =>
+                                    ImportDataBLL.MissingMandatoryColumnList(importedData.FileSource,
+                                        importedFileDataTable));
 
-                    switch (importedData.FileSource)
-                    {
-                        case ImportSource.FileSource.CTMS:
-                            mandatoryColumnList = ImportDataBLL.GenerateMandatoryCTMSManualColumnsList();
-                            break;
-                        case ImportSource.FileSource.BioPharm:
-                            mandatoryColumnList = ImportDataBLL.GenerateMandatoryBioPharmColumnList();
-                            break;
-                    }
-
-                    var missingMandatoryColumns = mandatoryColumnList.Where(mandatory => submittedColumnList.Count(submitted => submitted == mandatory) != 1).ToList();
                     if (missingMandatoryColumns.Any())
                     {
                         var errorMessage =
@@ -196,34 +162,30 @@ namespace DataIntegrationTool.MainProgram.ImportData
                     switch (importedData.DataGridToPopulate)
                     {
                         case "BaseData":
-                            BaseData.ImportedData = sourceData;
+                            BaseData.ImportedData = importedFileDataTable.DefaultView;
                             break;
                         case "ComparerData1":
-                            ComparerData1.ImportedData = sourceData;
+                            ComparerData1.ImportedData = importedFileDataTable.DefaultView;
                             break;
                         case "ComparerData2":
-                            ComparerData2.ImportedData = sourceData;
+                            ComparerData2.ImportedData = importedFileDataTable.DefaultView;
                             break;
                         case "ComparerData3":
-                            ComparerData3.ImportedData = sourceData;
+                            ComparerData3.ImportedData = importedFileDataTable.DefaultView;
                             break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
                     }
-                    _receivedImportData = true;
                     await progressDialog.CloseAsync();
                 }
-                catch (Exception)
-                {
-                    _receivedImportData = false;
-                    throw;
-                    //  ErrorRaised = true;
-                }
-                
             }
-           // if (!_receivedImportData) await progressDialog.CloseAsync();
-           // if (_receivedImportData) return;
-
-          //  await progressDialog.CloseAsync();
-          //  await _dialogCoordinator.ShowMessageAsync("Error!", "Try Again", null);
+            catch (Exception ex)
+            {
+                await _dialogCoordinator.HideMetroDialogAsync(this, ImportDialog);
+                var ev = new ExceptionDialogView("An unexpected error occurred in the application.", ex);
+                ev.ShowDialog();
+                await progressDialog.CloseAsync();
+            }
         }
 
         private async void ImportData(ImportButtonParameters importSource)
@@ -262,7 +224,6 @@ namespace DataIntegrationTool.MainProgram.ImportData
             await _dialogCoordinator.ShowMetroDialogAsync(this, OpenFileDialog);
         }
 
-
         #endregion
 
         #region Properties
@@ -280,11 +241,8 @@ namespace DataIntegrationTool.MainProgram.ImportData
         {
             get { return _openFileDialog ?? (_openFileDialog = new OpenFileDialogView()); }
         }
-
-   //     private readonly OpenFileDialogView _openFileDialog = new OpenFileDialogView();
-
+        
         private readonly IDialogCoordinator _dialogCoordinator;
-        private bool _receivedImportData;
         private Guid _canvasGuid;
               
         public List<string> BaseImportOptions { get; set; }
@@ -374,74 +332,6 @@ namespace DataIntegrationTool.MainProgram.ImportData
                 RaisePropertyChanged();
             }
         }
-
-        //private string _baseDataDescription = "BASE DATA";
-
-        //public string BaseDataDescription
-        //{
-        //    get { return _baseDataDescription; }
-
-        //    set
-        //    {
-        //        if (_baseDataDescription == value)
-        //        {
-        //            return;
-        //        }
-        //        _baseDataDescription = value;
-        //        RaisePropertyChanged();
-        //    }
-        //}
-
-        //private string _comparerData1Description = "COMPARER DATA 1";
-
-        //public string ComparerData1Description 
-        //{
-        //    get { return _comparerData1Description; }
-
-        //    set
-        //    {
-        //        if (_comparerData1Description == value)
-        //        {
-        //            return;
-        //        }
-        //        _comparerData1Description  = value;
-        //        RaisePropertyChanged();
-        //    }
-        //}
-
-        //private string _comparerData2Description = "COMPARER DATA 2";
-
-        //public string ComparerData2Description
-        //{
-        //    get { return _comparerData2Description; }
-
-        //    set
-        //    {
-        //        if (_comparerData2Description == value)
-        //        {
-        //            return;
-        //        }
-        //        _comparerData2Description = value;
-        //        RaisePropertyChanged();
-        //    }
-        //}
-
-        //private string _comparerData3Description = "COMPARER DATA 3";
-
-        //public string ComparerData3Description
-        //{
-        //    get { return _comparerData3Description; }
-
-        //    set
-        //    {
-        //        if (_comparerData3Description == value)
-        //        {
-        //            return;
-        //        }
-        //        _comparerData3Description = value;
-        //        RaisePropertyChanged();
-        //    }
-        //}
 
         public override WizardSteps.LocatorNames LocatorName => WizardSteps.LocatorNames.ImportData;
 

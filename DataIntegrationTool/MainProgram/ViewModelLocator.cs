@@ -10,6 +10,7 @@
 */
 
 using DataIntegrationTool.MainProgram.CleanData;
+using DataIntegrationTool.MainProgram.Dialogs.ExceptionDialog;
 using DataIntegrationTool.MainProgram.Dialogs.OpenFile;
 using DataIntegrationTool.MainProgram.EvaluateMatches;
 using DataIntegrationTool.MainProgram.ExportData;

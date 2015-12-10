@@ -122,7 +122,7 @@ namespace DataIntegrationTool.MainProgram.ImportData
             return fileData.Table;
         }
 
-        public static async Task<List<string>> MissingMandatoryColumnList(ImportSource.FileSource fileSource,DataTable fileDataTable)
+        public static List<string> MissingMandatoryColumnList(ImportSource.FileSource fileSource,DataTable fileDataTable)
         {
             var submittedColumnList =
                         (from DataColumn dc in fileDataTable.Columns select dc.ToString()).ToList();
@@ -157,7 +157,7 @@ namespace DataIntegrationTool.MainProgram.ImportData
                 "BP-# of Studies",
                 "BP-# of Studies by Criteria",
                 "BP-# of Studies by Criteria Recruiting",
-                "BP-# of Studies by Criteria Compelted",
+                "BP-# of Studies by Criteria Completed",
                 "BP-Principal Investigators at Site",
                 "BP-Site ID"
             };

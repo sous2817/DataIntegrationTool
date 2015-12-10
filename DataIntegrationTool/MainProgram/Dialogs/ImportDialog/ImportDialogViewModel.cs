@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using DataIntegrationTool.MessengerPackages;
 using DataIntegrationTool.Resources.Enums;
-using Excel.Log;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using GalaSoft.MvvmLight.Messaging;
 using Semio.ClientService.Data.Intelligence.Canvas;
-using Semio.ClientService.Provide;
 
 namespace DataIntegrationTool.MainProgram.ImportDialog
 {
@@ -64,8 +61,7 @@ namespace DataIntegrationTool.MainProgram.ImportDialog
         {
             return SelectedCanvasItem.CanvasModelGuid != Guid.Empty;
         }
-
-
+        
         private void SendMessage()
         {
             var importDataPackage = new ImportDataPackage

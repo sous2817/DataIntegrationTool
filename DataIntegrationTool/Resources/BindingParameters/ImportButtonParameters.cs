@@ -1,7 +1,7 @@
 ﻿
 using DataIntegrationTool.Resources.Enums;
 
-namespace DataIntegrationTool.MultiConverterClasses
+namespace DataIntegrationTool.BindingParameters
 {
     public class ImportButtonParameters 
     {

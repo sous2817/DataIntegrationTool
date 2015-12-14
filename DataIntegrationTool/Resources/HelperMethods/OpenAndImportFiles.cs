@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using Excel;
 using LumenWorks.Framework.IO.Csv;
 
-namespace DataIntegrationTool.HelperMethods
+namespace DataIntegrationTool.Resources.HelperMethods
 {
     public static class OpenAndImportFiles
     {

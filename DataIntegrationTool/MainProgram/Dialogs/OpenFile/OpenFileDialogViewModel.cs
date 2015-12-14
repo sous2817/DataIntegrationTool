@@ -1,8 +1,9 @@
-﻿using DataIntegrationTool.MessengerPackages;
-using DataIntegrationTool.MultiConverterClasses;
+﻿using DataIntegrationTool.BindingParameters;
+using DataIntegrationTool.MessengerPackages;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using GalaSoft.MvvmLight.Messaging;
+using DataIntegrationTool.Resources.HelperMethods;
 
 namespace DataIntegrationTool.MainProgram.Dialogs.OpenFile
 {
@@ -78,7 +79,7 @@ namespace DataIntegrationTool.MainProgram.Dialogs.OpenFile
 
         private void OpenFileDialog()
         {
-            FileName = HelperMethods.OpenAndImportFiles.GetFile();
+            FileName = OpenAndImportFiles.GetFile();
             _importDataPackage.FileName = FileName;
         }
         #endregion

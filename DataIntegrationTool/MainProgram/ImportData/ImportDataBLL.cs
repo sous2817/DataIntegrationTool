@@ -12,6 +12,7 @@ using FastMember;
 using Semio.ClientService.Data.Intelligence.Canvas;
 using Semio.ClientService.Data.Intelligence.Investigator;
 using Semio.ClientService.Provide;
+using DataIntegrationTool.Resources.HelperMethods;
 
 namespace DataIntegrationTool.MainProgram.ImportData
 {
@@ -111,8 +112,8 @@ namespace DataIntegrationTool.MainProgram.ImportData
         public static async Task<DataTable> GetFileData(string fileName)
         {
             var ext = Path.GetExtension(fileName);
-            var fileData = ext == ".csv" ? await Task.Run(() => HelperMethods.OpenAndImportFiles.ImportCSV(fileName)) :
-                                                await Task.Run(() => HelperMethods.OpenAndImportFiles.ImportExcel(fileName));
+            var fileData = ext == ".csv" ? await Task.Run(() => OpenAndImportFiles.ImportCSV(fileName)) :
+                                                await Task.Run(() => OpenAndImportFiles.ImportExcel(fileName));
 
             foreach (DataColumn dataColumn in fileData.Table.Columns)
             {

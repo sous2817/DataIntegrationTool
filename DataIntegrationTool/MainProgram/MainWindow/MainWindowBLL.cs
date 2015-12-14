@@ -13,6 +13,7 @@ using DataIntegrationTool.MainProgram.Welcome;
 using DataIntegrationTool.MessengerPackages;
 using DataIntegrationTool.Resources.Enums;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Messaging;
 using MahApps.Metro.Controls.Dialogs;
 
 namespace DataIntegrationTool.MainProgram.MainWindow
@@ -49,15 +50,14 @@ namespace DataIntegrationTool.MainProgram.MainWindow
                 case WizardSteps.LocatorNames.ImportData:
                     var importStep = (ImportDataViewModel) currentStep;
 
-                    var dataPackages = new List<ImportDataPackage>();
-
-                    if (importStep.BaseData.ImportedData != null)
+                    var dataPackages = new List<ImportDataPackage>
                     {
-                        dataPackages.Add(importStep.BaseData);
-                    }
-
-                    var importToCleanPackage = new ImportToCleanPackage {ImportedPackages = dataPackages};
-
+                        importStep.BaseData,
+                        importStep.ComparerData1,
+                        importStep.ComparerData2,
+                        importStep.ComparerData3
+                    };
+                    Messenger.Default.Send(dataPackages,"CleanData");
                     break;
                 default:
                     break;

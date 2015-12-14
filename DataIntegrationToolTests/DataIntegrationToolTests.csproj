@@ -142,10 +142,12 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="DataStructures\ImportData.cs" />
     <Compile Include="MainWindowBLLTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ImportDialogTests.cs" />
     <Compile Include="ImportDataTests.cs" />
+    <Compile Include="CleanDataTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataIntegrationTool\DataIntegrationTool.csproj">

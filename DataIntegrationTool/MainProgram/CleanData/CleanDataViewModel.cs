@@ -1,6 +1,11 @@
-﻿using DataIntegrationTool.BaseClasses;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using DataIntegrationTool.BaseClasses;
+using DataIntegrationTool.MessengerPackages;
 using DataIntegrationTool.Resources.Enums;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace DataIntegrationTool.MainProgram.CleanData
 {
@@ -17,10 +22,28 @@ namespace DataIntegrationTool.MainProgram.CleanData
         /// </summary>
         public CleanDataViewModel()
         {
+            Messenger.Default.Register<List<ImportDataPackage>>(this, "CleanData", ProcessIncomingData);
         }
+
+        #region Commands
+        #endregion
+
+        #region Methods
+
+        private void ProcessIncomingData(List<ImportDataPackage> importedData)
+        {
+            foreach (var dataSource in importedData.Where(dataSource => dataSource.ImportedData != null))
+            {
+                Debug.Print(dataSource.ShortDescription);
+            }
+        }
+
+        #endregion
+
 
         #region Properites
         public override WizardSteps.LocatorNames LocatorName => WizardSteps.LocatorNames.CleanData;
+
         #endregion
     }
 }

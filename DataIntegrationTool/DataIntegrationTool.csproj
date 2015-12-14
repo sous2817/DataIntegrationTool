@@ -105,6 +105,10 @@
       <HintPath>..\packages\MvvmLightLibs.5.2.0.0\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="GongSolutions.Wpf.DragDrop, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\gong-wpf-dragdrop.1.0.0-ALPHA012\lib\net40\GongSolutions.Wpf.DragDrop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
       <Private>True</Private>
@@ -175,13 +179,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BaseClasses\CleanDataRule.cs" />
     <Compile Include="BaseClasses\ClinWebDataMiningStructure.cs" />
     <Compile Include="BaseClasses\DataIntegrationViewModelBase.cs" />
     <Compile Include="BaseClasses\DynamicHelper\DynamicPropertyInfoHelper.cs" />
     <Compile Include="BaseClasses\DynamicHelper\DynamicType.cs" />
     <Compile Include="BaseClasses\DynamicHelper\DynamicTypeHelper.cs" />
+    <Compile Include="BaseClasses\MatchDataItem.cs" />
     <Compile Include="BaseClasses\ThemeAndAccentColorMenuData.cs" />
-    <Compile Include="BaseClasses\HelperMethods\OpenAndImportFiles.cs" />
+    <Compile Include="MainProgram\Rules\RulesViewModelBase.cs" />
+    <Compile Include="Resources\Enums\Scoring.cs" />
+    <Compile Include="Resources\HelperMethods\OpenAndImportFiles.cs" />
     <Compile Include="MainProgram\CleanData\CleanDataView.xaml.cs">
       <DependentUpon>CleanDataView.xaml</DependentUpon>
     </Compile>
@@ -213,8 +221,7 @@
     <Compile Include="MainProgram\Dialogs\ImportDialog\ImportDialogViewModel.cs" />
     <Compile Include="MainProgram\MainWindow\MainViewModel.cs" />
     <Compile Include="MainProgram\MainWindow\MainWindowBLL.cs" />
-    <Compile Include="MessengerPackages\ImportToCleanPackage.cs" />
-    <Compile Include="MultiConverterClasses\ImportButtonParameters.cs" />
+    <Compile Include="Resources\BindingParameters\ImportButtonParameters.cs" />
     <Compile Include="MainProgram\ViewModelLocator.cs" />
     <Compile Include="Resources\Converters\ImportButtonParametersConverter.cs" />
     <Compile Include="Resources\Enums\ImportSource.cs" />

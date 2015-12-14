@@ -10,10 +10,10 @@ using MahApps.Metro.Controls.Dialogs;
 using Semio.ClientService.Data.Intelligence.Canvas;
 using System.Threading.Tasks;
 using DataIntegrationTool.BaseClasses;
+using DataIntegrationTool.BindingParameters;
 using DataIntegrationTool.MainProgram.Dialogs.ExceptionDialog;
 using DataIntegrationTool.MainProgram.Dialogs.OpenFile;
 using DataIntegrationTool.MessengerPackages;
-using DataIntegrationTool.MultiConverterClasses;
 using DataIntegrationTool.Resources.Enums;
 
 

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
-using DataIntegrationTool.MultiConverterClasses;
+using DataIntegrationTool.BindingParameters;
 using DataIntegrationTool.Resources.Enums;
 
 namespace DataIntegrationTool.Resources.Converters

@@ -14,7 +14,7 @@ namespace DataIntegrationTool.BaseClasses
         /// <summary>
         /// Initializes a new instance of the DataIntegrationViewModelBase class.
         /// </summary>
-        public DataIntegrationViewModelBase()
+        protected DataIntegrationViewModelBase()
         {
         }
 

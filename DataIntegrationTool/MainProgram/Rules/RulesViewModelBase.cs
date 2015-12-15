@@ -15,6 +15,14 @@ namespace DataIntegrationTool.MainProgram.Rules
         /// </summary>
         public RulesViewModelBase()
         {
+            
         }
+
+        #region Properties
+
+       
+
+
+        #endregion
     }
 }

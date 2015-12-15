@@ -10,6 +10,31 @@
              mc:Ignorable="d ignore">
 
     <Grid>
-        <TextBlock Text="Clean!!!" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" MinHeight="35" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" MinHeight="35" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" MinHeight="35" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" MinHeight="35" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0"
+                   DockPanel.Dock="Top"
+                   Style="{StaticResource HeaderTextBlockStyle}"
+                   Text="Clean Data" />
+        <GroupBox x:Name="BaseData"
+                  Grid.Row="1"
+                  MinHeight="15"
+                  Header="{Binding BaseData.ShortDescription}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <DataGrid />
+            </Grid>
+        </GroupBox>
+        <GridSplitter Grid.Row="2" Style="{DynamicResource GridSplitterStyle1}" />
     </Grid>
 </UserControl>

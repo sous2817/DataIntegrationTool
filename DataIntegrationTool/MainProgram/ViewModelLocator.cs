@@ -17,6 +17,7 @@ using DataIntegrationTool.MainProgram.ExportData;
 using DataIntegrationTool.MainProgram.ImportData;
 using DataIntegrationTool.MainProgram.ImportDialog;
 using DataIntegrationTool.MainProgram.MainWindow;
+using DataIntegrationTool.MainProgram.Rules.StringRule;
 using DataIntegrationTool.MainProgram.Welcome;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
@@ -46,76 +47,33 @@ namespace DataIntegrationTool.MainProgram
             SimpleIoc.Default.Register<CleanDataViewModel>();
             SimpleIoc.Default.Register<EvaluateMatchesViewModel>();
             SimpleIoc.Default.Register<ExportDataViewModel>();
+            SimpleIoc.Default.Register<StringRuleViewModel>();
         }
-
+    
         /// <summary>
         /// Gets the Main property.
         /// </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
             "CA1822:MarkMembersAsStatic",
             Justification = "This non-static member is needed for data binding purposes.")]
-        public MainViewModel Main
-        {
-            get
-            {
-                return ServiceLocator.Current.GetInstance<MainViewModel>();
-            }
-        }
+        public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();
 
-        public ImportDataViewModel ImportData
-        {
-            get
-            {
-                return ServiceLocator.Current.GetInstance<ImportDataViewModel>();
-            }
-        }
+        public StringRuleViewModel StringRule => ServiceLocator.Current.GetInstance<StringRuleViewModel>();
 
-        public OpenFileDialogViewModel OpenFileDialog
-        {
-            get
-            {
-                return ServiceLocator.Current.GetInstance<OpenFileDialogViewModel>();
-            }
-        }
+        public ImportDataViewModel ImportData => ServiceLocator.Current.GetInstance<ImportDataViewModel>();
 
-        public WelcomeViewModel Welcome
-        {
-            get 
-            { return ServiceLocator.Current.GetInstance<WelcomeViewModel>(); }
-        }
-        public ImportDialogViewModel ImportDialog
-        {
-            get
-            {
-                return ServiceLocator.Current.GetInstance<ImportDialogViewModel>();
-            }
-        }
+        public OpenFileDialogViewModel OpenFileDialog => ServiceLocator.Current.GetInstance<OpenFileDialogViewModel>();
 
-        public CleanDataViewModel CleanData
-        {
-            get
-            {
-                return ServiceLocator.Current.GetInstance<CleanDataViewModel>();
-            }
-        }
+        public WelcomeViewModel Welcome => ServiceLocator.Current.GetInstance<WelcomeViewModel>();
 
-        public EvaluateMatchesViewModel EvaluateMatches
-        {
-            get
-            {
-                return ServiceLocator.Current.GetInstance<EvaluateMatchesViewModel>();
-            }
-        }
+        public ImportDialogViewModel ImportDialog => ServiceLocator.Current.GetInstance<ImportDialogViewModel>();
 
-        public ExportDataViewModel ExportData
-        {
-            get
-            {
-                return ServiceLocator.Current.GetInstance<ExportDataViewModel>();
-            }
-        }
+        public CleanDataViewModel CleanData => ServiceLocator.Current.GetInstance<CleanDataViewModel>();
 
-        
+        public EvaluateMatchesViewModel EvaluateMatches => ServiceLocator.Current.GetInstance<EvaluateMatchesViewModel>();
+
+        public ExportDataViewModel ExportData => ServiceLocator.Current.GetInstance<ExportDataViewModel>();
+
 
         /// <summary>
         /// Cleans up all the resources.

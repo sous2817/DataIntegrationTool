@@ -42,10 +42,7 @@ namespace DataIntegrationTool.MainProgram.ImportData
             }
         }
 
-        public static async Task<InvestigationalPerformanceCollection> GetInvestigationalPerformanceCollection(Guid canvasGuid)
-        { 
-            return  await Task.Run(() => ProvideClient.Default.GetFacilityInvestigatorData(canvasGuid.ToString()));
-        }
+        public static async Task<InvestigationalPerformanceCollection> GetInvestigationalPerformanceCollection(Guid canvasGuid) => await Task.Run(() => ProvideClient.Default.GetFacilityInvestigatorData(canvasGuid.ToString()));
 
         public static DataView ConvertClinWebDataToDataView(InvestigationalPerformanceCollection clinwebCollection)
         {
@@ -142,9 +139,7 @@ namespace DataIntegrationTool.MainProgram.ImportData
             return mandatoryColumnList.Where(mandatory => submittedColumnList.Count(submitted => submitted == mandatory) != 1).ToList();
         }
 
-        private static List<string> GenerateMandatoryBioPharmColumnList()
-        {
-            return new List<string>
+        private static List<string> GenerateMandatoryBioPharmColumnList() => new List<string>
             {
                 "BP-Name",
                 "BP-Address",
@@ -162,11 +157,8 @@ namespace DataIntegrationTool.MainProgram.ImportData
                 "BP-Principal Investigators at Site",
                 "BP-Site ID"
             };
-        }
 
-        private static List<string> GenerateMandatoryCTMSManualColumnsList()
-        {
-            return new List<string>
+        private static List<string> GenerateMandatoryCTMSManualColumnsList() => new List<string>
             {
                 "Contact Last Name",
                 "Contact First Name",
@@ -205,7 +197,6 @@ namespace DataIntegrationTool.MainProgram.ImportData
                 "Account Row Id",
                 "Contact Row Id"
             };
-        }
 
     }
 }

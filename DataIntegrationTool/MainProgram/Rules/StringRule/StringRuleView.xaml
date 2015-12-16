@@ -11,7 +11,8 @@
 
         <TextBlock DockPanel.Dock="Top"
                    Style="{StaticResource HeaderTextBlockStyle}"
-                   Text="{Binding CurrentlySelectedRuleName}" TextDecorations="Underline"/>
+                   Text="{Binding CurrentlySelectedRuleName}"
+                   TextDecorations="Underline" />
         <TextBlock Text="For this version, all string values for a column on matched records will be concatinated with a pipe (|) delimiter." TextWrapping="Wrap" />
     </DockPanel>
 </UserControl>

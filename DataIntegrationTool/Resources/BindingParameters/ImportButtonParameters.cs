@@ -5,7 +5,7 @@ namespace DataIntegrationTool.BindingParameters
 {
     public class ImportButtonParameters 
     {
-        public string CallingGroupBoxName { get; set; }
+        public GroupBoxToPopulate.Name GroupBoxName { get; set; }
         public ImportSource.FileSource SelectedImportOption { get; set; }
     }
 }

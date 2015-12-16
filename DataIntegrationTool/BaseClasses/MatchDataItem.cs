@@ -48,14 +48,8 @@ namespace DataIntegrationTool.BaseClasses
 
         public bool UploadToClinWeb { get; set; } = true;
 
-        public MatchDataItem ShallowCopy()
-        {
-            return (MatchDataItem)MemberwiseClone();
-        }
+        public MatchDataItem ShallowCopy() => (MatchDataItem)MemberwiseClone();
 
-        public object Clone()
-        {
-            return MemberwiseClone();
-        }
+        public object Clone() => MemberwiseClone();
     }
 }

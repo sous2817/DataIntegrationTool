@@ -35,47 +35,22 @@ namespace DataIntegrationTool.BaseClasses.DynamicHelper
             get { throw new NotImplementedException(); }
         }
 
-        public override bool CanRead
-        {
-            get { return true; }
-        }
+        public override bool CanRead => true;
 
-        public override bool CanWrite
-        {
-            get { return true; }
-        }
+        public override bool CanWrite => true;
 
-        public override MethodInfo[] GetAccessors(bool nonPublic)
-        {
-            return null;
-        }
+        public override MethodInfo[] GetAccessors(bool nonPublic) => null;
 
-        public override MethodInfo GetGetMethod(bool nonPublic)
-        {
-            return _getMethod;
-        }
+        public override MethodInfo GetGetMethod(bool nonPublic) => _getMethod;
 
-        public override ParameterInfo[] GetIndexParameters()
-        {
-            return null;
-        }
+        public override ParameterInfo[] GetIndexParameters() => null;
 
-        public override MethodInfo GetSetMethod(bool nonPublic)
-        {
-            return _setMethod;
-        }
+        public override MethodInfo GetSetMethod(bool nonPublic) => _setMethod;
 
         // Returns the value from the dictionary stored in the Dynamicer's instance.
-        public override object GetValue(object obj, BindingFlags invokeAttr, Binder binder, object[] index, System.Globalization.CultureInfo culture)
-        {
-            return _getMethod.Invoke(obj, new object[] { _name });
-            //return obj.GetType().GetMethod("GetPropertyValue").Invoke(obj, new object[] { _name });
-        }
+        public override object GetValue(object obj, BindingFlags invokeAttr, Binder binder, object[] index, System.Globalization.CultureInfo culture) => _getMethod.Invoke(obj, new object[] { _name });
 
-        public override Type PropertyType
-        {
-            get { return _type; }
-        }
+        public override Type PropertyType => _type;
 
         // Sets the value in the dictionary stored in the Dynamicer's instance.
         public override void SetValue(object obj, object value, BindingFlags invokeAttr, Binder binder, object[] index, System.Globalization.CultureInfo culture)
@@ -89,10 +64,7 @@ namespace DataIntegrationTool.BaseClasses.DynamicHelper
             get { throw new NotImplementedException(); }
         }
 
-        public override object[] GetCustomAttributes(bool inherit)
-        {
-            return _attributes.ToArray();
-        }
+        public override object[] GetCustomAttributes(bool inherit) => _attributes.ToArray();
 
         public override object[] GetCustomAttributes(Type attributeType, bool inherit)
         {
@@ -105,19 +77,13 @@ namespace DataIntegrationTool.BaseClasses.DynamicHelper
             throw new NotImplementedException();
         }
 
-        public override string Name
-        {
-            get { return _name; }
-        }
+        public override string Name => _name;
 
         public override Type ReflectedType
         {
             get { throw new NotImplementedException(); }
         }
 
-        internal List<Attribute> DynamicAttributesInternal
-        {
-            get { return _attributes; }
-        }
+        internal List<Attribute> DynamicAttributesInternal => _attributes;
     }
 }

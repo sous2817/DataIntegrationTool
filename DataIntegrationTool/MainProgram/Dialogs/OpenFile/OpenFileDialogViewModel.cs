@@ -26,25 +26,13 @@ namespace DataIntegrationTool.MainProgram.Dialogs.OpenFile
         #region Commands
         private RelayCommand _sendCancelMessageCommand;
 
-        public RelayCommand SendCancelMessageCommand
-        {
-            get
-            {
-                return _sendCancelMessageCommand
-                       ?? (_sendCancelMessageCommand = new RelayCommand(SendCancelMessage));
-            }
-        }
+        public RelayCommand SendCancelMessageCommand => _sendCancelMessageCommand
+                                                        ?? (_sendCancelMessageCommand = new RelayCommand(SendCancelMessage));
 
         private RelayCommand _openFileDialogCommand;
 
-        public RelayCommand OpenFileDialogCommand
-        {
-            get
-            {
-                return _openFileDialogCommand
-                       ?? (_openFileDialogCommand = new RelayCommand(OpenFileDialog));
-            }
-        }
+        public RelayCommand OpenFileDialogCommand => _openFileDialogCommand
+                                                     ?? (_openFileDialogCommand = new RelayCommand(OpenFileDialog));
 
         private RelayCommand _sendFilePathMessageCommand;
 
@@ -54,14 +42,11 @@ namespace DataIntegrationTool.MainProgram.Dialogs.OpenFile
         #endregion
 
         #region Methods
-        private bool CanExecuteSendFilePathMessage()
-        {
-            return !string.IsNullOrEmpty(FileName);
-        }
+        private bool CanExecuteSendFilePathMessage() => !string.IsNullOrEmpty(FileName);
 
         private void SetReturnLocationAndType(ImportButtonParameters callingSource)
         {
-            _importDataPackage.DataGridToPopulate = callingSource.CallingGroupBoxName;
+            _importDataPackage.GroupBoxName = callingSource.GroupBoxName;
             _importDataPackage.FileSource = callingSource.SelectedImportOption;
             ShortName = callingSource.SelectedImportOption.ToString();
         }

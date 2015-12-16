@@ -9,7 +9,7 @@ namespace DataIntegrationTool.MessengerPackages
     {
         public ImportSource.FileSource FileSource { get; set; }
         public string FileName { get; set; }
-        public string DataGridToPopulate { get; set; }
+        public GroupBoxToPopulate.Name GroupBoxName { get; set; }
         public Guid ClinWebCanvasGuid { get; set; }
 
         private DataView _importedData;

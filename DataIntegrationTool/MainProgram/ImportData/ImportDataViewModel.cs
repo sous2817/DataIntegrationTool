@@ -42,26 +42,14 @@ namespace DataIntegrationTool.MainProgram.ImportData
 
         private RelayCommand<ImportButtonParameters> _importDataCommand;
 
-        public RelayCommand<ImportButtonParameters> ImportDataCommand
-        {
-            get
-            {
-                return _importDataCommand
-                       ?? (_importDataCommand = new RelayCommand<ImportButtonParameters>(ImportData));
-            }
-        }
+        public RelayCommand<ImportButtonParameters> ImportDataCommand => _importDataCommand
+                                                                         ?? (_importDataCommand = new RelayCommand<ImportButtonParameters>(ImportData));
 
         private RelayCommand<string> _clearDataCommand;
 
-        public RelayCommand<string> ClearDataCommand
-        {
-            get
-            {
-                return _clearDataCommand
-                       ?? (_clearDataCommand = new RelayCommand<string>(ClearData, CanExecuteClearData));
-            }
-        }
-        
+        public RelayCommand<string> ClearDataCommand => _clearDataCommand
+                                                        ?? (_clearDataCommand = new RelayCommand<string>(ClearData, CanExecuteClearData));
+
         #endregion
 
         #region Methods 
@@ -159,18 +147,22 @@ namespace DataIntegrationTool.MainProgram.ImportData
                         return;
                     }
 
-                    switch (importedData.DataGridToPopulate)
+                    switch (importedData.GroupBoxName)
                     {
-                        case "BaseData":
+                        case GroupBoxToPopulate.Name.BaseData:
+                            BaseData = importedData;
                             BaseData.ImportedData = importedFileDataTable.DefaultView;
                             break;
-                        case "ComparerData1":
+                        case GroupBoxToPopulate.Name.ComparerData1:
+                            ComparerData1 = importedData;
                             ComparerData1.ImportedData = importedFileDataTable.DefaultView;
                             break;
-                        case "ComparerData2":
+                        case GroupBoxToPopulate.Name.ComparerData2:
+                            ComparerData2 = importedData;
                             ComparerData2.ImportedData = importedFileDataTable.DefaultView;
                             break;
-                        case "ComparerData3":
+                        case GroupBoxToPopulate.Name.ComparerData3:
+                            ComparerData3 = importedData;
                             ComparerData3.ImportedData = importedFileDataTable.DefaultView;
                             break;
                         default:
@@ -230,18 +222,12 @@ namespace DataIntegrationTool.MainProgram.ImportData
 
         private ImportDialogView _importDialog;
 
-        private ImportDialogView ImportDialog
-        {
-            get { return _importDialog ?? (_importDialog = new ImportDialogView()); }
-        }
+        private ImportDialogView ImportDialog => _importDialog ?? (_importDialog = new ImportDialogView());
 
         private OpenFileDialogView _openFileDialog;
         
-        private OpenFileDialogView OpenFileDialog
-        {
-            get { return _openFileDialog ?? (_openFileDialog = new OpenFileDialogView()); }
-        }
-        
+        private OpenFileDialogView OpenFileDialog => _openFileDialog ?? (_openFileDialog = new OpenFileDialogView());
+
         private readonly IDialogCoordinator _dialogCoordinator;
         private Guid _canvasGuid;
               

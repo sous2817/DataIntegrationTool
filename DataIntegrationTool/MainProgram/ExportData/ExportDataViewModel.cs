@@ -40,14 +40,8 @@ namespace DataIntegrationTool.MainProgram.ExportData
 
         private RelayCommand _buttonPushedCommand;
 
-        public RelayCommand ButtonPushedCommand
-        {
-            get
-            {
-                return _buttonPushedCommand
-                       ?? (_buttonPushedCommand = new RelayCommand(ButtonPushed));
-            }
-        }
+        public RelayCommand ButtonPushedCommand => _buttonPushedCommand
+                                                   ?? (_buttonPushedCommand = new RelayCommand(ButtonPushed));
 
         private void ButtonPushed()
         {

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using DataIntegrationTool.BaseClasses;
@@ -34,7 +35,10 @@ namespace DataIntegrationTool.MainProgram.CleanData
         {
             foreach (var dataSource in importedData.Where(dataSource => dataSource.ImportedData != null))
             {
-                Debug.Print(dataSource.ShortDescription);
+                //switch (dataSource.DataGridToPopulate)
+                //{
+                //        case ""
+                //}
             }
         }
 
@@ -43,6 +47,23 @@ namespace DataIntegrationTool.MainProgram.CleanData
 
         #region Properites
         public override WizardSteps.LocatorNames LocatorName => WizardSteps.LocatorNames.CleanData;
+
+        private ObservableCollection<CleanDataRule> _baseDataRules;
+
+        public ObservableCollection<CleanDataRule> BaseDataRules
+        {
+            get { return _baseDataRules; }
+
+            set
+            {
+                if (_baseDataRules == value)
+                {
+                    return;
+                }
+                _baseDataRules = value;
+                RaisePropertyChanged();
+            }
+        }
 
         #endregion
     }

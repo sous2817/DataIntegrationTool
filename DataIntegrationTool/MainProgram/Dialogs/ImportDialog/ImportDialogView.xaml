@@ -76,6 +76,5 @@
                     Content="Cancel"
                     DockPanel.Dock="Top" />
         </Grid>
-
     </dialogs:CustomDialog.DialogBottom>
 </dialogs:CustomDialog>

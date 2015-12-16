@@ -13,9 +13,13 @@ namespace DataIntegrationTool.Resources.Converters
     {
         public object Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            var importButtonParameters = new ImportButtonParameters
+            GroupBoxToPopulate.Name groupBoxName;
+            Enum.TryParse(values[0].ToString(), out groupBoxName);
+
+
+           var importButtonParameters = new ImportButtonParameters
             {
-                CallingGroupBoxName = values[0] == null ? string.Empty : values[0].ToString()
+                GroupBoxName = groupBoxName
             };
 
             if (values[1] == null)

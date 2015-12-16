@@ -36,12 +36,9 @@ namespace DataIntegrationTool.MainProgram.MainWindow
             return new ReadOnlyCollection<ViewModelBase>(steps);
         }
 
-        public static string GetCurrentVerision()
-        {
-            return ApplicationDeployment.IsNetworkDeployed ?
-                ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString() :
-                "Debugging";
-        }
+        public static string GetCurrentVerision() => ApplicationDeployment.IsNetworkDeployed ?
+    ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString() :
+    "Debugging";
 
         public static void NextStepPackage(DataIntegrationViewModelBase currentStep)
         {

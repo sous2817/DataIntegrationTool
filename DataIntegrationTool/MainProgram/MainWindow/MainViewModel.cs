@@ -50,59 +50,29 @@ namespace DataIntegrationTool.MainProgram.MainWindow
         
         #region Commands
         private RelayCommand _exitProgramCommand;
-        public RelayCommand ExitProgramCommand
-        {
-            get
-            {
-                return _exitProgramCommand
-                       ?? (_exitProgramCommand = new RelayCommand(ExitProgram));
-            }
-        }
+        public RelayCommand ExitProgramCommand => _exitProgramCommand
+                                                  ?? (_exitProgramCommand = new RelayCommand(ExitProgram));
 
         private RelayCommand<string> _changeThemeCommand;
 
-        public RelayCommand<string> ChangeThemeCommand
-        {
-            get
-            {
-                return _changeThemeCommand
-                       ?? (_changeThemeCommand = new RelayCommand<string>(ChangeTheme));
-            }
-        }
+        public RelayCommand<string> ChangeThemeCommand => _changeThemeCommand
+                                                          ?? (_changeThemeCommand = new RelayCommand<string>(ChangeTheme));
 
         private RelayCommand _moveForwardCommand;
 
-        public RelayCommand MoveForwardCommand
-        {
-            get
-            {
-                return _moveForwardCommand
-                       ?? (_moveForwardCommand = new RelayCommand(MoveForward, CanExecuteMoveForward));
-            }
-        }
+        public RelayCommand MoveForwardCommand => _moveForwardCommand
+                                                  ?? (_moveForwardCommand = new RelayCommand(MoveForward, CanExecuteMoveForward));
 
         private RelayCommand _moveBackCommand;
 
-        public RelayCommand MoveBackCommand
-        {
-            get
-            {
-                return _moveBackCommand
-                       ?? (_moveBackCommand = new RelayCommand(MoveBack, CanExecuteMoveBack));
-            }
-        }
+        public RelayCommand MoveBackCommand => _moveBackCommand
+                                               ?? (_moveBackCommand = new RelayCommand(MoveBack, CanExecuteMoveBack));
 
         private RelayCommand<string> _changeAccentCommand;
 
-        public RelayCommand<string> ChangeAccentCommand
-        {
-            get
-            {
-                return _changeAccentCommand
-                       ?? (_changeAccentCommand = new RelayCommand<string>(ChangeAccent));
-            }
-        }
-        
+        public RelayCommand<string> ChangeAccentCommand => _changeAccentCommand
+                                                           ?? (_changeAccentCommand = new RelayCommand<string>(ChangeAccent));
+
         #endregion
 
         #region Methods
@@ -116,10 +86,7 @@ namespace DataIntegrationTool.MainProgram.MainWindow
             }
         }
 
-        private bool CanExecuteMoveForward()
-        {
-            return WizardIndex != WizardSteps.Count - 1;
-        }
+        private bool CanExecuteMoveForward() => WizardIndex != WizardSteps.Count - 1;
 
 
         private void MoveForward()
@@ -128,10 +95,7 @@ namespace DataIntegrationTool.MainProgram.MainWindow
             CurrentViewModel = WizardSteps[WizardIndex];
         }
 
-        private bool CanExecuteMoveBack()
-        {
-            return WizardIndex > 0;
-        }
+        private bool CanExecuteMoveBack() => WizardIndex > 0;
 
         private void MoveBack()
         {

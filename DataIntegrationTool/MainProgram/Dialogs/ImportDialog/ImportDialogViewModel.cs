@@ -32,14 +32,8 @@ namespace DataIntegrationTool.MainProgram.ImportDialog
 
         private RelayCommand _sendCancelMessageCommand;
 
-        public RelayCommand SendCancelMessageCommand
-        {
-            get
-            {
-                return _sendCancelMessageCommand
-                       ?? (_sendCancelMessageCommand = new RelayCommand(SendCancelMessage));
-            }
-        }
+        public RelayCommand SendCancelMessageCommand => _sendCancelMessageCommand
+                                                        ?? (_sendCancelMessageCommand = new RelayCommand(SendCancelMessage));
 
         private void SendCancelMessage()
         {
@@ -48,27 +42,18 @@ namespace DataIntegrationTool.MainProgram.ImportDialog
 
         private RelayCommand _sendMessageCommand;
 
-        public RelayCommand SendMessageCommand
-        {
-            get
-            {
-                return _sendMessageCommand
-                       ?? (_sendMessageCommand = new RelayCommand(SendMessage, CanExecuteSendMessage));
-            }
-        }
+        public RelayCommand SendMessageCommand => _sendMessageCommand
+                                                  ?? (_sendMessageCommand = new RelayCommand(SendMessage, CanExecuteSendMessage));
 
-        private bool CanExecuteSendMessage()
-        {
-            return SelectedCanvasItem.CanvasModelGuid != Guid.Empty;
-        }
-        
+        private bool CanExecuteSendMessage() => SelectedCanvasItem.CanvasModelGuid != Guid.Empty;
+
         private void SendMessage()
         {
             var importDataPackage = new ImportDataPackage
             {
                 ClinWebCanvasGuid = SelectedCanvasItem.CanvasModelGuid,
                 FileSource = ImportSource.FileSource.ClinWeb,
-                DataGridToPopulate = "Base",
+                GroupBoxName = GroupBoxToPopulate.Name.BaseData,
                 ShortDescription="Infosario Planning"
             };
 

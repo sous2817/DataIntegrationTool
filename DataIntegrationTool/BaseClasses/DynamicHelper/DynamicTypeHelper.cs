@@ -96,10 +96,7 @@ namespace DataIntegrationTool.BaseClasses.DynamicHelper
         /// </summary>
         /// <param name="propertyName"></param>
         /// <returns></returns>
-        public object GetPropertyValue(string propertyName)
-        {
-            return _customPropertyValues.ContainsKey(propertyName) ? _customPropertyValues[propertyName] : null;
-        }
+        public object GetPropertyValue(string propertyName) => _customPropertyValues.ContainsKey(propertyName) ? _customPropertyValues[propertyName] : null;
 
         /// <summary>
         /// Returns a cast property value by name
@@ -107,19 +104,13 @@ namespace DataIntegrationTool.BaseClasses.DynamicHelper
         /// <typeparam name="T"></typeparam>
         /// <param name="propertyName"></param>
         /// <returns></returns>
-        public TV GetPropertyValue<TV>(string propertyName)
-        {
-            return (TV)GetPropertyValue(propertyName);
-        }
+        public TV GetPropertyValue<TV>(string propertyName) => (TV)GetPropertyValue(propertyName);
 
         /// <summary>
         /// Retrieve all the defined properties (both known and dynamic)
         /// </summary>
         /// <returns></returns>
-        public PropertyInfo[] GetProperties()
-        {
-            return GetCustomType().GetProperties();
-        }
+        public PropertyInfo[] GetProperties() => GetCustomType().GetProperties();
 
         /// <summary>
         /// Gets the custom type provided by this object.
@@ -127,10 +118,7 @@ namespace DataIntegrationTool.BaseClasses.DynamicHelper
         /// <returns>
         /// The custom type. 
         /// </returns>
-        public Type GetCustomType()
-        {
-            return _ctype.Value;
-        }
+        public Type GetCustomType() => _ctype.Value;
 
         /// <summary>
         /// Occurs when a property value changes.
@@ -152,12 +140,8 @@ namespace DataIntegrationTool.BaseClasses.DynamicHelper
         /// <param name="value"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        private bool ValidateValueType(object value, Type type)
-        {
 
-            return type.IsInstanceOfType(value);
-
-        }
+        private bool ValidateValueType(object value, Type type) => type.IsInstanceOfType(value);
 
         //private static bool CheckIfNameExists(string name)
         //{
@@ -168,13 +152,10 @@ namespace DataIntegrationTool.BaseClasses.DynamicHelper
         //    return false;
         //}
 
-        public static bool CheckIfNameExists(string name)
-        {
-            return (DynamicProperties.Any(p => 0 == string.Compare(p.Name, name, StringComparison.OrdinalIgnoreCase))
-                    ||
-                    typeof (T).GetProperties()
-                        .Any(p => 0 == string.Compare(p.Name, name, StringComparison.OrdinalIgnoreCase)));
-        }
+        public static bool CheckIfNameExists(string name) => (DynamicProperties.Any(p => 0 == string.Compare(p.Name, name, StringComparison.OrdinalIgnoreCase))
+        ||
+        typeof(T).GetProperties()
+            .Any(p => 0 == string.Compare(p.Name, name, StringComparison.OrdinalIgnoreCase)));
 
         #region Data
         private static readonly List<DynamicPropertyInfoHelper> DynamicProperties = new List<DynamicPropertyInfoHelper>();

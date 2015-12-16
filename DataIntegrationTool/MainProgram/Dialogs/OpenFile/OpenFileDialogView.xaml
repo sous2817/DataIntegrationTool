@@ -5,7 +5,6 @@
                       xmlns:dialogs="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                       xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
-                      xmlns:vm="clr-namespace:DataIntegrationTool.MainProgram.Dialogs.OpenFile"
                       DataContext="{Binding OpenFileDialog,
                                             Source={StaticResource Locator}}"
                       d:DesignHeight="300"
@@ -29,7 +28,9 @@
                  metro:TextBoxHelper.Watermark="Short file descrpition" />
     </DockPanel>
     <dialogs:CustomDialog.DialogBottom>
-        <Grid Margin="0,0,0,5">
+        <Grid MinHeight="0"
+              MaxHeight="50"
+              Margin="0,0,0,5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />

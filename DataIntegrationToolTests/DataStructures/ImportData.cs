@@ -28,7 +28,7 @@ namespace DataIntegrationToolTests.DataStructures
             {
                 ClinWebCanvasGuid = new Guid("d422355b-6877-48b3-9bf4-83dc7cd18e18"),
                 FileSource = DataIntegrationTool.Resources.Enums.ImportSource.FileSource.ClinWeb,
-                DataGridToPopulate = "Base",
+                GroupBoxName = GroupBoxToPopulate.Name.BaseData,
                 ShortDescription = "Infosario Planning",
                 ImportedData = clinWebDataTable
             };
@@ -36,7 +36,7 @@ namespace DataIntegrationToolTests.DataStructures
             var ctmsDataPackage = new ImportDataPackage
             {
                 FileSource = ImportSource.FileSource.CTMS,
-                DataGridToPopulate = "ComparerData1",
+                GroupBoxName = GroupBoxToPopulate.Name.ComparerData1,
                 ShortDescription = "CTMS",
                 ImportedData = ctmsDataTable.DefaultView
             };
@@ -44,7 +44,7 @@ namespace DataIntegrationToolTests.DataStructures
             var bioPharmDataPackage = new ImportDataPackage
             {
                 FileSource = ImportSource.FileSource.BioPharm,
-                DataGridToPopulate = "ComparerData2",
+                GroupBoxName = GroupBoxToPopulate.Name.ComparerData2,
                 ShortDescription = "BioPharm",
                 ImportedData = biopharmDataTable.DefaultView
             };
@@ -52,7 +52,7 @@ namespace DataIntegrationToolTests.DataStructures
             var otherFileDataPackage = new ImportDataPackage
             {
                 FileSource = ImportSource.FileSource.Other,
-                DataGridToPopulate = "ComparerData3",
+                GroupBoxName = GroupBoxToPopulate.Name.ComparerData3,
                 ShortDescription = "Other",
                 ImportedData = otherFileDataTable.DefaultView
             };

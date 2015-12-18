@@ -1,6 +1,7 @@
 ﻿<UserControl x:Class="DataIntegrationTool.MainProgram.CleanData.CleanDataView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:bindingProxy="clr-namespace:DataIntegrationTool.BaseClasses"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:ignore="http://www.galasoft.ch/ignore"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -30,38 +31,29 @@
                   Header="{Binding BaseCleanDataPackage.ShortDescription}">
             <Grid>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition MinWidth="375" MaxWidth="375" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding BaseCleanDataPackage.CleanDataRules}">
+                <DataGrid AutoGenerateColumns="False"
+                          ItemsSource="{Binding BaseCleanDataPackage.CleanDataRules}"
+                          SelectedItem="{Binding SelectedBaseCleanDataRule}">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Width="SizeToHeader"
-                                            Binding="{Binding Path=ColumnName}"
+                        <DataGridTextColumn Width="175"
+                                            Binding="{Binding ColumnName}"
                                             Header="Column Name"
                                             IsReadOnly="True" />
                         <DataGridCheckBoxColumn Width="SizeToHeader"
-                                                Binding="{Binding Path=IncludeColumn,
+                                                Binding="{Binding IncludeColumn,
                                                                   UpdateSourceTrigger=PropertyChanged}"
                                                 EditingElementStyle="{DynamicResource MetroDataGridCheckBox}"
                                                 ElementStyle="{DynamicResource MetroDataGridCheckBox}"
-                                                Header="Is Locked" />
-                        <DataGridTemplateColumn Header="Rule">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding BaseCleanDataPackage.CleanDataRules/Rule}" />
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                            <DataGridTemplateColumn.CellEditingTemplate>
-                                <DataTemplate>
-                                    <ComboBox IsEditable="False"
-                                              ItemsSource="{Binding DataContext.RulesList,
-                                                                    Mode=OneWay,
-                                                                    UpdateSourceTrigger=PropertyChanged,
-                                                                    RelativeSource={RelativeSource FindAncestor,
-                                                                                                   AncestorType={x:Type UserControl}}}"
-                                              metro:TextBoxHelper.Watermark="Select Rule" />
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellEditingTemplate>
-                        </DataGridTemplateColumn>
+                                                Header="Is Locked"
+                                                IsReadOnly="True"/>
+                        <DataGridTextColumn Width="SizeToHeader"
+                                            Binding="{Binding Rule,
+                                                              UpdateSourceTrigger=PropertyChanged}"
+                                            Header="Current Rule"
+                                            IsReadOnly="True" />
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>

@@ -94,10 +94,9 @@ namespace DataIntegrationTool.MainProgram.MainWindow
 
         private void MoveForward()
         {
-            MainWindowBLL.NextStepPackage(CurrentViewModel);
+            
 
             DataIntegrationViewModelBase nextStep;
-
             switch (CurrentViewModel.LocatorName)
             {
                 case WizardSteps.LocatorNames.Welcome:
@@ -116,6 +115,7 @@ namespace DataIntegrationTool.MainProgram.MainWindow
                     nextStep = ServiceLocator.Current.GetInstance<WelcomeViewModel>();
                     break;
             }
+            MainWindowBLL.NextStepPackage(CurrentViewModel);
             WizardIndex = (int)CurrentViewModel.LocatorName +1;
             CurrentViewModel = nextStep; 
         }

@@ -130,6 +130,23 @@ namespace DataIntegrationTool.MainProgram.CleanData
                 RaisePropertyChanged();
             }
         }
+
+        private CleanDataRule _selectedBaseCleanDataRule;
+
+        public CleanDataRule SelectedBaseCleanDataRule
+        {
+            get { return _selectedBaseCleanDataRule; }
+
+            set
+            {
+                if (_selectedBaseCleanDataRule == value)
+                {
+                    return;
+                }
+                _selectedBaseCleanDataRule = value;
+                RaisePropertyChanged();
+            }
+        }
         #endregion
     }
 }

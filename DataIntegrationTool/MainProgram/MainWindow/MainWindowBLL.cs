@@ -32,6 +32,7 @@ namespace DataIntegrationTool.MainProgram.MainWindow
                     };
                     Messenger.Default.Send(dataPackages,"CleanData");
                     break;
+
                 default:
                     break;
             }

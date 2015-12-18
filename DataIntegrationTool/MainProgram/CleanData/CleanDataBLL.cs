@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DataIntegrationTool.BaseClasses;
+using DataIntegrationTool.Resources.Enums;
 
 namespace DataIntegrationTool.MainProgram.CleanData
 {
@@ -26,5 +24,17 @@ namespace DataIntegrationTool.MainProgram.CleanData
 
             return cleanDataCollection;
         }
+
+        public static List<string> GetRulesList()
+        {
+            var listRules = new List<string>();
+            foreach (var rule in Enum.GetValues(typeof (MatchingRules.Name)))
+            {
+                listRules.Add(rule.ToString());
+            }
+
+            return listRules;
+
+        } 
     }
 }

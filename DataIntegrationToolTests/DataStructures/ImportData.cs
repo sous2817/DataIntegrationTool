@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DataIntegrationTool.MainProgram.ImportData;
 using DataIntegrationTool.MessengerPackages;
 using DataIntegrationTool.Resources.Enums;
@@ -27,7 +24,7 @@ namespace DataIntegrationToolTests.DataStructures
             var clinWebDataPackage = new ImportDataPackage
             {
                 ClinWebCanvasGuid = new Guid("d422355b-6877-48b3-9bf4-83dc7cd18e18"),
-                FileSource = DataIntegrationTool.Resources.Enums.ImportSource.FileSource.ClinWeb,
+                FileSource = ImportSource.FileSource.ClinWeb,
                 GroupBoxName = GroupBoxToPopulate.Name.BaseData,
                 ShortDescription = "Infosario Planning",
                 ImportedData = clinWebDataTable

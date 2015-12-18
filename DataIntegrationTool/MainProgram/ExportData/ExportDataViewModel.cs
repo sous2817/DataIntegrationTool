@@ -1,7 +1,6 @@
 ﻿using System;
 using DataIntegrationTool.BaseClasses;
 using DataIntegrationTool.Resources.Enums;
-using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 
 namespace DataIntegrationTool.MainProgram.ExportData
@@ -45,7 +44,7 @@ namespace DataIntegrationTool.MainProgram.ExportData
 
         private void ButtonPushed()
         {
-            ButtonValue = string.Format("{0}: {1}","Foo",DateTime.Now.ToString("h:mm:ss"));
+            ButtonValue = $"{"Foo"}: {DateTime.Now.ToString("h:mm:ss")}";
         }
 
         public override WizardSteps.LocatorNames LocatorName => WizardSteps.LocatorNames.ExportDate;

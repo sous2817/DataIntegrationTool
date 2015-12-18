@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DataIntegrationTool.MainProgram.Rules.StringRule
+﻿namespace DataIntegrationTool.MainProgram.Rules.StringRule
 {
     public class StringRuleViewModel : RulesViewModelBase
     {

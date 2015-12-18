@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DataIntegrationTool.Resources.Enums
+﻿namespace DataIntegrationTool.Resources.Enums
 {
     public static class WizardSteps
     {
         public enum LocatorNames
         {
+            Welcome,
             ImportData,
             CleanData,
             EvaluateMatches,
-            ExportDate
+            ExportDate,
         }
     }
 }

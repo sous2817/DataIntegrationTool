@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.IO;
 using System.Linq;
 using DataIntegrationTool.MainProgram.ImportDialog;
 using GalaSoft.MvvmLight.CommandWpf;
@@ -109,6 +107,7 @@ namespace DataIntegrationTool.MainProgram.ImportData
         private async void ProcessDataImport(ImportDataPackage importedData)
         {
             var progressDialog = await _dialogCoordinator.ShowProgressAsync(this, "Fetching Data...", string.Empty);
+     
             progressDialog.SetIndeterminate();
             try
             {

@@ -13,12 +13,26 @@
     <DockPanel LastChildFill="False">
         <TextBox Margin="0,0,0,2.5"
                  DockPanel.Dock="Top"
-                 Style="{StaticResource OpenFileMetroTextBox}"
+                 Style="{DynamicResource MetroButtonTextBox}"
                  Text="{Binding Path=FileName,
                                 Mode=TwoWay,
                                 UpdateSourceTrigger=PropertyChanged}"
                  metro:TextBoxHelper.ButtonCommand="{Binding OpenFileDialogCommand}"
-                 metro:TextBoxHelper.Watermark="Enter full file path or press folder icon..." />
+                 metro:TextBoxHelper.Watermark="Enter full file path or press folder icon...">
+            <metro:TextBoxHelper.ButtonContent>
+                <Canvas Width="15"
+                        Height="15"
+                        Clip="F1 M 0,0L 48,0L 48,48L 0,48L 0,0">
+                    <Path Width="15.7781"
+                          Height="15.7781"
+                          Data="F1 M 16.6668,20L 13,28.5336L 13,16L 23,16L 23,15C 23,13.8954 23.8954,13 25,13L 32,13C 33.1046,13 35,14.8954 35,16L 35,20L 16.6668,20 Z M 35,32L 28,32L 13,32L 17.5833,21L 39.5833,21L 35,32 Z "
+                          Fill="{DynamicResource AccentColorBrush}"
+                          Stretch="Fill" />
+                </Canvas>
+            </metro:TextBoxHelper.ButtonContent>
+        </TextBox>
+
+        <!--  metro:TextBoxHelper.ButtonContent="s"  -->
         <TextBox Margin="0,2.5,0,0"
                  DockPanel.Dock="Top"
                  Text="{Binding Path=ShortName,

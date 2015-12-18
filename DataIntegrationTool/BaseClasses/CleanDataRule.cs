@@ -1,7 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using DataIntegrationTool.MainProgram.Rules;
 using GalaSoft.MvvmLight;
-using DataIntegrationTool.Resources;
 using DataIntegrationTool.Resources.Enums;
 
 namespace DataIntegrationTool.BaseClasses
@@ -14,7 +13,6 @@ namespace DataIntegrationTool.BaseClasses
     /// </summary>
     public class CleanDataRule : ViewModelBase
     {
-
         public string ColumnName { get; set; }
 
         private string _rule = "String";

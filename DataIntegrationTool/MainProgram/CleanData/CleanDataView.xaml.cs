@@ -1,6 +1,4 @@
-﻿using System.Windows;
-
-namespace DataIntegrationTool.MainProgram.CleanData
+﻿namespace DataIntegrationTool.MainProgram.CleanData
 {
     /// <summary>
     /// Description for CleanDataView.

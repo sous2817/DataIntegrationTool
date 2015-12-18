@@ -1,14 +1,19 @@
 ﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
-using System.Windows.Forms.VisualStyles;
 using System.Windows.Media;
 using DataIntegrationTool.BaseClasses;
+using DataIntegrationTool.MainProgram.CleanData;
+using DataIntegrationTool.MainProgram.EvaluateMatches;
+using DataIntegrationTool.MainProgram.ExportData;
+using DataIntegrationTool.MainProgram.ImportData;
+using DataIntegrationTool.MainProgram.Welcome;
+using DataIntegrationTool.Resources.Enums;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using MahApps.Metro;
 using MahApps.Metro.Controls.Dialogs;
+using Microsoft.Practices.ServiceLocation;
 
 namespace DataIntegrationTool.MainProgram.MainWindow
 {
@@ -27,8 +32,7 @@ namespace DataIntegrationTool.MainProgram.MainWindow
         /// </summary>
         public MainViewModel(IDialogCoordinator dialogCoordinator)
         {
-            WizardSteps = MainWindowBLL.GetWizardSteps();
-            CurrentViewModel = WizardSteps[WizardIndex];
+            CurrentViewModel = ServiceLocator.Current.GetInstance<WelcomeViewModel>();
             AccentColors = ThemeManager.Accents
                                             .Select(a => new ThemeAndAccentColorMenuData() { Name = a.Name, ColorBrush = a.Resources["AccentColorBrush"] as Brush })
                                             .ToList();
@@ -79,28 +83,69 @@ namespace DataIntegrationTool.MainProgram.MainWindow
         private async void ExitProgram()
         {
 
-            var foo = await _dialogCoordinator.ShowMessageAsync(this, "Exit Program", "Are you sure you want to close the Data Integration Tool?", MessageDialogStyle.AffirmativeAndNegative);
-            if (foo == MessageDialogResult.Affirmative)
+            var confirmExit = await _dialogCoordinator.ShowMessageAsync(this, "Exit Program", "Are you sure you want to close the Data Integration Tool?", MessageDialogStyle.AffirmativeAndNegative);
+            if (confirmExit == MessageDialogResult.Affirmative)
             {
                 Application.Current.Shutdown();
             }
         }
 
-        private bool CanExecuteMoveForward() => WizardIndex != WizardSteps.Count - 1;
-
+        private bool CanExecuteMoveForward() => CurrentViewModel.LocatorName != WizardSteps.LocatorNames.ExportDate;
 
         private void MoveForward()
         {
-            WizardIndex += 1;
-            CurrentViewModel = WizardSteps[WizardIndex];
+            MainWindowBLL.NextStepPackage(CurrentViewModel);
+
+            DataIntegrationViewModelBase nextStep;
+
+            switch (CurrentViewModel.LocatorName)
+            {
+                case WizardSteps.LocatorNames.Welcome:
+                    nextStep = ServiceLocator.Current.GetInstance<ImportDataViewModel>();
+                    break;
+                case WizardSteps.LocatorNames.ImportData:
+                    nextStep = ServiceLocator.Current.GetInstance<CleanDataViewModel>();
+                    break;
+                case WizardSteps.LocatorNames.CleanData:
+                    nextStep = ServiceLocator.Current.GetInstance<EvaluateMatchesViewModel>();
+                    break;
+                case WizardSteps.LocatorNames.EvaluateMatches:
+                    nextStep = ServiceLocator.Current.GetInstance<ExportDataViewModel>();
+                    break;
+                default:
+                    nextStep = ServiceLocator.Current.GetInstance<WelcomeViewModel>();
+                    break;
+            }
+            WizardIndex = (int)CurrentViewModel.LocatorName +1;
+            CurrentViewModel = nextStep; 
         }
 
-        private bool CanExecuteMoveBack() => WizardIndex > 0;
+        private bool CanExecuteMoveBack() => CurrentViewModel.LocatorName != WizardSteps.LocatorNames.Welcome;
 
         private void MoveBack()
         {
-            WizardIndex -= 1;
-            CurrentViewModel = WizardSteps[WizardIndex];
+            DataIntegrationViewModelBase previousStep;
+
+            switch (CurrentViewModel.LocatorName)
+            {
+                case WizardSteps.LocatorNames.ImportData:
+                    previousStep = ServiceLocator.Current.GetInstance<WelcomeViewModel>();
+                    break;
+                case WizardSteps.LocatorNames.CleanData:
+                    previousStep = ServiceLocator.Current.GetInstance<ImportDataViewModel>();
+                    break;
+                case WizardSteps.LocatorNames.EvaluateMatches:
+                    previousStep = ServiceLocator.Current.GetInstance<CleanDataViewModel>();
+                    break;
+                case WizardSteps.LocatorNames.ExportDate:
+                    previousStep = ServiceLocator.Current.GetInstance<EvaluateMatchesViewModel>();
+                    break;
+                default:
+                    previousStep = ServiceLocator.Current.GetInstance<ExportDataViewModel>();
+                    break;
+            }
+            WizardIndex = (int)CurrentViewModel.LocatorName -1;
+            CurrentViewModel = previousStep;
         }
 
         private void ChangeTheme(string themeName)
@@ -127,12 +172,11 @@ namespace DataIntegrationTool.MainProgram.MainWindow
         public string CurrentEnvironment { get; }
         public string CurrentVersion { get; }
         public List<ThemeAndAccentColorMenuData> AppThemes { get; set; }
-        private static ReadOnlyCollection<ViewModelBase> WizardSteps { get; set; }
         private readonly IDialogCoordinator _dialogCoordinator;
 
-        private ViewModelBase _currentViewModel;
+        private DataIntegrationViewModelBase _currentViewModel;
 
-        public ViewModelBase CurrentViewModel
+        public DataIntegrationViewModelBase CurrentViewModel
         {
             get { return _currentViewModel; }
 

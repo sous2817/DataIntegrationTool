@@ -1,6 +1,4 @@
-﻿using System.Windows;
-
-namespace DataIntegrationTool.MainProgram.Rules.StringRule
+﻿namespace DataIntegrationTool.MainProgram.Rules.StringRule
 {
     /// <summary>
     /// Description for StringRuleView.

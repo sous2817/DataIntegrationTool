@@ -26,8 +26,11 @@
                 <ResourceDictionary Source="Resources/Styles/GridSplitterStyle.xaml" />
                 <ResourceDictionary Source="Resources/Styles/ImportGroupBoxRestyle.xaml" />
                 <!--<ResourceDictionary Source="Resources/Styles/ContextMenu.xaml" />-->
+                <ResourceDictionary>
+                    <mainProgram:ViewModelLocator x:Key="Locator" d:IsDataSource="True" />
+                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
-            <mainProgram:ViewModelLocator x:Key="Locator" d:IsDataSource="True" />
+
         </ResourceDictionary>
 
     </Application.Resources>

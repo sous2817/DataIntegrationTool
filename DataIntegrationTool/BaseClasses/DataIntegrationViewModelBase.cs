@@ -9,15 +9,18 @@ namespace DataIntegrationTool.BaseClasses
     /// See http://www.galasoft.ch/mvvm
     /// </para>
     /// </summary>
-    public abstract class DataIntegrationViewModelBase : ViewModelBase
+    public  class DataIntegrationViewModelBase : ViewModelBase
     {
         /// <summary>
         /// Initializes a new instance of the DataIntegrationViewModelBase class.
         /// </summary>
-        protected DataIntegrationViewModelBase()
+        public DataIntegrationViewModelBase()
         {
         }
 
-        public abstract WizardSteps.LocatorNames LocatorName { get; }
+        public virtual WizardSteps.LocatorNames LocatorName
+        {
+            get { throw new System.NotImplementedException(); }
+        }
     }
 }

@@ -117,8 +117,8 @@
       <HintPath>..\packages\LumenWorksCsvReader.3.9\lib\net20\LumenWorks.Framework.IO.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="MahApps.Metro, Version=1.1.3.236, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MahApps.Metro.1.1.3-ALPHA236\lib\net45\MahApps.Metro.dll</HintPath>
+    <Reference Include="MahApps.Metro, Version=1.1.3.257, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.1.3-ALPHA257\lib\net45\MahApps.Metro.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Data.Services.Client, Version=5.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -159,7 +159,7 @@
     <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\MahApps.Metro.1.1.3-ALPHA236\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <HintPath>..\packages\MahApps.Metro.1.1.3-ALPHA257\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Xml" />
@@ -178,6 +178,7 @@
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </ApplicationDefinition>
     <Compile Include="BaseClasses\CleanDataRule.cs" />
     <Compile Include="BaseClasses\ClinWebDataMiningStructure.cs" />
@@ -193,8 +194,11 @@
       <DependentUpon>StringRuleView.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainProgram\Rules\StringRule\StringRuleViewModel.cs" />
+    <Compile Include="MessengerPackages\CleanDataPackage.cs" />
     <Compile Include="Resources\Enums\GroupBox.cs" />
+    <Compile Include="Resources\Enums\MatchingRules.cs" />
     <Compile Include="Resources\Enums\Scoring.cs" />
+    <Compile Include="Resources\HelperMethods\ExtensionMethods.cs" />
     <Compile Include="Resources\HelperMethods\OpenAndImportFiles.cs" />
     <Compile Include="MainProgram\CleanData\CleanDataView.xaml.cs">
       <DependentUpon>CleanDataView.xaml</DependentUpon>
@@ -275,6 +279,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="MainProgram\Welcome\WelcomeView.xaml.cs">
       <DependentUpon>WelcomeView.xaml</DependentUpon>
@@ -404,6 +409,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\3rdPartyDLLs\Microsoft\Microsoft.Data.Services.Client.dll" />
+    <Resource Include="Resources\Images\Folder.png" />
     <Resource Include="Resources\3rdPartyDLLs\Microsoft\Microsoft.Data.Services.Client.xml" />
     <Content Include="Resources\3rdPartyDLLs\SemioCommon\Semio.ClientService.Data.dll" />
     <Content Include="Resources\3rdPartyDLLs\SemioCommon\Semio.ClientService.Data.pdb" />

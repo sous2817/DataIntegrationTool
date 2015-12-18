@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight;
+﻿using DataIntegrationTool.BaseClasses;
+using DataIntegrationTool.Resources.Enums;
 
 namespace DataIntegrationTool.MainProgram.Welcome
 {
@@ -8,7 +9,7 @@ namespace DataIntegrationTool.MainProgram.Welcome
     /// See http://www.galasoft.ch/mvvm
     /// </para>
     /// </summary>
-    public class WelcomeViewModel : ViewModelBase
+    public class WelcomeViewModel : DataIntegrationViewModelBase
     {
         /// <summary>
         /// Initializes a new instance of the WelcomeViewModel class.
@@ -16,5 +17,7 @@ namespace DataIntegrationTool.MainProgram.Welcome
         public WelcomeViewModel()
         {
         }
+
+        public override WizardSteps.LocatorNames LocatorName => WizardSteps.LocatorNames.Welcome;
     }
 }

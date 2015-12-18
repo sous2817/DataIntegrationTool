@@ -1,6 +1,4 @@
-﻿using System.Windows;
-
-namespace DataIntegrationTool.MainProgram.Welcome
+﻿namespace DataIntegrationTool.MainProgram.Welcome
 {
     /// <summary>
     /// Description for WelcomeView.

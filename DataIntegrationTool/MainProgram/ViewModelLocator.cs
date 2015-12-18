@@ -10,7 +10,6 @@
 */
 
 using DataIntegrationTool.MainProgram.CleanData;
-using DataIntegrationTool.MainProgram.Dialogs.ExceptionDialog;
 using DataIntegrationTool.MainProgram.Dialogs.OpenFile;
 using DataIntegrationTool.MainProgram.EvaluateMatches;
 using DataIntegrationTool.MainProgram.ExportData;
@@ -19,7 +18,6 @@ using DataIntegrationTool.MainProgram.ImportDialog;
 using DataIntegrationTool.MainProgram.MainWindow;
 using DataIntegrationTool.MainProgram.Rules.StringRule;
 using DataIntegrationTool.MainProgram.Welcome;
-using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Practices.ServiceLocation;
@@ -35,6 +33,15 @@ namespace DataIntegrationTool.MainProgram
     /// </summary>
     public class ViewModelLocator
     {
+
+        //public static readonly List<DataIntegrationViewModelBase> WizardStepsList = new List<DataIntegrationViewModelBase>
+        //{
+        //    new WelcomeViewModel(),
+        //    new ImportDataViewModel(new DialogCoordinator()),
+        //    new CleanDataViewModel(),
+        //    new ExportDataViewModel()
+        //};
+
         static ViewModelLocator()
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
@@ -55,8 +62,8 @@ namespace DataIntegrationTool.MainProgram
         /// </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
             "CA1822:MarkMembersAsStatic",
-            Justification = "This non-static member is needed for data binding purposes.")]
-        public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();
+            Justification = "This non- member is needed for data binding purposes.")]
+        public  MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();
 
         public StringRuleViewModel StringRule => ServiceLocator.Current.GetInstance<StringRuleViewModel>();
 
@@ -66,13 +73,13 @@ namespace DataIntegrationTool.MainProgram
 
         public WelcomeViewModel Welcome => ServiceLocator.Current.GetInstance<WelcomeViewModel>();
 
-        public ImportDialogViewModel ImportDialog => ServiceLocator.Current.GetInstance<ImportDialogViewModel>();
+        public  ImportDialogViewModel ImportDialog => ServiceLocator.Current.GetInstance<ImportDialogViewModel>();
 
         public CleanDataViewModel CleanData => ServiceLocator.Current.GetInstance<CleanDataViewModel>();
 
-        public EvaluateMatchesViewModel EvaluateMatches => ServiceLocator.Current.GetInstance<EvaluateMatchesViewModel>();
+        public  EvaluateMatchesViewModel EvaluateMatches => ServiceLocator.Current.GetInstance<EvaluateMatchesViewModel>();
 
-        public ExportDataViewModel ExportData => ServiceLocator.Current.GetInstance<ExportDataViewModel>();
+        public  ExportDataViewModel ExportData => ServiceLocator.Current.GetInstance<ExportDataViewModel>();
 
 
         /// <summary>
@@ -80,6 +87,7 @@ namespace DataIntegrationTool.MainProgram
         /// </summary>
         public static void Cleanup()
         {
+         
         }
     }
 }

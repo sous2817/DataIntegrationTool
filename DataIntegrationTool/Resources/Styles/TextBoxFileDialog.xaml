@@ -7,8 +7,9 @@
         <Setter Property="metro:TextBoxHelper.ButtonTemplate">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Grid Background="{TemplateBinding Background}">
-                        <Grid x:Name="contentPresenter"
+                    <Grid MaxHeight="100" Background="{TemplateBinding Background}">
+                        <Grid x:Name="foo"
+                              MaxHeight="100"
                               Margin="{TemplateBinding Padding}"
                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -74,18 +75,14 @@
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                        <Grid x:Name="PART_InnerGrid"
-                              Margin="2">
+                        <Grid x:Name="PART_InnerGrid" Margin="2">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition x:Name="TextColumn"
-                                                  Width="*" />
-                                <ColumnDefinition x:Name="ButtonColumn"
-                                                  Width="Auto" />
+                                <ColumnDefinition x:Name="TextColumn" Width="*" />
+                                <ColumnDefinition x:Name="ButtonColumn" Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
-                                <RowDefinition x:Name="ButtonRow"
-                                               Height="*" />
+                                <RowDefinition x:Name="ButtonRow" Height="*" />
                             </Grid.RowDefinitions>
                             <Grid x:Name="PART_FloatingMessageContainer"
                                   Grid.Column="0"
@@ -165,9 +162,7 @@
                                                      Mode=OneWay}" />
                     </Grid>
                     <ControlTemplate.Triggers>
-                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self},
-                                                       Path=(metro:TextBoxHelper.ButtonsAlignment)}"
-                                     Value="Left">
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=(metro:TextBoxHelper.ButtonsAlignment)}" Value="Left">
                             <Setter TargetName="PART_ClearText" Property="Grid.Column" Value="0" />
                             <Setter TargetName="PART_Message" Property="Grid.Column" Value="1" />
                             <Setter TargetName="TextColumn" Property="Width" Value="Auto" />
@@ -175,16 +170,12 @@
                             <Setter TargetName="PART_ContentHost" Property="Grid.Column" Value="1" />
                         </DataTrigger>
 
-                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self},
-                                                       Path=Text}"
-                                     Value="">
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Text}" Value="">
                             <Setter TargetName="PART_Message" Property="Visibility" Value="Visible" />
                         </DataTrigger>
 
                         <!--  Sets the MiniMessage visibility (Watermark must not be "" and FloatWatermark must be true)  -->
-                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self},
-                                                       Path=(metro:TextBoxHelper.HasText)}"
-                                     Value="False">
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=(metro:TextBoxHelper.HasText)}" Value="False">
                             <DataTrigger.EnterActions>
                                 <BeginStoryboard Storyboard="{StaticResource HideFloatingMessageStoryboard}" />
                             </DataTrigger.EnterActions>
@@ -193,9 +184,7 @@
                             </DataTrigger.ExitActions>
                         </DataTrigger>
                         <!--  To override Watermark == ""  -->
-                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self},
-                                                       Path=(metro:TextBoxHelper.Watermark)}"
-                                     Value="">
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=(metro:TextBoxHelper.Watermark)}" Value="">
                             <DataTrigger.EnterActions>
                                 <BeginStoryboard Storyboard="{StaticResource HideFloatingMessageStoryboard}" />
                             </DataTrigger.EnterActions>
@@ -204,9 +193,7 @@
                             </DataTrigger.ExitActions>
                         </DataTrigger>
                         <!--  To override TextBoxHelper.UseFloatingWatermark == false  -->
-                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self},
-                                                       Path=(metro:TextBoxHelper.UseFloatingWatermark)}"
-                                     Value="False">
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=(metro:TextBoxHelper.UseFloatingWatermark)}" Value="False">
                             <DataTrigger.EnterActions>
                                 <BeginStoryboard Storyboard="{StaticResource HideFloatingMessageStoryboard}" />
                             </DataTrigger.EnterActions>

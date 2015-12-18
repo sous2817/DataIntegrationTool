@@ -4,7 +4,6 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Windows;
 using DataIntegrationTool.BaseClasses;
 using DataIntegrationTool.MainProgram.Dialogs.ExceptionDialog;
 using DataIntegrationTool.Resources.Enums;

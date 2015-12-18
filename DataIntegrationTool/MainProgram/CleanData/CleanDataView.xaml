@@ -27,12 +27,43 @@
         <GroupBox x:Name="BaseData"
                   Grid.Row="1"
                   MinHeight="15"
-                  Header="{Binding BaseData.ShortDescription}">
+                  Header="{Binding BaseCleanDataPackage.ShortDescription}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <DataGrid />
+                <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding BaseCleanDataPackage.CleanDataRules}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Width="SizeToHeader"
+                                            Binding="{Binding Path=ColumnName}"
+                                            Header="Column Name"
+                                            IsReadOnly="True" />
+                        <DataGridCheckBoxColumn Width="SizeToHeader"
+                                                Binding="{Binding Path=IncludeColumn,
+                                                                  UpdateSourceTrigger=PropertyChanged}"
+                                                EditingElementStyle="{DynamicResource MetroDataGridCheckBox}"
+                                                ElementStyle="{DynamicResource MetroDataGridCheckBox}"
+                                                Header="Is Locked" />
+                        <DataGridTemplateColumn Header="Rule">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding BaseCleanDataPackage.CleanDataRules/Rule}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                            <DataGridTemplateColumn.CellEditingTemplate>
+                                <DataTemplate>
+                                    <ComboBox IsEditable="False"
+                                              ItemsSource="{Binding DataContext.RulesList,
+                                                                    Mode=OneWay,
+                                                                    UpdateSourceTrigger=PropertyChanged,
+                                                                    RelativeSource={RelativeSource FindAncestor,
+                                                                                                   AncestorType={x:Type UserControl}}}"
+                                              metro:TextBoxHelper.Watermark="Select Rule" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellEditingTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
             </Grid>
         </GroupBox>
         <GridSplitter Grid.Row="2" Style="{DynamicResource GridSplitterStyle1}" />

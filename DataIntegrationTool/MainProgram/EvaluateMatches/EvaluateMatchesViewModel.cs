@@ -1,6 +1,5 @@
 ﻿using DataIntegrationTool.BaseClasses;
 using DataIntegrationTool.Resources.Enums;
-using GalaSoft.MvvmLight;
 
 namespace DataIntegrationTool.MainProgram.EvaluateMatches
 {

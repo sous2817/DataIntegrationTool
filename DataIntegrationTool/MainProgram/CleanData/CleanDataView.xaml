@@ -45,8 +45,8 @@
                           AutoGenerateColumns="False"
                           CanUserAddRows="False"
                           ItemsSource="{Binding BaseCleanDataPackage.CleanDataRules}"
-                          SelectedItem="{Binding SelectedBaseCleanDataRule}"
-                          SelectedIndex="0">
+                          SelectedIndex="0"
+                          SelectedItem="{Binding SelectedBaseCleanDataRule}">
                     <DataGrid.Columns>
                         <DataGridTextColumn Width="175"
                                             Binding="{Binding ColumnName}"

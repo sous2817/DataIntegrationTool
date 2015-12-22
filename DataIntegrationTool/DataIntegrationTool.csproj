@@ -195,6 +195,10 @@
     </Compile>
     <Compile Include="MainProgram\Rules\StringRule\StringRuleViewModel.cs" />
     <Compile Include="MessengerPackages\CleanDataPackage.cs" />
+    <Compile Include="Resources\BindingParameters\CleanDataSetRuleParameter.cs" />
+    <Compile Include="Resources\Converters\CleanDataRuleChangeParameterConverter.cs" />
+    <Compile Include="Resources\Converters\NullToBoolConverter.cs" />
+    <Compile Include="Resources\Converters\RuleStringToEnumIndexConveter.cs" />
     <Compile Include="Resources\Enums\GroupBox.cs" />
     <Compile Include="Resources\Enums\MatchingRules.cs" />
     <Compile Include="Resources\Enums\Scoring.cs" />

@@ -2,7 +2,9 @@
 using System.Linq;
 using DataIntegrationTool.BaseClasses;
 using DataIntegrationTool.MessengerPackages;
+using DataIntegrationTool.Resources.BindingParameters;
 using DataIntegrationTool.Resources.Enums;
+using GalaSoft.MvvmLight.CommandWpf;
 using GalaSoft.MvvmLight.Messaging;
 
 namespace DataIntegrationTool.MainProgram.CleanData
@@ -25,9 +27,40 @@ namespace DataIntegrationTool.MainProgram.CleanData
         }
 
         #region Commands
+
+        private RelayCommand<CleanDataSetRuleParameter> _changeRuleCommand;
+
+        public RelayCommand<CleanDataSetRuleParameter> ChangeRuleCommand => _changeRuleCommand
+                                                         ?? (_changeRuleCommand = new RelayCommand<CleanDataSetRuleParameter>(ChangeRule));
+
+
+
+
+
         #endregion
 
         #region Methods
+
+        private void ChangeRule(CleanDataSetRuleParameter ruleParameter)
+        {
+            switch (ruleParameter.RuleName)
+            {
+                case "String":
+                    //Set rule VM here
+                    break;
+                case "Numeric":
+                    //Set rule VM here
+                    break;
+                case "List":
+                    //Set rule VM here
+                    break;
+                case "Trinary":
+                    //Set rule VM here
+                    break;
+            }
+
+            ruleParameter.SelectedCleanDataRule.Rule = ruleParameter.RuleName;
+        }
 
         private void ProcessIncomingData(List<ImportDataPackage> importedData)
         {

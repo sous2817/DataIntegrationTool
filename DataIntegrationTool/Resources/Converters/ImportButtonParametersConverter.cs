@@ -5,15 +5,14 @@ using DataIntegrationTool.Resources.Enums;
 
 namespace DataIntegrationTool.Resources.Converters
 {
-    class ImportButtonParametersConverter : IMultiValueConverter
+    internal class ImportButtonParametersConverter : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             GroupBoxToPopulate.Name groupBoxName;
             Enum.TryParse(values[0].ToString(), out groupBoxName);
 
-
-           var importButtonParameters = new ImportButtonParameters
+            var importButtonParameters = new ImportButtonParameters
             {
                 GroupBoxName = groupBoxName
             };

@@ -7,6 +7,9 @@ namespace DataIntegrationTool.MessengerPackages
 {
     public class ImportDataPackage : ViewModelBase
     {
+        /// <summary>
+        /// this is a test comment to check sync issues.
+        /// </summary>
         public ImportSource.FileSource FileSource { get; set; }
         public string FileName { get; set; }
         public GroupBoxToPopulate.Name GroupBoxName { get; set; }

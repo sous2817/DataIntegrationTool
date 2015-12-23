@@ -1,10 +1,17 @@
-﻿namespace DataIntegrationTool.MainProgram.Rules.StringRule
+﻿using GalaSoft.MvvmLight.Ioc;
+
+namespace DataIntegrationTool.MainProgram.Rules.StringRule
 {
     public class StringRuleViewModel : RulesViewModelBase
     {
         public StringRuleViewModel(string incomingRuleName)
         {
             CurrentlySelectedRuleName = incomingRuleName;
+        }
+
+        [PreferredConstructor]
+        public StringRuleViewModel()
+        {
         }
 
         private string _currentlySelectedRuleName = "String Rules";

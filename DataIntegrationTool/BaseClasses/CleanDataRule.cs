@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using DataIntegrationTool.MainProgram.Rules;
+using DataIntegrationTool.MainProgram.Rules.StringRule;
 using GalaSoft.MvvmLight;
 using DataIntegrationTool.Resources.Enums;
 
@@ -13,7 +14,23 @@ namespace DataIntegrationTool.BaseClasses
     /// </summary>
     public class CleanDataRule : ViewModelBase
     {
-        public string ColumnName { get; set; }
+
+        private string _columnName = "Select Column";
+
+        public string ColumnName
+        {
+            get { return _columnName; }
+
+            set
+            {
+                if (_columnName == value)
+                {
+                    return;
+                }
+                _columnName = value;
+                RaisePropertyChanged();
+            }
+        }
 
         private string _rule = "String";
 
@@ -89,7 +106,7 @@ namespace DataIntegrationTool.BaseClasses
 
         public RulesViewModelBase RulesViewModel
         {
-            get { return _rulesViewModel; }
+            get { return _rulesViewModel ?? (_rulesViewModel = new StringRuleViewModel()); }
 
             set
             {

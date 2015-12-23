@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using DataIntegrationTool.BaseClasses;
+using DataIntegrationTool.MainProgram.Rules.StringRule;
 using DataIntegrationTool.MessengerPackages;
 using DataIntegrationTool.Resources.BindingParameters;
 using DataIntegrationTool.Resources.Enums;
@@ -28,10 +29,10 @@ namespace DataIntegrationTool.MainProgram.CleanData
 
         #region Commands
 
-        private RelayCommand<CleanDataSetRuleParameter> _changeRuleCommand;
+        private RelayCommand<CleanDataRule> _changeRuleCommand;
 
-        public RelayCommand<CleanDataSetRuleParameter> ChangeRuleCommand => _changeRuleCommand
-                                                         ?? (_changeRuleCommand = new RelayCommand<CleanDataSetRuleParameter>(ChangeRule));
+        public RelayCommand<CleanDataRule> ChangeRuleCommand => _changeRuleCommand
+                                                         ?? (_changeRuleCommand = new RelayCommand<CleanDataRule>(ChangeRule));
 
 
 
@@ -41,12 +42,12 @@ namespace DataIntegrationTool.MainProgram.CleanData
 
         #region Methods
 
-        private void ChangeRule(CleanDataSetRuleParameter ruleParameter)
+        private void ChangeRule(CleanDataRule cleanData)
         {
-            switch (ruleParameter.RuleName)
+            switch (cleanData.Rule)
             {
                 case "String":
-                    //Set rule VM here
+                    cleanData.RulesViewModel = new StringRuleViewModel();
                     break;
                 case "Numeric":
                     //Set rule VM here
@@ -58,8 +59,7 @@ namespace DataIntegrationTool.MainProgram.CleanData
                     //Set rule VM here
                     break;
             }
-
-            ruleParameter.SelectedCleanDataRule.Rule = ruleParameter.RuleName;
+            
         }
 
         private void ProcessIncomingData(List<ImportDataPackage> importedData)
@@ -168,7 +168,7 @@ namespace DataIntegrationTool.MainProgram.CleanData
 
         public CleanDataRule SelectedBaseCleanDataRule
         {
-            get { return _selectedBaseCleanDataRule; }
+            get { return _selectedBaseCleanDataRule ?? (_selectedBaseCleanDataRule = new CleanDataRule()); }
 
             set
             {
